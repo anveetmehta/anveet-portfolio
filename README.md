@@ -58,29 +58,6 @@ styles/
 2. Import the repo in [Vercel](https://vercel.com/new).
 3. Keep default Next.js settings and deploy.
 
-## Notion Writing Database Integration
-
-The home page Writing section can pull posts from a Notion database automatically.
-
-1. Create a Notion integration and copy the internal integration token.
-2. Share your writing database with that integration in Notion.
-3. Add these environment variables in local `.env.local` and Vercel project settings:
-
-   ```bash
-   NOTION_API_KEY=secret_xxx
-   NOTION_DATABASE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   ```
-
-### Expected Notion database properties
-
-- `Title` (Title)
-- `Summary` (Rich text)
-- `Status` (Select: `published`, `draft`, `planned`)
-- `URL` (URL, optional)
-- `PublishedAt` (Date, optional)
-
-If Notion is not configured (or temporarily unavailable), the site safely falls back to `content/content.ts` writing entries.
-
 ## Edit Content
 
 All portfolio content is centralized in:
