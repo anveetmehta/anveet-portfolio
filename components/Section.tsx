@@ -15,6 +15,7 @@ export function Section({ id, title, description, children }: SectionProps) {
         <header className="mb-8 max-w-3xl">
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
           {description ? <p className="mt-3 text-foreground/70">{description}</p> : null}
+          {description ? <p className="mt-3 text-slate-600">{description}</p> : null}
         </header>
         {children}
       </Container>

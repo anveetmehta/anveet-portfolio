@@ -20,6 +20,9 @@ export default function RootLayout({
         <ThemeProvider>
           <Layout>{children}</Layout>
         </ThemeProvider>
+    <html lang="en">
+      <body>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
