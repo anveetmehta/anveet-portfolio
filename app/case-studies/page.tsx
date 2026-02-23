@@ -17,6 +17,7 @@ export default function CaseStudiesIndexPage() {
       <Container>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Case Studies</h1>
         <p className="mt-4 max-w-2xl text-foreground/75">
+        <p className="mt-4 max-w-2xl text-slate-700">
           All studies are rendered dynamically from <code>content/content.ts</code> for easy future expansion.
         </p>
         <div className="mt-10">
