@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Layout } from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { siteMeta } from '@/content/content';
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Layout>{children}</Layout>
         </ThemeProvider>
+        <Analytics />
     <html lang="en">
       <body>
         <Layout>{children}</Layout>
