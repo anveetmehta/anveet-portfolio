@@ -18,6 +18,13 @@ export function ContactSection() {
           .
         </p>
       </Card>
+      <p className="text-slate-700">
+        For collaborations or conversations, reach out at{' '}
+        <a href={`mailto:${siteMeta.email}`} className="font-medium">
+          {siteMeta.email}
+        </a>
+        .
+      </p>
     </Section>
   );
 }

@@ -19,7 +19,8 @@ const config: Config = {
         accent: 'hsl(var(--accent))'
       },
       boxShadow: {
-        glow: '0 10px 35px -15px rgba(59, 130, 246, 0.35)'
+        glow: '0 10px 35px -15px rgba(59, 130, 246, 0.35)',
+        surface: '#f8fafc'
       }
     }
   },

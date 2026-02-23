@@ -22,6 +22,9 @@ export default function RootLayout({
           <Layout>{children}</Layout>
         </ThemeProvider>
         <Analytics />
+    <html lang="en">
+      <body>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

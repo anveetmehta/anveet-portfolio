@@ -1,3 +1,7 @@
+import { HomeSections } from '@/components/HomeSections';
+
+export default function HomePage() {
+  return <HomeSections />;
 import { AboutSection } from '@/components/sections/AboutSection';
 import { CaseStudiesSection } from '@/components/sections/CaseStudiesSection';
 import { ContactSection } from '@/components/sections/ContactSection';
