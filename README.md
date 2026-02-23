@@ -58,6 +58,27 @@ styles/
 2. Import the repo in [Vercel](https://vercel.com/new).
 3. Keep default Next.js settings and deploy.
 
+
+## Admin and Three-Phase Publishing Workflow
+
+Use `/admin` to control the in-app publishing workflow and feature toggles without external tooling:
+
+- **Phase 1 · AI Drafting + Prerequisite Checks**
+  - Generate a draft from a seed idea.
+  - Define prerequisites (one per line) and run checklist-style validation.
+- **Phase 2 · Approval + Publish Queue**
+  - Save drafts to review queue.
+  - Move posts between `draft`, `approved`, and `published` directly in admin.
+  - Published posts appear in the Writing section for your browser session.
+- **Phase 3 · AI Persona Chat**
+  - Enable/disable the “AI Anveet” assistant on the homepage from feature toggles.
+
+### Feature toggles
+
+The `/admin` page lets you turn major app features on/off instantly (writing section, case studies, expertise, AI draft assistant, checklist gate, AI chat).
+
+> Note: this setup is intentionally simple and stores admin state in browser local storage for low maintenance and zero external dependencies.
+
 ## Edit Content
 
 All portfolio content is centralized in:

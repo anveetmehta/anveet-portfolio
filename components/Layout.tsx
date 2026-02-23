@@ -21,6 +21,8 @@ export function Layout({ children }: LayoutProps) {
           <nav className="flex items-center gap-4 text-sm text-foreground/80 sm:gap-6">
             <Link href="/">Home</Link>
             <Link href="/case-studies">Case Studies</Link>
+            <Link href="/admin">Admin</Link>
+            <ThemeToggle />
             <ThemeToggle />
           <nav className="flex items-center gap-6 text-sm text-slate-600">
             <Link href="/">Home</Link>
