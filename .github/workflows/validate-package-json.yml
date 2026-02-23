@@ -1,0 +1,18 @@
+name: Validate package.json
+
+on:
+  push:
+    branches:
+      - main
+      - '**'
+  pull_request:
+
+jobs:
+  validate-package-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate package.json syntax
+        run: python -m json.tool package.json > /dev/null
