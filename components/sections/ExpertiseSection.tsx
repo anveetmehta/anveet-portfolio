@@ -8,6 +8,10 @@ export function ExpertiseSection() {
     <Section id="expertise" title="Expertise" description="Core capability areas structured for easy expansion.">
       <Grid columns={3}>
         {expertiseAreas.map((area) => (
+          <Card key={area.title} className="h-full">
+            <h3 className="text-lg font-semibold">{area.title}</h3>
+            <p className="mt-2 text-foreground/75">{area.summary}</p>
+            <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-foreground/65">
           <Card key={area.title}>
             <h3 className="text-lg font-semibold">{area.title}</h3>
             <p className="mt-2 text-slate-700">{area.summary}</p>

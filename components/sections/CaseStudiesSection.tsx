@@ -11,6 +11,7 @@ export function CaseStudiesSection() {
     <Section
       id="selected-case-studies"
       title="Selected Case Studies"
+      description="High-impact projects rendered from structured content objects for effortless scaling."
       description="Preview of modular case studies pulled from centralized content data."
     >
       <Grid>
@@ -19,6 +20,7 @@ export function CaseStudiesSection() {
         ))}
       </Grid>
       <div className="mt-8">
+        <Link href="/case-studies" className="text-sm font-medium text-accent">
         <Link href="/case-studies" className="text-sm font-medium">
           Browse all case studies →
         </Link>

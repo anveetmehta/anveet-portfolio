@@ -40,27 +40,27 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
     <article className="py-16 sm:py-20">
       <Container>
         <header className="max-w-4xl">
-          <p className="text-xs uppercase tracking-[0.15em] text-slate-500">Case Study</p>
+          <p className="text-xs uppercase tracking-[0.15em] text-foreground/50">Case Study</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{caseStudy.title}</h1>
-          <p className="mt-5 text-lg text-slate-700">{caseStudy.excerpt}</p>
+          <p className="mt-5 text-lg text-foreground/75">{caseStudy.excerpt}</p>
         </header>
 
         <div className="mt-12 space-y-10">
           <section>
             <h2 className="text-xl font-semibold">Context</h2>
-            <p className="mt-3 text-slate-700">{caseStudy.context}</p>
+            <p className="mt-3 text-foreground/75">{caseStudy.context}</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold">Problem</h2>
-            <p className="mt-3 text-slate-700">{caseStudy.problem}</p>
+            <p className="mt-3 text-foreground/75">{caseStudy.problem}</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold">Role</h2>
-            <p className="mt-3 text-slate-700">{caseStudy.role}</p>
+            <p className="mt-3 text-foreground/75">{caseStudy.role}</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold">Approach</h2>
-            <p className="mt-3 text-slate-700">{caseStudy.approach}</p>
+            <p className="mt-3 text-foreground/75">{caseStudy.approach}</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold">Architecture / Workflow</h2>
@@ -70,7 +70,7 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
           </section>
           <section>
             <h2 className="text-xl font-semibold">Impact</h2>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/75">
               {caseStudy.impact.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -78,7 +78,7 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
           </section>
           <section>
             <h2 className="text-xl font-semibold">Learnings</h2>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/75">
               {caseStudy.learnings.map((item) => (
                 <li key={item}>{item}</li>
               ))}

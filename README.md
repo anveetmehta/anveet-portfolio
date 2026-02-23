@@ -7,6 +7,9 @@ A scalable, structure-first portfolio scaffold built with **Next.js App Router**
 - Next.js 14 (App Router)
 - TypeScript
 - Tailwind CSS
+- `next-themes` for dark mode
+- `clsx` + `tailwind-merge` for class composition
+- `framer-motion` for subtle UI motion
 
 ## Project Structure
 
@@ -27,9 +30,9 @@ styles/
 - Home sections split into modular components for easy growth
 - Case studies rendered dynamically from centralized content
 - Typed content schema in `content/content.ts`
+- Dark mode support via class-based theming
 - Ready for future additions:
   - Blog pages and taxonomy
-  - Dark mode theming
   - Per-page SEO enhancements
   - Analytics/event instrumentation
 
