@@ -17,12 +17,10 @@ export interface ExpertiseArea {
 }
 
 export interface WritingEntry {
-  id?: string;
   title: string;
   summary: string;
   status: 'published' | 'draft' | 'planned';
   href: string;
-  publishedAt?: string;
 }
 
 export interface WorkflowStep {
