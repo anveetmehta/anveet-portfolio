@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 33% 98%;
+  --foreground: 222 47% 11%;
+  --muted: 220 20% 95%;
+  --border: 215 25% 88%;
+  --card: 0 0% 100%;
+  --accent: 224 76% 48%;
+}
+
+.dark {
+  --background: 223 30% 8%;
+  --foreground: 215 25% 92%;
+  --muted: 223 22% 14%;
+  --border: 220 16% 24%;
+  --card: 224 24% 11%;
+  --accent: 221 83% 61%;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+a {
+  @apply transition-colors hover:text-accent;
+}
+
+::selection {
+  @apply bg-accent/20;
+}
