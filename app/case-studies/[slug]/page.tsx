@@ -84,6 +84,26 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
               ))}
             </ul>
           </section>
+          {caseStudy.obsessions.length > 0 ? (
+            <section>
+              <h2 className="text-xl font-semibold">What I obsessed over</h2>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/75">
+                {caseStudy.obsessions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          {caseStudy.artifacts.length > 0 ? (
+            <section>
+              <h2 className="text-xl font-semibold">Artifacts (sanitized)</h2>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/75">
+                {caseStudy.artifacts.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
         </div>
       </Container>
     </article>

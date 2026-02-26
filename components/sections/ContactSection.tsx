@@ -7,16 +7,28 @@ export function ContactSection() {
     <Section
       id="contact"
       title="Contact"
-      description="Simple contact module with room for future form integrations and analytics events."
+      description="If you're hiring for systems PM roles or building risk/compliance platforms, email me."
     >
       <Card className="max-w-2xl">
         <p className="text-foreground/80">
-          For collaborations or conversations, reach out at{' '}
+          Reach out at{' '}
           <a href={`mailto:${siteMeta.email}`} className="font-medium text-accent">
             {siteMeta.email}
           </a>
-          .
         </p>
+        <div className="mt-4 flex gap-4">
+          {siteMeta.socialLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-accent"
+            >
+              {link.label} →
+            </a>
+          ))}
+        </div>
       </Card>
     </Section>
   );

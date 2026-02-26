@@ -11,7 +11,7 @@ export function CaseStudiesSection() {
     <Section
       id="selected-case-studies"
       title="Selected Case Studies"
-      description="High-impact projects rendered from structured content objects for effortless scaling."
+      description="Deep dives into complex problems I've worked on."
     >
       <Grid>
         {caseStudies.slice(0, 2).map((caseStudy) => (

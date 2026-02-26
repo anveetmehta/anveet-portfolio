@@ -15,6 +15,11 @@ type DisplayPost = {
   href?: string;
 };
 
+function formatStatus(status: string): string {
+  if (status === 'draft' || status === 'planned') return 'draft / notes';
+  return status;
+}
+
 export function WritingSection() {
   const { value: rawPosts, hydrated } = useLocalStorageState<AdminPost[]>(adminPostsStorageKey, []);
 
@@ -36,22 +41,24 @@ export function WritingSection() {
     <Section
       id="writing"
       title="Writing"
-      description="Publishing layer prepared for blog expansion and editorial experiments."
+      description="Working notes. I publish in public to sharpen thinking."
     >
       <div className="space-y-4">
         {allEntries.map((entry) => (
           <Card key={`${entry.title}-${entry.status}`}>
-            <p className="text-xs uppercase tracking-wide text-foreground/50">{entry.status}</p>
+            <p className="text-xs uppercase tracking-wide text-foreground/50">
+              {formatStatus(entry.status)}
+            </p>
             <h3 className="mt-2 text-lg font-semibold">{entry.title}</h3>
             <p className="mt-2 text-foreground/75">{entry.summary}</p>
-            {entry.href && (
+            {entry.href && entry.status === 'published' ? (
               <Link
                 href={entry.href}
                 className="mt-4 inline-flex text-sm font-medium text-accent"
               >
                 Read article →
               </Link>
-            )}
+            ) : null}
           </Card>
         ))}
       </div>

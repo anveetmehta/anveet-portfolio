@@ -5,7 +5,10 @@ import { expertiseAreas } from '@/content/content';
 
 export function ExpertiseSection() {
   return (
-    <Section id="expertise" title="Expertise" description="Core capability areas structured for easy expansion.">
+    <Section
+      id="how-i-think"
+      title="How I Think"
+    >
       <Grid columns={3}>
         {expertiseAreas.map((area) => (
           <Card key={area.title} className="h-full">
