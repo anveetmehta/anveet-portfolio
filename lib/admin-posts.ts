@@ -3,16 +3,45 @@ export type PostStatus = 'draft' | 'review' | 'approved' | 'published';
 export interface AdminPost {
   id: string;
   title: string;
+  slug: string;
   summary: string;
   content: string;
+  tags: string[];
   prerequisites: string[];
   checks: { item: string; passed: boolean; note: string }[];
   status: PostStatus;
   createdAt: string;
+  updatedAt: string;
 }
 
 export function createId() {
   return `post_${Math.random().toString(36).slice(2, 10)}`;
+}
+
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function wordCount(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+export function getPublishedPostBySlug(posts: AdminPost[], slug: string): AdminPost | undefined {
+  return posts.find((p) => p.slug === slug && p.status === 'published');
+}
+
+export function migratePost(post: AdminPost): AdminPost {
+  return {
+    ...post,
+    slug: post.slug || slugify(post.title),
+    tags: post.tags || [],
+    updatedAt: post.updatedAt || post.createdAt,
+  };
 }
 
 export function runChecklist(content: string, title: string, prerequisites: string[]) {

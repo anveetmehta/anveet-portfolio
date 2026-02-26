@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function useLocalStorageState<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(initialValue);
   const [hydrated, setHydrated] = useState(false);
+  const initialValueRef = useRef(initialValue);
 
   useEffect(() => {
     try {
@@ -13,11 +14,12 @@ export function useLocalStorageState<T>(key: string, initialValue: T) {
         setValue(JSON.parse(raw) as T);
       }
     } catch {
-      setValue(initialValue);
+      setValue(initialValueRef.current);
     } finally {
       setHydrated(true);
     }
-  }, [initialValue, key]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
 
   useEffect(() => {
     if (!hydrated) {

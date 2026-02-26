@@ -1,28 +1,32 @@
 'use client';
 
+import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { Section } from '@/components/Section';
 import { writingEntries } from '@/content/content';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
 import { adminPostsStorageKey } from '@/lib/app-config';
-import { type AdminPost } from '@/lib/admin-posts';
+import { migratePost, type AdminPost } from '@/lib/admin-posts';
 
 type DisplayPost = {
   title: string;
   summary: string;
   status: string;
+  href?: string;
 };
 
 export function WritingSection() {
-  const { value: adminPosts, hydrated } = useLocalStorageState<AdminPost[]>(adminPostsStorageKey, []);
+  const { value: rawPosts, hydrated } = useLocalStorageState<AdminPost[]>(adminPostsStorageKey, []);
 
   const publishedPosts: DisplayPost[] = hydrated
-    ? adminPosts
+    ? rawPosts
+        .map(migratePost)
         .filter((post) => post.status === 'published')
         .map((post) => ({
           title: post.title,
           summary: post.summary,
-          status: 'published'
+          status: 'published',
+          href: `/writing/${post.slug}`,
         }))
     : [];
 
@@ -40,6 +44,14 @@ export function WritingSection() {
             <p className="text-xs uppercase tracking-wide text-foreground/50">{entry.status}</p>
             <h3 className="mt-2 text-lg font-semibold">{entry.title}</h3>
             <p className="mt-2 text-foreground/75">{entry.summary}</p>
+            {entry.href && (
+              <Link
+                href={entry.href}
+                className="mt-4 inline-flex text-sm font-medium text-accent"
+              >
+                Read article →
+              </Link>
+            )}
           </Card>
         ))}
       </div>
