@@ -20,14 +20,14 @@ export function HomeSections() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
+      {flags.enableAbout ? <AboutSection /> : null}
       {flags.enableProjects ? <ProjectsSection /> : null}
       {flags.enableCaseStudies ? <CaseStudiesSection /> : null}
       {flags.enableExpertise ? <ExpertiseSection /> : null}
       {flags.enableNow ? <NowSection /> : null}
       {flags.showWritingSection ? <WritingSection /> : null}
       {flags.enableAiChat ? <AiPersonaChat /> : null}
-      <ContactSection />
+      {flags.enableContact ? <ContactSection /> : null}
     </>
   );
 }
