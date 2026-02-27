@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { Section } from '@/components/Section';
-import { writingEntries } from '@/content/content';
+import { writingCallout, writingEntries } from '@/content/content';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
 import { adminPostsStorageKey } from '@/lib/app-config';
 import { migratePost, type AdminPost } from '@/lib/admin-posts';
@@ -43,6 +43,9 @@ export function WritingSection() {
       title="Writing"
       description="Working notes. I publish in public to sharpen thinking."
     >
+      <p className="mb-6 text-sm font-medium italic text-accent">
+        {writingCallout}
+      </p>
       <div className="space-y-4">
         {allEntries.map((entry) => {
           const isDraft = entry.status === 'draft' || entry.status === 'planned';

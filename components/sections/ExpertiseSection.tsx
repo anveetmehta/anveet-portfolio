@@ -34,6 +34,9 @@ export function ExpertiseSection() {
               </span>
               <h3 className="-mt-4 text-lg font-semibold">{area.title}</h3>
               <p className="mt-2 text-foreground/75">{area.summary}</p>
+              <p className="mt-3 text-sm italic text-foreground/55">
+                {area.example}
+              </p>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-foreground/65">
                 {area.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>

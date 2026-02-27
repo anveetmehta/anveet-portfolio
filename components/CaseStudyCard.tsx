@@ -29,6 +29,17 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
         <p className="text-xs uppercase tracking-wide text-foreground/55">Case Study</p>
         <h3 className="mt-2 text-xl font-semibold text-foreground">{caseStudy.title}</h3>
         <p className="mt-3 text-foreground/80">{caseStudy.excerpt}</p>
+        {/* Microcopy: What I did + Outcome */}
+        <div className="mt-4 space-y-1.5 rounded-lg bg-muted/50 p-3 text-sm">
+          <p className="text-foreground/70">
+            <span className="font-medium text-foreground/85">What I did:</span>{' '}
+            {caseStudy.contribution}
+          </p>
+          <p className="text-foreground/70">
+            <span className="font-medium text-foreground/85">Outcome:</span>{' '}
+            {caseStudy.outcome}
+          </p>
+        </div>
         <div className="mt-4 flex flex-wrap gap-2">
           {caseStudy.tags.map((tag, idx) => (
             <span

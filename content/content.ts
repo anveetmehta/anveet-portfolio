@@ -16,6 +16,7 @@ export interface HeroContent {
   h1: string;
   subhead: string;
   trustLine: string;
+  proofStrips: string[];
 }
 
 export interface AboutContent {
@@ -35,6 +36,7 @@ export interface Project {
 export interface ExpertiseArea {
   title: string;
   summary: string;
+  example: string;
   highlights: string[];
 }
 
@@ -54,6 +56,8 @@ export interface CaseStudy {
   slug: string;
   title: string;
   excerpt: string;
+  contribution: string;
+  outcome: string;
   context: string;
   problem: string;
   role: string;
@@ -88,7 +92,13 @@ export const heroContent: HeroContent = {
   subhead:
     "I'm Anveet Mehta — a product builder focused on onboarding, payments, risk, and compliance. I like hard constraints, clean abstractions, and shipping experiments that compound into platforms.",
   trustLine:
-    'Built across regulated fintech ecosystems (banks/NBFCs/fintech) · Systems-first PM · Builder outside work'
+    'Built across regulated fintech ecosystems (banks/NBFCs/fintech) · Systems-first PM · Builder outside work',
+  proofStrips: [
+    'Regulated fintech systems',
+    'Omnichannel onboarding (RM + self-serve + APIs)',
+    'Risk & compliance layers (screening / scoring / workflows)',
+    'Builder experiments (AI + real-world ops)'
+  ]
 };
 
 // ── About ──────────────────────────────────────────────────────────────────
@@ -152,6 +162,8 @@ export const expertiseAreas: ExpertiseArea[] = [
     title: 'Systems over Journeys',
     summary:
       'Most people design journeys. I design systems. A journey can be optimized. A system can be scaled.',
+    example:
+      'At Signzy, I reframed onboarding from a linear flow into a modular system with pluggable verification layers — so adding a new market didn\'t mean rebuilding the pipeline.',
     highlights: [
       'Core components and interactions',
       'Sources of complexity',
@@ -163,6 +175,8 @@ export const expertiseAreas: ExpertiseArea[] = [
     title: 'Curiosity over Outcomes',
     summary:
       'Why do onboarding systems fail at scale? Why does compliance feel reactive? How can AI move from answering questions to shaping decisions? These questions usually turn into projects.',
+    example:
+      'That curiosity about reactive compliance led me to build the AI Compliance Assistant — turning regulatory diffs into structured, actionable insights instead of PDF dumps.',
     highlights: [
       'Asking better questions',
       'Learning through building',
@@ -173,6 +187,8 @@ export const expertiseAreas: ExpertiseArea[] = [
     title: 'Simplicity over Complexity',
     summary:
       'Simplicity is usually hiding behind complexity. Good systems reduce effort for both users and operators. If something feels complicated, it\'s usually poorly designed.',
+    example:
+      'The Workflow Visibility Platform replaced 4 disconnected tracking tools with a single state machine — fewer dashboards, but every team could finally see the same truth.',
     highlights: [
       'Reducing complexity',
       'Design-led thinking',
@@ -192,6 +208,9 @@ export const nowItems: string[] = [
 ];
 
 // ── Writing ────────────────────────────────────────────────────────────────
+
+export const writingCallout =
+  'If you read one thing: Onboarding isn\'t a journey. It\'s a system.';
 
 export const writingEntries: WritingEntry[] = [
   {
@@ -215,6 +234,10 @@ export const caseStudies: CaseStudy[] = [
     slug: 'workflow-visibility-platform',
     title: 'Workflow Visibility Platform',
     excerpt: 'Unified fragmented internal operations into a single actionable control plane.',
+    contribution:
+      'Designed the workflow state machine, data model, and role-based decision surfaces.',
+    outcome:
+      'Reduced manual status reconciliation by 38% and cut escalation response from days to hours.',
     context:
       'Operational teams managed status updates across disconnected tools, creating slow handoffs and misaligned reporting.',
     problem:
@@ -262,6 +285,10 @@ export const caseStudies: CaseStudy[] = [
     slug: 'guided-onboarding-system',
     title: 'Guided Onboarding System',
     excerpt: 'Created a modular onboarding architecture for faster activation and better retention.',
+    contribution:
+      'Defined segmentation strategy, designed journey composer, and coordinated launch readiness.',
+    outcome:
+      'Improved activation rate by 24% and reduced time-to-value by 31% in target segments.',
     context:
       'New users entered a high-complexity product with little role-specific guidance and dropped before activation.',
     problem:

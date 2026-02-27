@@ -5,8 +5,8 @@ import { Grid } from '@/components/Grid';
 import { getAllCaseStudies } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Case Studies | Anveet Mehta',
-  description: 'Index of case studies rendered from centralized content architecture.'
+  title: 'Case Studies',
+  description: 'Deep dives into complex problems I\'ve worked on — onboarding systems, workflow visibility, and risk infrastructure.'
 };
 
 export default function CaseStudiesIndexPage() {
@@ -17,7 +17,7 @@ export default function CaseStudiesIndexPage() {
       <Container>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Case Studies</h1>
         <p className="mt-4 max-w-2xl text-foreground/75">
-          All studies are rendered dynamically from <code>content/content.ts</code> for easy future expansion.
+          Deep dives into complex problems I&apos;ve worked on.
         </p>
         <div className="mt-10">
           <Grid>

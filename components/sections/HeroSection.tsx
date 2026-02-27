@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
-import { heroContent } from '@/content/content';
+import { heroContent, siteMeta } from '@/content/content';
 
 const trustItems = heroContent.trustLine.split(' · ');
 
@@ -30,22 +30,21 @@ export function HeroSection() {
         >
           {heroContent.subhead}
         </motion.p>
-        {/* Trust pills */}
-        <motion.div
+        {/* Trust line with dot separators */}
+        <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.14 }}
-          className="mt-5 flex flex-wrap gap-2"
+          className="mt-4 text-sm text-foreground/55"
         >
-          {trustItems.map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-border/70 bg-muted/50 px-3 py-1 text-xs text-foreground/60"
-            >
+          {trustItems.map((item, i) => (
+            <span key={item}>
+              {i > 0 ? <span className="mx-2 text-foreground/30">&#x2022;</span> : null}
               {item.trim()}
             </span>
           ))}
-        </motion.div>
+        </motion.p>
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,12 +57,28 @@ export function HeroSection() {
           >
             See case studies
           </Link>
-          <Link
-            href="#contact"
-            className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
+          <a
+            href={`mailto:${siteMeta.email}`}
+            className="rounded-full border border-accent/30 bg-accent/5 px-5 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-accent/10"
           >
             Talk to me
-          </Link>
+          </a>
+        </motion.div>
+        {/* Proof strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.28 }}
+          className="mt-10 flex flex-wrap gap-2"
+        >
+          {heroContent.proofStrips.map((strip) => (
+            <span
+              key={strip}
+              className="rounded-full border border-border/60 bg-card/70 px-3.5 py-1.5 text-xs font-medium text-foreground/60 shadow-sm"
+            >
+              {strip}
+            </span>
+          ))}
         </motion.div>
       </Container>
     </section>
