@@ -10,14 +10,21 @@ import {
 import { ToggleSwitch } from './ToggleSwitch';
 
 export function FeaturesTab() {
-  const { value: flags, setValue: setFlags } = useLocalStorageState(
+  const { value: storedFlags, setValue: setFlags } = useLocalStorageState(
     featureFlagsStorageKey,
     defaultFeatureFlags
   );
 
+  // Merge stored flags with defaults so new flags always appear
+  const flags = { ...defaultFeatureFlags, ...storedFlags };
+
   function toggleFlag(flag: FeatureFlagKey) {
-    setFlags({ ...flags, [flag]: !flags[flag] });
+    const updated = { ...flags, [flag]: !flags[flag] };
+    setFlags(updated);
   }
+
+  // Use defaultFeatureFlags keys to guarantee stable, complete ordering
+  const allFlagKeys = Object.keys(defaultFeatureFlags) as FeatureFlagKey[];
 
   return (
     <section className="rounded-2xl border border-border bg-card p-6">
@@ -26,7 +33,7 @@ export function FeaturesTab() {
         Turn features on or off instantly.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
-        {(Object.keys(flags) as FeatureFlagKey[]).map((flag) => (
+        {allFlagKeys.map((flag) => (
           <label
             key={flag}
             className="flex items-center justify-between rounded-xl border border-border p-3"
