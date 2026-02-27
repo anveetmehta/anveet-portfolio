@@ -3,12 +3,16 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
-import { heroContent, siteMeta } from '@/content/content';
+import { heroContent } from '@/content/content';
+
+const trustItems = heroContent.trustLine.split(' · ');
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-border/60 py-24 sm:py-28">
+    <section className="relative overflow-hidden border-b border-border/60 py-20 sm:py-24">
+      {/* Subtle dot grid texture */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(59,130,246,0.18),transparent_40%),radial-gradient(circle_at_85%_10%,rgba(99,102,241,0.12),transparent_35%)]" />
+      <div className="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
       <Container>
         <motion.h1
           initial={{ opacity: 0, y: 14 }}
@@ -22,18 +26,26 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.08 }}
-          className="mt-6 max-w-3xl text-lg text-foreground/75"
+          className="mt-5 max-w-3xl text-lg text-foreground/75"
         >
           {heroContent.subhead}
         </motion.p>
-        <motion.p
+        {/* Trust pills */}
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.14 }}
-          className="mt-4 text-sm text-foreground/50"
+          className="mt-5 flex flex-wrap gap-2"
         >
-          {heroContent.trustLine}
-        </motion.p>
+          {trustItems.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-border/70 bg-muted/50 px-3 py-1 text-xs text-foreground/60"
+            >
+              {item.trim()}
+            </span>
+          ))}
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,13 +54,13 @@ export function HeroSection() {
         >
           <Link
             href="/case-studies"
-            className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white"
+            className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent/90"
           >
             See case studies
           </Link>
           <Link
             href="#contact"
-            className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium"
+            className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
           >
             Talk to me
           </Link>

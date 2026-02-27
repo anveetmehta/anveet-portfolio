@@ -5,7 +5,7 @@ import { aboutContent } from '@/content/content';
 export function AboutSection() {
   return (
     <Section id="about" title="About">
-      <Card className="max-w-4xl space-y-4">
+      <Card accentColor="blue" className="max-w-4xl space-y-4">
         <p className="leading-relaxed text-foreground/80">{aboutContent.intro}</p>
         <p className="leading-relaxed text-foreground/80">{aboutContent.body}</p>
       </Card>

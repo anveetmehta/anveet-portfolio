@@ -7,6 +7,20 @@ import { Section } from '@/components/Section';
 import { projects } from '@/content/content';
 import { cn } from '@/lib/cn';
 
+const statusAccent: Record<string, 'green' | 'amber' | 'blue'> = {
+  live: 'green',
+  building: 'amber',
+  idea: 'blue'
+};
+
+const tagColors = [
+  'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+  'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
+  'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+  'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
+  'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
+];
+
 function StatusBadge({ status }: { status: 'live' | 'building' | 'idea' }) {
   const styles = {
     live: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400',
@@ -40,8 +54,9 @@ export function ProjectsSection() {
       id="projects"
       title="Projects & Experiments"
       description="Things I'm building — some professional, some personal, all driven by curiosity."
+      variant="muted"
     >
-      <Grid columns={3}>
+      <Grid columns={2}>
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -50,17 +65,23 @@ export function ProjectsSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.35, delay: index * 0.06 }}
           >
-            <Card className="flex h-full flex-col hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
+            <Card
+              accentColor={statusAccent[project.status] ?? 'blue'}
+              className="flex h-full flex-col hover:-translate-y-1 hover:shadow-glow transition-all duration-300"
+            >
               <div className="flex items-start justify-between gap-2">
                 <h3 className="text-lg font-semibold">{project.title}</h3>
                 <StatusBadge status={project.status} />
               </div>
               <p className="mt-3 flex-1 text-sm text-foreground/75">{project.description}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
+                {project.tags.map((tag, tagIdx) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-foreground/65"
+                    className={cn(
+                      'rounded-full border px-2.5 py-0.5 text-xs font-medium',
+                      tagColors[tagIdx % tagColors.length]
+                    )}
                   >
                     {tag}
                   </span>

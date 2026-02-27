@@ -16,7 +16,8 @@ const config: Config = {
         muted: 'hsl(var(--muted))',
         border: 'hsl(var(--border))',
         card: 'hsl(var(--card))',
-        accent: 'hsl(var(--accent))'
+        accent: 'hsl(var(--accent))',
+        'accent-warm': 'hsl(var(--accent-warm))'
       },
       boxShadow: {
         glow: '0 10px 35px -15px rgba(59, 130, 246, 0.35)'

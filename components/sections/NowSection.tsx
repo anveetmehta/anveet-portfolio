@@ -8,14 +8,16 @@ export function NowSection() {
       title="Now"
       description="Themes I'm exploring through small builds."
     >
-      <ul className="max-w-3xl space-y-3">
+      <div className="flex flex-wrap gap-2.5">
         {nowItems.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-foreground/75">
-            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-            <span>{item}</span>
-          </li>
+          <span
+            key={item}
+            className="rounded-full border border-border/70 bg-card/80 px-4 py-2 text-sm text-foreground/75 shadow-sm transition-colors hover:border-accent/40 hover:text-foreground"
+          >
+            {item}
+          </span>
         ))}
-      </ul>
+      </div>
     </Section>
   );
 }

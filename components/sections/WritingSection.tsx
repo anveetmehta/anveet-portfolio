@@ -44,23 +44,30 @@ export function WritingSection() {
       description="Working notes. I publish in public to sharpen thinking."
     >
       <div className="space-y-4">
-        {allEntries.map((entry) => (
-          <Card key={`${entry.title}-${entry.status}`}>
-            <p className="text-xs uppercase tracking-wide text-foreground/50">
-              {formatStatus(entry.status)}
-            </p>
-            <h3 className="mt-2 text-lg font-semibold">{entry.title}</h3>
-            <p className="mt-2 text-foreground/75">{entry.summary}</p>
-            {entry.href && entry.status === 'published' ? (
-              <Link
-                href={entry.href}
-                className="mt-4 inline-flex text-sm font-medium text-accent"
-              >
-                Read article →
-              </Link>
-            ) : null}
-          </Card>
-        ))}
+        {allEntries.map((entry) => {
+          const isDraft = entry.status === 'draft' || entry.status === 'planned';
+          return (
+            <Card
+              key={`${entry.title}-${entry.status}`}
+              dashed={isDraft}
+              accentColor={isDraft ? 'none' : 'blue'}
+            >
+              <p className="text-xs uppercase tracking-wide text-foreground/50">
+                {formatStatus(entry.status)}
+              </p>
+              <h3 className="mt-2 text-lg font-semibold">{entry.title}</h3>
+              <p className="mt-2 text-foreground/75">{entry.summary}</p>
+              {entry.href && entry.status === 'published' ? (
+                <Link
+                  href={entry.href}
+                  className="mt-4 inline-flex text-sm font-medium text-accent"
+                >
+                  Read article →
+                </Link>
+              ) : null}
+            </Card>
+          );
+        })}
       </div>
     </Section>
   );

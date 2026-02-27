@@ -17,7 +17,7 @@ export function Layout({ children }: LayoutProps) {
             {siteMeta.name}
           </Link>
           <nav className="flex items-center gap-4 text-sm text-foreground/80 sm:gap-6">
-            <Link href="/">Home</Link>
+            <Link href="/" className="hidden sm:inline">Home</Link>
             <Link href="/#projects">Projects</Link>
             <Link href="/case-studies">Case Studies</Link>
             <ThemeToggle />
