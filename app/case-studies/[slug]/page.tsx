@@ -37,15 +37,31 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
   }
 
   return (
-    <article className="py-16 sm:py-20">
-      <Container>
-        <header className="max-w-4xl">
-          <p className="text-xs uppercase tracking-[0.15em] text-foreground/50">Case Study</p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{caseStudy.title}</h1>
-          <p className="mt-5 text-lg text-foreground/75">{caseStudy.excerpt}</p>
-        </header>
+    <article>
+      {/* Gradient header banner */}
+      <div className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-accent/10 via-background to-accent/5 py-14 sm:py-20">
+        <div className="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        <Container>
+          <header className="max-w-4xl">
+            <p className="text-xs uppercase tracking-[0.15em] text-accent font-medium">Case Study</p>
+            <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{caseStudy.title}</h1>
+            <p className="mt-5 text-lg text-foreground/75">{caseStudy.excerpt}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {caseStudy.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-xs font-medium text-accent"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </header>
+        </Container>
+      </div>
 
-        <div className="mt-12 space-y-10">
+      <Container className="py-12">
+        <div className="max-w-4xl space-y-10">
           <section>
             <h2 className="text-xl font-semibold">Context</h2>
             <p className="mt-3 text-foreground/75">{caseStudy.context}</p>

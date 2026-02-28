@@ -6,11 +6,16 @@ import { CaseStudiesSection } from '@/components/sections/CaseStudiesSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { ExpertiseSection } from '@/components/sections/ExpertiseSection';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { NowSection } from '@/components/sections/NowSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { WritingSection } from '@/components/sections/WritingSection';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
 import { defaultFeatureFlags, featureFlagsStorageKey } from '@/lib/app-config';
+
+function SectionDivider() {
+  return (
+    <div className="mx-auto h-px max-w-5xl bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+  );
+}
 
 export function HomeSections() {
   const { value: storedFlags } = useLocalStorageState(featureFlagsStorageKey, defaultFeatureFlags);
@@ -20,12 +25,12 @@ export function HomeSections() {
   return (
     <>
       <HeroSection />
-      {flags.enableAbout ? <AboutSection /> : null}
+      {flags.enableAbout ? <><SectionDivider /><AboutSection /></> : null}
       {flags.enableProjects ? <ProjectsSection /> : null}
-      {flags.enableCaseStudies ? <CaseStudiesSection /> : null}
+      {flags.enableCaseStudies ? <><SectionDivider /><CaseStudiesSection /></> : null}
       {flags.enableExpertise ? <ExpertiseSection /> : null}
-      {flags.enableNow ? <NowSection /> : null}
-      {flags.showWritingSection ? <WritingSection /> : null}
+      {flags.enableNow ? null : null}
+      {flags.showWritingSection ? <><SectionDivider /><WritingSection /></> : null}
       {flags.enableAiChat ? <AiPersonaChat /> : null}
       {flags.enableContact ? <ContactSection /> : null}
     </>

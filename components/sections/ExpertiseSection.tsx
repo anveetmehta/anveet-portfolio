@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/Card';
 import { Grid } from '@/components/Grid';
 import { Section } from '@/components/Section';
+import { LightbulbIcon } from '@/components/icons/SectionIcons';
 import { expertiseAreas } from '@/content/content';
 
 const topBorderColors = [
@@ -15,9 +16,10 @@ const topBorderColors = [
 export function ExpertiseSection() {
   return (
     <Section
-      id="how-i-think"
+      id="expertise"
       title="How I Think"
       variant="muted"
+      icon={<LightbulbIcon />}
     >
       <Grid columns={3}>
         {expertiseAreas.map((area, index) => (

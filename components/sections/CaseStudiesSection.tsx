@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { CaseStudyCard } from '@/components/CaseStudyCard';
 import { Grid } from '@/components/Grid';
 import { Section } from '@/components/Section';
+import { SearchIcon } from '@/components/icons/SectionIcons';
 import { getAllCaseStudies } from '@/lib/content';
 
 export function CaseStudiesSection() {
@@ -9,9 +10,10 @@ export function CaseStudiesSection() {
 
   return (
     <Section
-      id="selected-case-studies"
+      id="case-studies"
       title="Selected Case Studies"
       description="Deep dives into complex problems I've worked on."
+      icon={<SearchIcon />}
     >
       <Grid>
         {caseStudies.slice(0, 2).map((caseStudy) => (

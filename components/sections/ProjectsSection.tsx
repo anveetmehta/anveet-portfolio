@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/Card';
 import { Grid } from '@/components/Grid';
 import { Section } from '@/components/Section';
+import { BeakerIcon } from '@/components/icons/SectionIcons';
 import { projects, type Project } from '@/content/content';
 import { cn } from '@/lib/cn';
 
@@ -104,6 +105,7 @@ export function ProjectsSection() {
       title="Projects & Experiments"
       description="Things I'm building — some professional, some personal, all driven by curiosity."
       variant="muted"
+      icon={<BeakerIcon />}
     >
       {/* Experiments lane */}
       <div>
