@@ -3,13 +3,12 @@
 import { useState, useMemo } from 'react';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
 import { featureFlagsStorageKey, defaultFeatureFlags } from '@/lib/app-config';
+import { type Article } from '@/lib/db/types';
 import {
-  createId,
   generateDraft,
   runChecklist,
   slugify,
   wordCount,
-  type AdminPost,
   type PostStatus,
 } from '@/lib/admin-posts';
 import { StatusBadge } from './StatusBadge';
@@ -21,32 +20,47 @@ const defaultPrerequisites = [
   'explicit call to action',
 ];
 
+type SaveData = {
+  title: string;
+  slug: string;
+  summary: string;
+  content: string;
+  tags: string[];
+  prerequisites: string[];
+  checks: { item: string; passed: boolean; note: string }[];
+  status: PostStatus;
+};
+
 type ArticleEditorProps = {
-  post: AdminPost | null;
-  onSave: (post: AdminPost) => void;
+  article: Article | null;
+  onSave: (data: SaveData) => void;
   onCancel: () => void;
   onDelete?: () => void;
 };
 
-export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEditorProps) {
+export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEditorProps) {
   const { value: flags } = useLocalStorageState(featureFlagsStorageKey, defaultFeatureFlags);
 
-  const [title, setTitle] = useState(post?.title ?? '');
-  const [slug, setSlug] = useState(post?.slug ?? '');
-  const [summary, setSummary] = useState(post?.summary ?? '');
-  const [tagsInput, setTagsInput] = useState(post?.tags?.join(', ') ?? '');
-  const [content, setContent] = useState(post?.content ?? '');
+  const [title, setTitle] = useState(article?.title ?? '');
+  const [slug, setSlug] = useState(article?.slug ?? '');
+  const [summary, setSummary] = useState(article?.summary ?? '');
+  const [tagsInput, setTagsInput] = useState(
+    (article?.tags as string[] | undefined)?.join(', ') ?? ''
+  );
+  const [content, setContent] = useState(article?.content ?? '');
   const [prerequisitesText, setPrerequisitesText] = useState(
-    post?.prerequisites?.join('\n') ?? defaultPrerequisites.join('\n')
+    (article?.prerequisites as string[] | undefined)?.join('\n') ?? defaultPrerequisites.join('\n')
   );
   const [seedIdea, setSeedIdea] = useState('');
-  const [checks, setChecks] = useState(post?.checks ?? []);
+  const [checks, setChecks] = useState<{ item: string; passed: boolean; note: string }[]>(
+    (article?.checks as { item: string; passed: boolean; note: string }[] | undefined) ?? []
+  );
 
   const words = useMemo(() => wordCount(content), [content]);
 
   function handleTitleChange(value: string) {
     setTitle(value);
-    if (!post) {
+    if (!article) {
       setSlug(slugify(value));
     }
   }
@@ -64,11 +78,9 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
     setChecks(runChecklist(content, title, prerequisites));
   }
 
-  function buildPost(status: PostStatus): AdminPost {
-    const now = new Date().toISOString();
+  function buildSaveData(status: PostStatus): SaveData {
     const prerequisites = prerequisitesText.split('\n').map((s) => s.trim()).filter(Boolean);
     return {
-      id: post?.id ?? createId(),
       title: title || 'Untitled',
       slug: slug || slugify(title || 'untitled'),
       summary: summary || 'Summary pending',
@@ -77,8 +89,6 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
       prerequisites,
       checks,
       status,
-      createdAt: post?.createdAt ?? now,
-      updatedAt: now,
     };
   }
 
@@ -89,9 +99,9 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">
-          {post ? 'Edit Article' : 'New Article'}
+          {article ? 'Edit Article' : 'New Article'}
         </h2>
-        {post && <StatusBadge status={post.status} />}
+        {article && <StatusBadge status={article.status as PostStatus} />}
       </div>
 
       {/* AI Draft Generator */}
@@ -129,7 +139,6 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
             placeholder="Article title"
           />
         </div>
-
         <div>
           <label className="mb-1 block text-xs font-medium text-foreground/60">Slug</label>
           <input
@@ -139,7 +148,6 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
             placeholder="url-friendly-slug"
           />
         </div>
-
         <div>
           <label className="mb-1 block text-xs font-medium text-foreground/60">Summary</label>
           <textarea
@@ -149,7 +157,6 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
             placeholder="Brief summary of the article"
           />
         </div>
-
         <div>
           <label className="mb-1 block text-xs font-medium text-foreground/60">
             Tags (comma-separated)
@@ -173,7 +180,6 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
             </div>
           )}
         </div>
-
         <div>
           <div className="mb-1 flex items-center justify-between">
             <label className="text-xs font-medium text-foreground/60">Content (Markdown)</label>
@@ -223,21 +229,21 @@ export function ArticleEditor({ post, onSave, onCancel, onDelete }: ArticleEdito
       <div className="flex flex-wrap gap-3">
         <button
           type="button"
-          onClick={() => onSave(buildPost(post?.status ?? 'draft'))}
+          onClick={() => onSave(buildSaveData(article?.status as PostStatus ?? 'draft'))}
           className={`${btnBase} border border-border`}
         >
           Save Draft
         </button>
         <button
           type="button"
-          onClick={() => onSave(buildPost('review'))}
+          onClick={() => onSave(buildSaveData('review'))}
           className={`${btnBase} border border-accent text-accent`}
         >
           Send to Review
         </button>
         <button
           type="button"
-          onClick={() => onSave(buildPost('published'))}
+          onClick={() => onSave(buildSaveData('published'))}
           className={`${btnBase} bg-foreground text-background`}
         >
           Publish

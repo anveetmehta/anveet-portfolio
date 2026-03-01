@@ -5,28 +5,47 @@ import { useState, useEffect, type ReactNode, type FormEvent } from 'react';
 type AdminAuthProps = { children: ReactNode };
 
 const SESSION_KEY = 'anveet-admin-authenticated';
+const PASSWORD_KEY = 'anveet-admin-password';
 
 export function AdminAuth({ children }: AdminAuthProps) {
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+    if (
+      sessionStorage.getItem(SESSION_KEY) === 'true' &&
+      sessionStorage.getItem(PASSWORD_KEY)
+    ) {
       setAuthenticated(true);
     }
   }, []);
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
-      sessionStorage.setItem(SESSION_KEY, 'true');
-      setAuthenticated(true);
-      setError('');
-    } else {
-      setError('Incorrect password.');
+    setLoading(true);
+    setError('');
+
+    try {
+      // Validate password server-side via API
+      const res = await fetch('/api/articles?all=true', {
+        headers: { Authorization: `Bearer ${password}` },
+      });
+
+      if (res.ok) {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        sessionStorage.setItem(PASSWORD_KEY, password);
+        setAuthenticated(true);
+      } else {
+        setError('Incorrect password.');
+      }
+    } catch {
+      setError('Connection error. Please try again.');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -51,9 +70,10 @@ export function AdminAuth({ children }: AdminAuthProps) {
         {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
         <button
           type="submit"
-          className="mt-4 w-full rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background"
+          disabled={loading}
+          className="mt-4 w-full rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background disabled:opacity-50"
         >
-          Sign in
+          {loading ? 'Verifying...' : 'Sign in'}
         </button>
       </div>
     </form>

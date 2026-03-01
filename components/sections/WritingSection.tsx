@@ -1,13 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { Section } from '@/components/Section';
 import { PenIcon } from '@/components/icons/SectionIcons';
 import { writingCallout, writingEntries } from '@/content/content';
-import { useLocalStorageState } from '@/hooks/useLocalStorageState';
-import { adminPostsStorageKey } from '@/lib/app-config';
-import { migratePost, type AdminPost } from '@/lib/admin-posts';
 
 type DisplayPost = {
   title: string;
@@ -22,25 +20,29 @@ function formatStatus(status: string): string {
 }
 
 export function WritingSection() {
-  const { value: rawPosts, hydrated } = useLocalStorageState<AdminPost[]>(adminPostsStorageKey, []);
+  const [dbPosts, setDbPosts] = useState<DisplayPost[]>([]);
 
-  const publishedPosts: DisplayPost[] = hydrated
-    ? rawPosts
-        .map(migratePost)
-        .filter((post) => post.status === 'published')
-        .map((post) => ({
-          title: post.title,
-          summary: post.summary,
-          status: 'published',
-          href: `/writing/${post.slug}`,
-        }))
-    : [];
+  useEffect(() => {
+    fetch('/api/articles')
+      .then((res) => (res.ok ? res.json() : []))
+      .then((articles: { title: string; summary: string; slug: string }[]) => {
+        setDbPosts(
+          articles.map((a) => ({
+            title: a.title,
+            summary: a.summary,
+            status: 'published',
+            href: `/writing/${a.slug}`,
+          }))
+        );
+      })
+      .catch(() => {
+        // Silently fail — static entries still show
+      });
+  }, []);
 
   const drafts = writingEntries.filter((e) => e.status === 'draft' || e.status === 'planned');
-  const allPublished: DisplayPost[] = [
-    ...publishedPosts,
-    ...writingEntries.filter((e) => e.status !== 'draft' && e.status !== 'planned'),
-  ];
+  const staticPublished = writingEntries.filter((e) => e.status !== 'draft' && e.status !== 'planned');
+  const allPublished: DisplayPost[] = [...dbPosts, ...staticPublished];
 
   return (
     <Section
