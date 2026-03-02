@@ -1,4 +1,4 @@
-export type PostStatus = 'draft' | 'review' | 'approved' | 'published';
+export type PostStatus = 'draft' | 'review' | 'approved' | 'published' | 'archived';
 
 export interface AdminPost {
   id: string;
@@ -60,6 +60,14 @@ export function runChecklist(content: string, title: string, prerequisites: stri
         : 'Not found clearly in the draft. Consider adding this explicitly.'
     };
   });
+}
+
+export function estimateReadingTime(content: string): number {
+  return Math.max(1, Math.ceil(wordCount(content) / 238));
+}
+
+export function createIdeaId() {
+  return `idea_${Math.random().toString(36).slice(2, 10)}`;
 }
 
 export function generateDraft(seedIdea: string) {

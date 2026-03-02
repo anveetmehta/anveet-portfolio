@@ -6,6 +6,7 @@ const statusStyles: Record<PostStatus, string> = {
   review: 'bg-accent/10 text-accent',
   approved: 'bg-green-500/10 text-green-600 dark:text-green-400',
   published: 'bg-green-500/15 text-green-700 dark:text-green-300',
+  archived: 'bg-muted text-foreground/30',
 };
 
 export function StatusBadge({ status }: { status: PostStatus }) {

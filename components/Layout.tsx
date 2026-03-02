@@ -20,7 +20,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Projects', href: '/#projects', sectionId: 'projects' },
   { label: 'Case Studies', href: '/#case-studies', sectionId: 'case-studies' },
   { label: 'How I Think', href: '/#expertise', sectionId: 'expertise' },
-  { label: 'Writing', href: '/#writing', sectionId: 'writing' },
+  { label: 'Insights', href: '/#insights', sectionId: 'insights' },
   { label: 'Contact', href: '/#contact', sectionId: 'contact' },
 ];
 

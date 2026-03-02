@@ -46,9 +46,9 @@ export function WritingSection() {
 
   return (
     <Section
-      id="writing"
-      title="Writing"
-      description="Working notes. I publish in public to sharpen thinking."
+      id="insights"
+      title="Insights"
+      description="Field notes from building products in fintech, compliance, and AI. Written for operators and builders who want frameworks, not opinions."
       icon={<PenIcon />}
     >
       <p className="mb-6 text-sm font-medium italic text-accent">
@@ -69,7 +69,7 @@ export function WritingSection() {
                 href={entry.href}
                 className="mt-4 inline-flex text-sm font-medium text-accent"
               >
-                Read article →
+                Read insight →
               </Link>
             ) : null}
           </Card>
