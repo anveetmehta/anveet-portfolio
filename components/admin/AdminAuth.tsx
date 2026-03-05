@@ -49,8 +49,31 @@ export function AdminAuth({ children }: AdminAuthProps) {
     }
   }
 
+  function handleSignOut() {
+    sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(PASSWORD_KEY);
+    setAuthenticated(false);
+    setPassword('');
+  }
+
   if (!mounted) return null;
-  if (authenticated) return <>{children}</>;
+
+  if (authenticated) {
+    return (
+      <div>
+        <div className="mb-4 flex justify-end">
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="rounded-lg border border-border px-3 py-1.5 text-xs text-foreground/50 transition-colors hover:border-red-400/50 hover:text-red-400"
+          >
+            Sign out
+          </button>
+        </div>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto max-w-sm space-y-4">

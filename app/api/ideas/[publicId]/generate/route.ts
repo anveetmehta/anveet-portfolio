@@ -29,6 +29,9 @@ export async function POST(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: 'Already generating' }, { status: 409 });
   }
 
+  const body = await req.json().catch(() => ({}));
+  const { feedback } = body as { feedback?: string };
+
   // Mark as generating
   await db
     .update(ideas)
@@ -37,7 +40,7 @@ export async function POST(req: NextRequest, { params }: Params) {
 
   try {
     // Generate content via OpenAI
-    const generated = await generateArticleFromIdea(idea);
+    const generated = await generateArticleFromIdea(idea, feedback);
     const now = new Date();
 
     // Create the article in the review pipeline

@@ -46,10 +46,11 @@ export async function deleteIdea(publicId: string): Promise<void> {
   if (!res.ok) throw new Error(`Failed to delete idea: ${res.status}`);
 }
 
-export async function generateFromIdea(publicId: string): Promise<Article> {
+export async function generateFromIdea(publicId: string, feedback?: string): Promise<Article> {
   const res = await fetch(`/api/ideas/${publicId}/generate`, {
     method: 'POST',
     headers: getAuthHeaders(),
+    body: JSON.stringify(feedback ? { feedback } : {}),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));

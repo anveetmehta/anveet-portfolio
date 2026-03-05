@@ -63,6 +63,10 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
   const [linkedinVersion, setLinkedinVersion] = useState(article?.linkedinVersion ?? '');
   const [qualityChecks, setQualityChecks] = useState<QualityCheck[]>([]);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [refineOpen, setRefineOpen] = useState(false);
+  const [refinePrompt, setRefinePrompt] = useState('');
+  const [refining, setRefining] = useState(false);
+  const [refineError, setRefineError] = useState('');
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -106,6 +110,32 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
       readingTimeMinutes: readingTime,
       linkedinVersion,
     };
+  }
+
+  async function handleRefine() {
+    if (!article || !refinePrompt.trim()) return;
+    setRefining(true);
+    setRefineError('');
+    try {
+      const res = await fetch(`/api/articles/${article.publicId}/refine`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${sessionStorage.getItem('anveet-admin-password') || ''}`,
+        },
+        body: JSON.stringify({ prompt: refinePrompt }),
+      });
+      if (!res.ok) throw new Error('Refinement failed');
+      const updated = await res.json();
+      setContent(updated.content ?? '');
+      setLinkedinVersion(updated.linkedinVersion ?? '');
+      setRefinePrompt('');
+      setRefineOpen(false);
+    } catch (err) {
+      setRefineError(err instanceof Error ? err.message : 'Refinement failed. Try again.');
+    } finally {
+      setRefining(false);
+    }
   }
 
   const publishBlocked = qualityChecks.length > 0 && hasPublishingErrors(qualityChecks);
@@ -231,6 +261,42 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
           <p className="text-xs text-foreground/40">{wordCount(linkedinVersion)} words</p>
         )}
       </section>
+
+      {/* Refine with AI */}
+      {article && (
+        <div className="rounded-2xl border border-border bg-card p-4">
+          <button
+            type="button"
+            onClick={() => setRefineOpen(prev => !prev)}
+            className="flex w-full items-center justify-between text-sm font-medium"
+          >
+            <span>✨ Refine with AI</span>
+            <span className="text-foreground/40">{refineOpen ? '▲' : '▼'}</span>
+          </button>
+          {refineOpen && (
+            <div className="mt-4 space-y-3">
+              <textarea
+                value={refinePrompt}
+                onChange={e => setRefinePrompt(e.target.value)}
+                rows={2}
+                placeholder="e.g. 'Make the opening stronger', 'Add a section on implementation risk', 'Cut to 800 words'"
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent resize-none"
+              />
+              <button
+                type="button"
+                disabled={refining || !refinePrompt.trim()}
+                onClick={handleRefine}
+                className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-background disabled:opacity-50"
+              >
+                {refining ? 'Refining…' : 'Apply Refinement'}
+              </button>
+              {refineError && (
+                <p className="text-xs text-red-500">{refineError}</p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Quality Gate */}
       {qualityChecks.length > 0 && (

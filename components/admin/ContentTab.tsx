@@ -6,6 +6,7 @@ import { type PostStatus } from '@/lib/admin-posts';
 import { fetchAllArticles, createArticle, updateArticle, deleteArticle } from '@/lib/admin-api';
 import { ArticleList } from './ArticleList';
 import { ArticleEditor } from './ArticleEditor';
+import { Toast, type ToastState } from './Toast';
 
 type SaveData = {
   title: string;
@@ -29,6 +30,7 @@ export function ContentTab() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [toast, setToast] = useState<ToastState>(null);
 
   const loadArticles = useCallback(async () => {
     try {
@@ -60,9 +62,10 @@ export function ContentTab() {
         setArticles(prev => prev.map(a => a.publicId === editingId ? updated : a));
       }
       setEditingId(null);
+      setToast({ message: 'Article saved', type: 'success' });
     } catch (err) {
       console.error('Save failed:', err);
-      alert('Failed to save. Please try again.');
+      setToast({ message: 'Failed to save. Please try again.', type: 'error' });
     }
   }
 
@@ -99,22 +102,28 @@ export function ContentTab() {
 
   if (editingId !== null) {
     return (
-      <ArticleEditor
-        article={editingArticle}
-        onSave={handleSave}
-        onCancel={() => setEditingId(null)}
-        onDelete={editingArticle ? () => handleDelete(editingArticle.publicId) : undefined}
-      />
+      <>
+        <ArticleEditor
+          article={editingArticle}
+          onSave={handleSave}
+          onCancel={() => setEditingId(null)}
+          onDelete={editingArticle ? () => handleDelete(editingArticle.publicId) : undefined}
+        />
+        <Toast toast={toast} onDismiss={() => setToast(null)} />
+      </>
     );
   }
 
   return (
-    <ArticleList
-      articles={articles}
-      onNew={() => setEditingId('__new__')}
-      onEdit={publicId => setEditingId(publicId)}
-      onDelete={handleDelete}
-      onStatusChange={handleStatusChange}
-    />
+    <>
+      <ArticleList
+        articles={articles}
+        onNew={() => setEditingId('__new__')}
+        onEdit={publicId => setEditingId(publicId)}
+        onDelete={handleDelete}
+        onStatusChange={handleStatusChange}
+      />
+      <Toast toast={toast} onDismiss={() => setToast(null)} />
+    </>
   );
 }

@@ -96,7 +96,19 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
               <article key={article.publicId} className="rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent/30">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-semibold">{article.title}</h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-semibold line-clamp-2">{article.title}</h3>
+                      {article.status === 'published' && (
+                        <a
+                          href={`/writing/${article.slug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 text-xs text-accent hover:underline"
+                        >
+                          ↗ View
+                        </a>
+                      )}
+                    </div>
                     {article.summary && (
                       <p className="mt-1 text-sm text-foreground/60 line-clamp-2">{article.summary}</p>
                     )}
@@ -123,7 +135,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                       )}
                     </div>
                     <p className="mt-1 text-xs text-foreground/40">
-                      {new Date(article.createdAt).toLocaleDateString()}
+                      {new Date(article.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </p>
                   </div>
                 </div>
@@ -137,8 +149,8 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                   {status === 'published' && (
                     <button type="button" onClick={() => onStatusChange(article.publicId, 'draft')} className={btnClass}>Unpublish</button>
                   )}
-                  {status !== 'review' && status !== 'published' && status !== 'archived' && (
-                    <button type="button" onClick={() => onStatusChange(article.publicId, 'review')} className={btnClass}>Send to Review</button>
+                  {status === 'draft' && (
+                    <button type="button" onClick={() => onStatusChange(article.publicId, 'review')} className={btnClass}>Review</button>
                   )}
                   {status !== 'archived' && (
                     <button type="button" onClick={() => onStatusChange(article.publicId, 'archived')} className={cn(btnClass, 'text-foreground/40')}>Archive</button>

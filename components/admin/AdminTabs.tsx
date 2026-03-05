@@ -37,7 +37,7 @@ export function AdminTabs() {
         ))}
       </div>
 
-      {activeTab === 'ideas' && <IdeasTab />}
+      {activeTab === 'ideas' && <IdeasTab onSwitchToArticles={() => setActiveTab('content')} />}
       {activeTab === 'content' && <ContentTab />}
       {activeTab === 'features' && <FeaturesTab />}
     </div>

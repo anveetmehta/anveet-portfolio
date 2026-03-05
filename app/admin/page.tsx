@@ -9,7 +9,7 @@ export default function AdminPage() {
       <div className="mx-auto max-w-5xl px-6">
         <h1 className="text-2xl font-semibold">Admin Control Center</h1>
         <p className="mt-2 text-sm text-foreground/70">
-          Manage feature toggles and content.
+          Content pipeline, AI generation, and site controls.
         </p>
         <div className="mt-6">
           <AdminAuth>

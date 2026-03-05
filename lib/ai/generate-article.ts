@@ -106,7 +106,7 @@ Copyright: End every article with this exact line on its own paragraph:
 ---
 *© Anveet Mehta. All rights reserved. Originally published at anveetmehta.com*`;
 
-function buildUserPrompt(idea: Idea, template: { wordTarget: string; structure: string }): string {
+function buildUserPrompt(idea: Idea, template: { wordTarget: string; structure: string }, feedback?: string): string {
   return `Write an article based on the following idea.
 
 IDEA BRIEF:
@@ -141,7 +141,7 @@ keywords: [comma-separated list of 3-6 SEO keywords]
 tags: [comma-separated list of 2-4 content tags]
 ---META_END---
 
-Important: The LinkedIn section should always be populated even if the platform is blog/medium — it's the cross-posting version.`;
+Important: The LinkedIn section should always be populated even if the platform is blog/medium — it's the cross-posting version.${feedback ? `\n---REVISION FEEDBACK---\nPrevious version feedback from the author: ${feedback}\nAddress these specifically. Do not repeat the same mistakes.` : ''}`;
 }
 
 function parseResponse(raw: string): Omit<GeneratedContent, 'slug' | 'readingTimeMinutes'> {
@@ -182,7 +182,7 @@ function parseResponse(raw: string): Omit<GeneratedContent, 'slug' | 'readingTim
   };
 }
 
-export async function generateArticleFromIdea(idea: Idea): Promise<GeneratedContent> {
+export async function generateArticleFromIdea(idea: Idea, feedback?: string): Promise<GeneratedContent> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error('OPENAI_API_KEY is not set');
@@ -195,7 +195,7 @@ export async function generateArticleFromIdea(idea: Idea): Promise<GeneratedCont
     model: 'gpt-4o',
     messages: [
       { role: 'system', content: BRAND_VOICE_SYSTEM_PROMPT },
-      { role: 'user', content: buildUserPrompt(idea, template) },
+      { role: 'user', content: buildUserPrompt(idea, template, feedback) },
     ],
     temperature: 0.75, // enough creativity to feel fresh, not so high it drifts
     max_tokens: 4000,

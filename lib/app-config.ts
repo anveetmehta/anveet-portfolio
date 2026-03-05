@@ -31,7 +31,7 @@ export const featureFlagLabels: Record<FeatureFlagKey, string> = {
   enableCaseStudies: 'Show case studies section',
   enableExpertise: 'Show "How I Think" section',
   enableNow: 'Show "Now" section',
-  showWritingSection: 'Show writing section',
+  showWritingSection: 'Show insights section',
   enableAiChat: 'Enable AI persona chat',
   enableContact: 'Show contact section',
   enableAiDraftAssistant: 'Enable AI drafting assistant',

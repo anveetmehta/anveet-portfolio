@@ -18,6 +18,8 @@ type IdeaListProps = {
   onArchive: (idea: Idea) => Promise<void>;
   onDelete: (idea: Idea) => Promise<void>;
   onNew: () => void;
+  onSwitchToArticles: () => void;
+  onRegenerate: (idea: Idea, feedback: string) => Promise<void>;
 };
 
 const FILTER_TABS: FilterTab[] = ['all', 'captured', 'prioritized', 'generated', 'archived'];
@@ -40,9 +42,13 @@ export function IdeaList({
   onArchive,
   onDelete,
   onNew,
+  onSwitchToArticles,
+  onRegenerate,
 }: IdeaListProps) {
   const [activeFilter, setActiveFilter] = useState<FilterTab>('all');
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [regeneratingFeedbackId, setRegeneratingFeedbackId] = useState<string | null>(null);
+  const [regenerateFeedback, setRegenerateFeedback] = useState('');
 
   const filtered =
     activeFilter === 'all'
@@ -201,6 +207,27 @@ export function IdeaList({
                       Archive
                     </button>
                   )}
+                  {idea.status === 'generated' && idea.generatedArticleId && (
+                    <button
+                      type="button"
+                      onClick={onSwitchToArticles}
+                      className="text-xs text-accent hover:text-accent/80"
+                    >
+                      Open Article →
+                    </button>
+                  )}
+                  {idea.status === 'generated' && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setRegeneratingFeedbackId(idea.publicId);
+                        setRegenerateFeedback('');
+                      }}
+                      className="text-xs text-foreground/60 hover:text-foreground"
+                    >
+                      Regenerate
+                    </button>
+                  )}
                   <div className="ml-auto">
                     {confirmDeleteId === idea.publicId ? (
                       <div className="flex gap-2">
@@ -233,6 +260,38 @@ export function IdeaList({
                     )}
                   </div>
                 </div>
+                {regeneratingFeedbackId === idea.publicId && (
+                  <div className="mt-3 space-y-2 rounded-lg border border-border/50 bg-muted/30 p-3">
+                    <p className="text-xs font-medium text-foreground/60">What should change? (optional)</p>
+                    <textarea
+                      value={regenerateFeedback}
+                      onChange={e => setRegenerateFeedback(e.target.value)}
+                      rows={2}
+                      placeholder="e.g. 'Make it more concise', 'Add more fintech examples', 'Stronger opening hook'"
+                      className="w-full rounded-lg border border-border bg-background px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-accent resize-none"
+                    />
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          await onRegenerate(idea, regenerateFeedback);
+                          setRegeneratingFeedbackId(null);
+                          setRegenerateFeedback('');
+                        }}
+                        className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-background"
+                      >
+                        Regenerate →
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => { setRegeneratingFeedbackId(null); setRegenerateFeedback(''); }}
+                        className="text-xs text-foreground/40 hover:text-foreground"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}

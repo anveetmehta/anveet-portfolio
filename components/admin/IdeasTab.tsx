@@ -12,14 +12,17 @@ import {
 import { createArticle } from '@/lib/admin-api';
 import { IdeaList } from './IdeaList';
 import { IdeaEditor } from './IdeaEditor';
+import { Toast, type ToastState } from './Toast';
+import { SuggestedIdeas } from './SuggestedIdeas';
 
-export function IdeasTab() {
+export function IdeasTab({ onSwitchToArticles }: { onSwitchToArticles: () => void }) {
   const [ideas, setIdeas] = useState<Idea[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [generatingId, setGeneratingId] = useState<string | null>(null);
   const [genError, setGenError] = useState('');
+  const [toast, setToast] = useState<ToastState>(null);
 
   // Quick capture state
   const [quickTitle, setQuickTitle] = useState('');
@@ -63,7 +66,10 @@ export function IdeasTab() {
       setIdeas(prev => [created, ...prev]);
       setQuickTitle('');
       setQuickTrending(false);
-    } catch { /* silent */ } finally {
+      setToast({ message: 'Idea captured', type: 'success' });
+    } catch {
+      setToast({ message: 'Failed to capture idea', type: 'error' });
+    } finally {
       setCapturing(false);
     }
   }
@@ -113,6 +119,33 @@ export function IdeasTab() {
       setGenError(err instanceof Error ? err.message : 'Generation failed. Try again.');
       // Revert status
       setIdeas(prev => prev.map(i => i.publicId === idea.publicId ? { ...i, status: 'prioritized' } : i));
+    } finally {
+      setGeneratingId(null);
+    }
+  }
+
+  // Capture from suggestion
+  async function handleCaptureFromSuggestion(data: Partial<Idea>) {
+    try {
+      const created = await createIdea(data);
+      setIdeas(prev => [created, ...prev]);
+      setToast({ message: 'Idea captured from suggestion', type: 'success' });
+    } catch {
+      setToast({ message: 'Failed to capture idea', type: 'error' });
+    }
+  }
+
+  // Regenerate with feedback
+  async function handleRegenerate(idea: Idea, feedback: string) {
+    setGenError('');
+    setGeneratingId(idea.publicId);
+    setIdeas(prev => prev.map(i => i.publicId === idea.publicId ? { ...i, status: 'generating' } : i));
+    try {
+      await generateFromIdea(idea.publicId, feedback);
+      await loadIdeas();
+    } catch (err) {
+      setGenError(err instanceof Error ? err.message : 'Regeneration failed. Try again.');
+      setIdeas(prev => prev.map(i => i.publicId === idea.publicId ? { ...i, status: 'generated' } : i));
     } finally {
       setGeneratingId(null);
     }
@@ -215,6 +248,11 @@ export function IdeasTab() {
         </div>
       </form>
 
+      <SuggestedIdeas
+        onCapture={handleCaptureFromSuggestion}
+        existingTitles={ideas.map(i => i.title)}
+      />
+
       {/* Generation error */}
       {genError && (
         <div className="rounded-lg border border-red-400/30 bg-red-500/5 p-3 text-sm text-red-500">
@@ -233,7 +271,10 @@ export function IdeasTab() {
         onArchive={handleArchive}
         onDelete={handleDelete}
         onNew={() => setEditingId('__new__')}
+        onSwitchToArticles={onSwitchToArticles}
+        onRegenerate={handleRegenerate}
       />
+      <Toast toast={toast} onDismiss={() => setToast(null)} />
     </div>
   );
 }
