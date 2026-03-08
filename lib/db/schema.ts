@@ -67,6 +67,9 @@ export const articles = pgTable('articles', {
   linkedinVersion: text('linkedin_version').notNull().default(''),
   // New: idea linkage
   sourceIdeaId: varchar('source_idea_id', { length: 20 }),
+  // New: article type + commentary region
+  articleType: text('article_type').notNull().default('insight'),  // 'insight' | 'commentary'
+  commentaryRegion: text('commentary_region'),                      // 'india' | 'global' | null
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
@@ -91,6 +94,52 @@ export const ideas = pgTable('ideas', {
   isTrending: boolean('is_trending').notNull().default(false),
   generationPrompt: text('generation_prompt').notNull().default(''),
   generatedArticleId: varchar('generated_article_id', { length: 20 }),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+// ── Domain Expertise tables ─────────────────────────────────────────
+export const domainStatusEnum = pgEnum('domain_status', [
+  'draft',
+  'published',
+  'archived',
+]);
+
+export const domains = pgTable('domains', {
+  id: serial('id').primaryKey(),
+  publicId: varchar('public_id', { length: 20 }).notNull().unique(),
+  title: text('title').notNull(),
+  slug: varchar('slug', { length: 255 }).notNull().unique(),
+  summary: text('summary').notNull().default(''),
+  icon: text('icon').notNull().default(''),
+  displayOrder: integer('display_order').notNull().default(0),
+  status: domainStatusEnum('status').notNull().default('draft'),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export const domainChapters = pgTable('domain_chapters', {
+  id: serial('id').primaryKey(),
+  publicId: varchar('public_id', { length: 20 }).notNull().unique(),
+  domainId: integer('domain_id')
+    .notNull()
+    .references(() => domains.id, { onDelete: 'cascade' }),
+  title: text('title').notNull(),
+  summary: text('summary').notNull().default(''),
+  displayOrder: integer('display_order').notNull().default(0),
+  linkedSlugs: jsonb('linked_slugs').$type<string[]>().notNull().default([]),
+  linkedTypes: jsonb('linked_types')
+    .$type<('article' | 'case-study' | 'project')[]>()
+    .notNull()
+    .default([]),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),

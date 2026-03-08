@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { articles } from '@/lib/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { eq, and, desc } from 'drizzle-orm';
 import { requireAuth } from '@/lib/api-auth';
 import { createId, slugify } from '@/lib/admin-posts';
 
 // GET /api/articles
-// Public: returns only published articles
+// Public: returns only published articles (filtered by ?type=)
 // Admin (auth + ?all=true): returns all articles
 export async function GET(req: NextRequest) {
-  const wantsAll = req.nextUrl.searchParams.get('all') === 'true';
+  const url = req.nextUrl;
+  const wantsAll = url.searchParams.get('all') === 'true';
+  const typeFilter = url.searchParams.get('type') ?? 'insight';
 
   if (wantsAll) {
     const authError = requireAuth(req);
@@ -25,7 +27,7 @@ export async function GET(req: NextRequest) {
   const rows = await db
     .select()
     .from(articles)
-    .where(eq(articles.status, 'published'))
+    .where(and(eq(articles.status, 'published'), eq(articles.articleType, typeFilter)))
     .orderBy(desc(articles.createdAt));
   return NextResponse.json(rows);
 }

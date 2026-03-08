@@ -21,6 +21,8 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Case Studies', href: '/#case-studies', sectionId: 'case-studies' },
   { label: 'How I Think', href: '/#expertise', sectionId: 'expertise' },
   { label: 'Insights', href: '/#insights', sectionId: 'insights' },
+  { label: 'Expertise', href: '/#domain-expertise', sectionId: 'domain-expertise' },
+  { label: 'RegTech', href: '/#regtech', sectionId: 'regtech' },
   { label: 'Contact', href: '/#contact', sectionId: 'contact' },
 ];
 

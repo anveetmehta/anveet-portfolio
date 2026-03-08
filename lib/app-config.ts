@@ -8,7 +8,9 @@ export type FeatureFlagKey =
   | 'enableAiChat'
   | 'enableContact'
   | 'enableAiDraftAssistant'
-  | 'enableChecklist';
+  | 'enableChecklist'
+  | 'enableDomainExpertise'
+  | 'enableRegtechSection';
 
 export type FeatureFlags = Record<FeatureFlagKey, boolean>;
 
@@ -22,7 +24,9 @@ export const defaultFeatureFlags: FeatureFlags = {
   enableAiChat: false,
   enableContact: true,
   enableAiDraftAssistant: true,
-  enableChecklist: true
+  enableChecklist: true,
+  enableDomainExpertise: false,
+  enableRegtechSection: false,
 };
 
 export const featureFlagLabels: Record<FeatureFlagKey, string> = {
@@ -35,7 +39,9 @@ export const featureFlagLabels: Record<FeatureFlagKey, string> = {
   enableAiChat: 'Enable AI persona chat',
   enableContact: 'Show contact section',
   enableAiDraftAssistant: 'Enable AI drafting assistant',
-  enableChecklist: 'Enable prerequisite checklist gate'
+  enableChecklist: 'Enable prerequisite checklist gate',
+  enableDomainExpertise: 'Show Domain Expertise section',
+  enableRegtechSection: 'Show RegTech Commentary section',
 };
 
 export const featureFlagsStorageKey = 'anveet-feature-flags';

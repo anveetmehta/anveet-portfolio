@@ -78,7 +78,7 @@ LinkedIn version (separate, plain text, no markdown):
   },
 };
 
-const BRAND_VOICE_SYSTEM_PROMPT = `You are writing as Anveet Mehta — a product and systems thinker with deep experience in fintech, risk, compliance, and building products at scale.
+export const BRAND_VOICE_SYSTEM_PROMPT = `You are writing as Anveet Mehta — a product and systems thinker with deep experience in fintech, risk, compliance, and building products at scale.
 
 Voice and tone:
 - Direct, precise, zero filler words. Never say "In today's fast-paced world" or "It's more important than ever."
@@ -144,7 +144,7 @@ tags: [comma-separated list of 2-4 content tags]
 Important: The LinkedIn section should always be populated even if the platform is blog/medium — it's the cross-posting version.${feedback ? `\n---REVISION FEEDBACK---\nPrevious version feedback from the author: ${feedback}\nAddress these specifically. Do not repeat the same mistakes.` : ''}`;
 }
 
-function parseResponse(raw: string): Omit<GeneratedContent, 'slug' | 'readingTimeMinutes'> {
+export function parseResponse(raw: string): Omit<GeneratedContent, 'slug' | 'readingTimeMinutes'> {
   const extract = (startTag: string, endTag: string) => {
     const start = raw.indexOf(startTag);
     const end = raw.indexOf(endTag);
