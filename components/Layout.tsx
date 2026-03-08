@@ -113,9 +113,18 @@ export function Layout({ children }: LayoutProps) {
       <main>{children}</main>
       <footer className="border-t border-border/70 py-12 text-sm text-foreground/70">
         <Container>
-          <p>
-            {siteMeta.name} · {siteMeta.location} · <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p>
+              {siteMeta.name} · {siteMeta.location} · <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+            </p>
+            <a
+              href="/rss.xml"
+              className="text-xs text-foreground/40 hover:text-foreground/60 transition-colors"
+              title="Subscribe via RSS"
+            >
+              RSS ↗
+            </a>
+          </div>
         </Container>
       </footer>
     </div>

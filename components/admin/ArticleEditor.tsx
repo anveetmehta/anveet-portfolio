@@ -67,6 +67,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
   const [refinePrompt, setRefinePrompt] = useState('');
   const [refining, setRefining] = useState(false);
   const [refineError, setRefineError] = useState('');
+  const [liCopied, setLiCopied] = useState(false);
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -249,7 +250,26 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
 
       {/* LinkedIn version */}
       <section className="rounded-2xl border border-border bg-card p-6 space-y-3">
-        <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/40">LinkedIn Version</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/40">LinkedIn Version</h3>
+          {linkedinVersion && (
+            <button
+              type="button"
+              onClick={() => {
+                navigator.clipboard.writeText(linkedinVersion).then(() => {
+                  setLiCopied(true);
+                  setTimeout(() => setLiCopied(false), 2000);
+                });
+              }}
+              className={cn(
+                'text-xs font-medium transition-colors',
+                liCopied ? 'text-green-500' : 'text-accent hover:text-accent/80'
+              )}
+            >
+              {liCopied ? '✓ Copied!' : '📋 Copy to clipboard'}
+            </button>
+          )}
+        </div>
         <p className="text-xs text-foreground/50">Short-form version for cross-posting. Plain text, no markdown. 300-600 words.</p>
         <textarea
           value={linkedinVersion}
