@@ -3,6 +3,7 @@ export type FeatureFlagKey =
   | 'enableProjects'
   | 'enableCaseStudies'
   | 'enableExpertise'
+  | 'enableBuildStack'
   | 'enableNow'
   | 'showWritingSection'
   | 'enableAiChat'
@@ -19,13 +20,14 @@ export const defaultFeatureFlags: FeatureFlags = {
   enableProjects: true,
   enableCaseStudies: true,
   enableExpertise: true,
+  enableBuildStack: true,
   enableNow: true,
   showWritingSection: true,
   enableAiChat: false,
   enableContact: true,
   enableAiDraftAssistant: true,
   enableChecklist: true,
-  enableDomainExpertise: false,
+  enableDomainExpertise: true,
   enableRegtechSection: false,
 };
 
@@ -34,6 +36,7 @@ export const featureFlagLabels: Record<FeatureFlagKey, string> = {
   enableProjects: 'Show projects section',
   enableCaseStudies: 'Show case studies section',
   enableExpertise: 'Show "How I Think" section',
+  enableBuildStack: 'Show "What I Build With" section',
   enableNow: 'Show "Now" section',
   showWritingSection: 'Show insights section',
   enableAiChat: 'Enable AI persona chat',

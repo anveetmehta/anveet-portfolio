@@ -8,6 +8,7 @@ import { ExpertiseSection } from '@/components/sections/ExpertiseSection';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { WritingSection } from '@/components/sections/WritingSection';
+import { BuildStackSection } from '@/components/sections/BuildStackSection';
 import { DomainExpertiseSection } from '@/components/sections/DomainExpertiseSection';
 import { RegTechSection } from '@/components/sections/RegTechSection';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
@@ -31,6 +32,7 @@ export function HomeSections() {
       {flags.enableProjects ? <ProjectsSection /> : null}
       {flags.enableCaseStudies ? <><SectionDivider /><CaseStudiesSection /></> : null}
       {flags.enableExpertise ? <ExpertiseSection /> : null}
+      {flags.enableBuildStack ? <><SectionDivider /><BuildStackSection /></> : null}
       {flags.enableDomainExpertise ? <><SectionDivider /><DomainExpertiseSection /></> : null}
       {flags.enableNow ? null : null}
       {flags.showWritingSection ? <><SectionDivider /><WritingSection /></> : null}

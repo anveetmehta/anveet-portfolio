@@ -1,5 +1,12 @@
 // ── Types ──────────────────────────────────────────────────────────────────
 
+export interface BuildStackItem {
+  icon: string;
+  name: string;
+  proofLine: string;
+  link?: string;
+}
+
 export interface SiteMeta {
   name: string;
   title: string;
@@ -332,4 +339,49 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ['Onboarding', 'User Experience', 'Growth']
   }
+];
+
+// ── Build Stack ─────────────────────────────────────────────────────────────
+
+export const buildStack: BuildStackItem[] = [
+  {
+    icon: '🤖',
+    name: 'Claude API + GPT-4o',
+    proofLine: 'Multi-agent orchestration · Council of Elites — 6 AI personas reasoning in parallel',
+  },
+  {
+    icon: '⚡',
+    name: 'Next.js 14 App Router',
+    proofLine: 'This portfolio + admin CMS · OG image pipeline · RSS feed · sitemap',
+  },
+  {
+    icon: '🐘',
+    name: 'PostgreSQL + Drizzle ORM',
+    proofLine: 'Idea → AI draft → quality gate → publish — full content pipeline on Neon Postgres',
+  },
+  {
+    icon: '📡',
+    name: 'Google News RSS + OpenAI',
+    proofLine: 'Live RegTech intelligence — India & Global regulatory news → AI commentary drafts',
+  },
+  {
+    icon: '🎯',
+    name: 'TypeScript end-to-end',
+    proofLine: 'Type-safe API routes, Drizzle schema, quality gate, admin CMS — zero runtime surprises',
+  },
+  {
+    icon: '🌐',
+    name: 'Dynamic OG Images (next/og)',
+    proofLine: 'Automated 1200×630 social cards on every article — rich LinkedIn + Twitter previews',
+  },
+  {
+    icon: '✨',
+    name: 'Framer Motion',
+    proofLine: 'Domain expertise accordion, section entrance animations, AnimatePresence transitions',
+  },
+  {
+    icon: '🔐',
+    name: 'Compliance System Design',
+    proofLine: 'KYC/KYB pipelines, AML screening, risk scoring layers across regulated fintech products',
+  },
 ];
