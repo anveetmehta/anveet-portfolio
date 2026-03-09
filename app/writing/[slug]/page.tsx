@@ -40,13 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: keywords || undefined,
     authors: [{ name: 'Anveet Mehta' }],
     alternates: {
-      canonical: `https://anveet-portfolio.vercel.app/writing/${post.slug}`,
+      canonical: `https://anveetmehta.com/writing/${post.slug}`,
     },
     openGraph: {
       title: post.title,
       description,
       type: 'article',
-      url: `https://anveet-portfolio.vercel.app/writing/${post.slug}`,
+      url: `https://anveetmehta.com/writing/${post.slug}`,
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
@@ -122,7 +122,7 @@ export default async function WritingArticlePage({ params }: Props) {
         <div className="mt-8 max-w-3xl">
           <p className="text-xs text-foreground/40">
             © Anveet Mehta. All rights reserved. Originally published at{' '}
-            <a href="https://anveet-portfolio.vercel.app" className="underline underline-offset-2">
+            <a href="https://anveetmehta.com" className="underline underline-offset-2">
               anveetmehta.com
             </a>
           </p>

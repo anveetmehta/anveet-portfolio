@@ -3,7 +3,7 @@ import { db } from '@/lib/db';
 import { articles } from '@/lib/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
-const BASE_URL = 'https://anveet-portfolio.vercel.app';
+const BASE_URL = 'https://anveetmehta.com';
 
 export async function GET() {
   const publishedArticles = await db

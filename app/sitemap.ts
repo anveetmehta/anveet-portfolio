@@ -3,7 +3,7 @@ import { db } from '@/lib/db';
 import { articles } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
-const BASE_URL = 'https://anveet-portfolio.vercel.app';
+const BASE_URL = 'https://anveetmehta.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages

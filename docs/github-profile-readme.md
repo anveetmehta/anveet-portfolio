@@ -52,14 +52,14 @@ Product builder at the intersection of regulated finance, risk intelligence, and
 
 I write about what actually works at the intersection of fintech, compliance, and AI:
 
-- [anveet-portfolio.vercel.app/#insights](https://anveet-portfolio.vercel.app/#insights) — articles
-- [RSS feed](https://anveet-portfolio.vercel.app/rss.xml) — subscribe
+- [anveetmehta.com/#insights](https://anveetmehta.com/#insights) — articles
+- [RSS feed](https://anveetmehta.com/rss.xml) — subscribe
 
 ---
 
 ## Find me
 
-🌐 **Portfolio:** [anveet-portfolio.vercel.app](https://anveet-portfolio.vercel.app)
+🌐 **Portfolio:** [anveetmehta.com](https://anveetmehta.com)
 💼 **LinkedIn:** [linkedin.com/in/anveetmehta](https://www.linkedin.com/in/anveetmehta)
 
 ---

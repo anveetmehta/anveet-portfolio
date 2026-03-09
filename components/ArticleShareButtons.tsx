@@ -13,7 +13,7 @@ export function ArticleShareButtons({ title, slug, linkedinVersion }: ArticleSha
   const [linkCopied, setLinkCopied] = useState(false);
   const [liCopied, setLiCopied] = useState(false);
 
-  const url = `https://anveet-portfolio.vercel.app/writing/${slug}`;
+  const url = `https://anveetmehta.com/writing/${slug}`;
   const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
 
   function copyLink() {

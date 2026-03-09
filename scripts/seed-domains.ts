@@ -3,7 +3,7 @@
  * One-shot script to populate the 5 core domain expertise areas in the DB.
  *
  * Usage:
- *   ADMIN_PASSWORD=<your-password> BASE_URL=https://anveet-portfolio.vercel.app npx tsx scripts/seed-domains.ts
+ *   ADMIN_PASSWORD=<your-password> BASE_URL=https://anveetmehta.com npx tsx scripts/seed-domains.ts
  *
  * Or against local dev:
  *   ADMIN_PASSWORD=<your-password> npx tsx scripts/seed-domains.ts

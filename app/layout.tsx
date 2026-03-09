@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | Anveet Mehta'
   },
   description: siteMeta.description,
-  metadataBase: new URL('https://anveet-portfolio.vercel.app'),
+  metadataBase: new URL('https://anveetmehta.com'),
   icons: {
     icon: '/favicon.svg'
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteMeta.title,
     description: siteMeta.description,
-    url: 'https://anveet-portfolio.vercel.app',
+    url: 'https://anveetmehta.com',
     siteName: siteMeta.name,
     locale: 'en_US',
     type: 'website',

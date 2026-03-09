@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-const SITE_URL = 'https://anveet-portfolio.vercel.app';
+const SITE_URL = 'https://anveetmehta.com';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
