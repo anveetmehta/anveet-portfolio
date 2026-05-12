@@ -74,6 +74,21 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
                 </ul>
               )}
 
+              {exploration.currentQuestions && (
+                <div className="mt-6">
+                  <p className="mb-2.5 text-[10px] font-medium tracking-widest text-foreground/25 uppercase">
+                    Current questions
+                  </p>
+                  <ul className="space-y-2.5">
+                    {exploration.currentQuestions.map((q) => (
+                      <li key={q} className="text-xs italic leading-relaxed text-foreground/35">
+                        — {q}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {exploration.cta && (
                 <Link
                   href={exploration.cta.href}

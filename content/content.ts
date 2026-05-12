@@ -35,6 +35,7 @@ export interface SystemsLayerContent {
 export interface ShapedSystem {
   title: string;
   description: string;
+  operationalFragment?: string;
   focusAreas: string[];
   tags: string[];
 }
@@ -45,6 +46,7 @@ export interface Exploration {
   transforms?: string[];
   cta?: { label: string; href: string };
   status: string;
+  currentQuestions?: string[];
 }
 
 export interface MentalModel {
@@ -174,6 +176,7 @@ export const shapedSystems: ShapedSystem[] = [
     title: 'Omnichannel Onboarding Infrastructure',
     description:
       'A multi-channel onboarding ecosystem spanning RM-assisted workflows, DIY onboarding, API-led onboarding, and partner-driven operational systems — built for regulated financial ecosystems at scale.',
+    operationalFragment: 'The moment a workflow handles its millionth edge case without a manual override is when you know the system has truly internalized the domain.',
     focusAreas: [
       'Millions of onboarding workflows processed monthly',
       'Reduced onboarding turnaround time by 80%',
@@ -186,6 +189,7 @@ export const shapedSystems: ShapedSystem[] = [
     title: 'AI-Assisted Risk Operations',
     description:
       'Operational intelligence systems designed around AML screening, onboarding risk, transaction monitoring, and continuous due diligence — with a focus on explainability and analyst efficiency.',
+    operationalFragment: 'False positives aren\'t a model problem. They\'re a workflow problem. The right threshold means nothing if analysts can\'t act on alerts with confidence.',
     focusAreas: [
       'Reduced false positive rates through intelligent signal weighting',
       'Improved analyst efficiency via explainable operational reasoning',
@@ -198,6 +202,7 @@ export const shapedSystems: ShapedSystem[] = [
     title: 'Intelligent Workflow Systems',
     description:
       'Explorations around AI-native operational workflows that augment decision-making across onboarding, compliance, and operational intelligence — combining real-time context with adaptive logic.',
+    operationalFragment: 'The hardest design problem isn\'t building the copilot. It\'s calibrating exactly how much certainty to give it — enough to be useful, not enough to be trusted blindly.',
     focusAreas: [
       'AI copilots embedded into operational decision flows',
       'Real-time operational context for analyst workflows',
@@ -222,18 +227,33 @@ export const explorations: Exploration[] = [
     ],
     cta: { label: 'Join Early Access', href: 'mailto:anveet.07@gmail.com?subject=RegRadar Early Access' },
     status: 'Early stage',
+    currentQuestions: [
+      'How do you make regulatory language operationally actionable without losing precision?',
+      'What\'s the right interface between a compliance officer\'s judgment and automated regulatory parsing?',
+      'Can impact assessment be standardized across jurisdictions?',
+    ],
   },
   {
     title: 'Council of Elites',
     description:
       'A multi-agent reasoning environment exploring strategic cognition, simulated perspectives, and AI-assisted thought exploration — where different AI personas debate, challenge, and refine ideas.',
     status: 'Exploring',
+    currentQuestions: [
+      'What does productive disagreement look like between AI agents with distinct epistemic styles?',
+      'How do you surface minority viewpoints without amplifying noise?',
+      'Is there a useful middle ground between debate and synthesis?',
+    ],
   },
   {
     title: 'Workflow Intelligence Systems',
     description:
       'Experiments around operational copilots, AI-assisted workflows, onboarding intelligence, and adaptive operational systems — building toward AI that augments human operational judgment.',
     status: 'Exploring',
+    currentQuestions: [
+      'Where exactly does AI assistance tip from helpful to responsibility-diffusing?',
+      'What does adaptive workflow logic look like when the business rules themselves are still evolving?',
+      'How do you design for human override without making it the default?',
+    ],
   },
 ];
 

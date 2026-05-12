@@ -41,3 +41,22 @@ a {
   color-scheme: light;
 }
 
+/* ── Ambient motion keyframes ──────────────────────────────────────────── */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0,    0)    scale(1);    }
+  30%       { transform: translate(28px, -18px) scale(1.06); }
+  65%       { transform: translate(-18px, 24px) scale(0.94); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0,     0)    scale(1);    }
+  35%       { transform: translate(-22px, 16px) scale(1.04); }
+  70%       { transform: translate(18px, -22px) scale(0.96); }
+}
+

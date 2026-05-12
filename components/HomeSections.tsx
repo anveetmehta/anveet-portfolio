@@ -9,6 +9,7 @@ import { MentalModelsSection } from '@/components/sections/MentalModelsSection';
 import { NotesFromSystemSection } from '@/components/sections/NotesFromSystemSection';
 import { OpenThreadsSection } from '@/components/sections/OpenThreadsSection';
 import { SignalsEngineSection } from '@/components/sections/SignalsEngineSection';
+import { ThinkingStrip } from '@/components/ThinkingStrip';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
 import { defaultFeatureFlags, featureFlagsStorageKey } from '@/lib/app-config';
 import type { ZoneMap } from '@/lib/zones';
@@ -24,6 +25,7 @@ export function HomeSections({ zones }: HomeSectionsProps) {
   return (
     <>
       <HeroSection data={zones.hero} />
+      <ThinkingStrip />
       {flags.enableSignalsStrip ? <SignalsStrip data={zones.signals} /> : null}
       {flags.enableSystemsLayer ? <SystemsLayerSection data={zones.systems_layer} /> : null}
       {flags.enableShapedSystems ? <ShapedSystemsSection data={zones.shaped_systems} /> : null}

@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/next';
 import { Layout } from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { GrainOverlay } from '@/components/GrainOverlay';
 import { siteMeta } from '@/content/content';
 import '@/styles/globals.css';
 
@@ -52,6 +53,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <ThemeProvider>
+          <GrainOverlay />
           <Layout>{children}</Layout>
         </ThemeProvider>
         <Analytics />
