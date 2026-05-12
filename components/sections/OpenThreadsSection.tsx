@@ -9,7 +9,14 @@ type OpenThreadsSectionProps = { data?: OpenThreadsContent };
 
 export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSectionProps) {
   return (
-    <section id="open-threads" className="py-24 sm:py-32">
+    <section id="open-threads" className="relative overflow-hidden py-24 sm:py-32">
+      {/* Subtle bottom glow */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-64"
+        style={{ background: 'radial-gradient(ellipse at 50% 100%, hsl(var(--accent) / 0.04) 0%, transparent 70%)' }}
+        aria-hidden
+      />
+
       <Container>
         <div className="max-w-2xl">
           <motion.p
@@ -23,37 +30,45 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.06 }}
-            className="text-base leading-relaxed text-foreground/60"
+            transition={{ duration: 0.5, delay: 0.07 }}
+            className="text-xl leading-relaxed text-foreground/60 sm:text-2xl"
           >
             {data.body}
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.14 }}
-            className="mt-5 text-sm text-foreground/40"
-          >
-            {data.areas.join(' · ')}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.22 }}
+            transition={{ duration: 0.4, delay: 0.16 }}
+            className="mt-6 flex flex-wrap gap-2"
+          >
+            {data.areas.map((area) => (
+              <span
+                key={area}
+                className="rounded-full border border-border/40 px-3 py-1 text-xs text-foreground/40"
+              >
+                {area}
+              </span>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.26 }}
             className="mt-10"
           >
             <Link
               href={data.cta.href}
-              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-lg border border-border/50 px-6 py-3 text-sm font-medium text-foreground/60 transition-all duration-200 hover:border-foreground/30 hover:text-foreground"
             >
-              {data.cta.label} →
+              {data.cta.label}
+              <span className="text-foreground/30">→</span>
             </Link>
           </motion.div>
         </div>

@@ -16,13 +16,13 @@ const config: Config = {
         mono: ['var(--font-geist-mono)', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        muted: 'hsl(var(--muted))',
-        border: 'hsl(var(--border))',
-        card: 'hsl(var(--card))',
-        accent: 'hsl(var(--accent))',
-        'accent-warm': 'hsl(var(--accent-warm))'
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        muted: 'hsl(var(--muted) / <alpha-value>)',
+        border: 'hsl(var(--border) / <alpha-value>)',
+        card: 'hsl(var(--card) / <alpha-value>)',
+        accent: 'hsl(var(--accent) / <alpha-value>)',
+        'accent-warm': 'hsl(var(--accent-warm) / <alpha-value>)',
       },
       boxShadow: {
         glow: '0 10px 35px -15px rgba(59, 130, 246, 0.35)'
