@@ -108,9 +108,9 @@ export interface CaseStudy {
 
 export const siteMeta: SiteMeta = {
   name: 'Anveet Mehta',
-  title: 'Anveet Mehta — Builder of Intelligent Operational Systems',
+  title: 'Anveet Mehta — Operational Intelligence, AI Systems & Trust Infrastructure',
   description:
-    'Designing systems for how modern digital trust operates. AI, onboarding, payments, compliance, and workflow design for high-trust digital businesses.',
+    'A living system of thought exploring operational intelligence, AI-native workflows, onboarding systems, trust infrastructure, fintech operations, and machine-assisted decision systems.',
   email: 'anveet.07@gmail.com',
   location: 'Bengaluru, India',
   socialLinks: [

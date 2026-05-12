@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
-import { heroContent, siteMeta } from '@/content/content';
+import { heroContent, type HeroContent } from '@/content/content';
 import { cn } from '@/lib/cn';
 
-export function HeroSection() {
+type HeroSectionProps = { data?: HeroContent };
+
+export function HeroSection({ data = heroContent }: HeroSectionProps) {
   return (
     <section className="relative border-b border-border/40 py-24 sm:py-32">
       <Container>
@@ -17,7 +19,7 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="mb-8 text-xs font-medium tracking-widest text-foreground/40 uppercase"
           >
-            {heroContent.eyebrow}
+            {data.eyebrow}
           </motion.p>
 
           <motion.h1
@@ -26,11 +28,11 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            {heroContent.h1}
+            {data.h1}
           </motion.h1>
 
           <div className="mt-8 max-w-2xl space-y-4">
-            {heroContent.supporting.map((para, i) => (
+            {data.supporting.map((para, i) => (
               <motion.p
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
@@ -49,7 +51,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            {heroContent.ctas.map((cta) => (
+            {data.ctas.map((cta) => (
               <Link
                 key={cta.label}
                 href={cta.href}

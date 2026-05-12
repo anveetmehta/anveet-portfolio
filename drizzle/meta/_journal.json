@@ -8,6 +8,13 @@
       "when": 1772963597345,
       "tag": "0000_bent_omega_sentinel",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1778596293728,
+      "tag": "0001_graceful_pretty_boy",
+      "breakpoints": true
     }
   ]
 }

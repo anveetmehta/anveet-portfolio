@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/Container';
-import { shapedSystems } from '@/content/content';
+import { shapedSystems, type ShapedSystem } from '@/content/content';
 
-export function ShapedSystemsSection() {
+type ShapedSystemsSectionProps = { data?: ShapedSystem[] };
+
+export function ShapedSystemsSection({ data = shapedSystems }: ShapedSystemsSectionProps) {
   return (
     <section id="systems" className="border-b border-border/30 py-24 sm:py-32">
       <Container>
@@ -19,7 +21,7 @@ export function ShapedSystemsSection() {
         </motion.p>
 
         <div className="space-y-px">
-          {shapedSystems.map((system, i) => (
+          {data.map((system, i) => (
             <motion.div
               key={system.title}
               initial={{ opacity: 0, y: 10 }}
@@ -30,9 +32,7 @@ export function ShapedSystemsSection() {
             >
               <div className="max-w-2xl">
                 <h3 className="text-lg font-medium text-foreground">{system.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/55">
-                  {system.description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/55">{system.description}</p>
                 <ul className="mt-5 space-y-2">
                   {system.focusAreas.map((area) => (
                     <li key={area} className="flex items-start gap-3 text-sm text-foreground/45">
@@ -41,9 +41,7 @@ export function ShapedSystemsSection() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 text-xs text-foreground/30">
-                  {system.tags.join(' · ')}
-                </p>
+                <p className="mt-6 text-xs text-foreground/30">{system.tags.join(' · ')}</p>
               </div>
             </motion.div>
           ))}

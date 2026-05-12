@@ -148,6 +148,13 @@ export const domainChapters = pgTable('domain_chapters', {
     .defaultNow(),
 });
 
+// ── Homepage Zones table (CMS for homepage content) ────────────────────
+export const homepageZones = pgTable('homepage_zones', {
+  key: varchar('key', { length: 50 }).primaryKey(),
+  data: jsonb('data').notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
 // ── Media table (for future image/video uploads) ────────────────────
 export const media = pgTable('media', {
   id: serial('id').primaryKey(),

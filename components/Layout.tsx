@@ -27,30 +27,22 @@ export function Layout({ children }: LayoutProps) {
 
           <div className="flex items-center gap-4">
             <nav className="hidden items-center gap-5 text-sm md:flex">
-              <Link
-                href="#systems"
-                className="text-foreground/45 transition-colors hover:text-foreground/80"
-              >
-                Systems
-              </Link>
-              <Link
-                href="#explorations"
-                className="text-foreground/45 transition-colors hover:text-foreground/80"
-              >
-                Explorations
-              </Link>
-              <Link
-                href="#notes"
-                className="text-foreground/45 transition-colors hover:text-foreground/80"
-              >
-                Notes
-              </Link>
-              <Link
-                href="#open-threads"
-                className="text-foreground/45 transition-colors hover:text-foreground/80"
-              >
-                Contact
-              </Link>
+              {[
+                { label: 'The System', href: '#systems-layer' },
+                { label: 'Systems', href: '#systems' },
+                { label: 'Explorations', href: '#explorations' },
+                { label: 'Signals', href: '#signals-engine' },
+                { label: 'Notes', href: '#notes' },
+                { label: 'Open Threads', href: '#open-threads' },
+              ].map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-foreground/45 transition-colors hover:text-foreground/80"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
             <div className="border-l border-border/40 pl-4">
               <ThemeToggle />

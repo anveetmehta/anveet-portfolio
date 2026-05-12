@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
-import { openThreadsContent } from '@/content/content';
+import { openThreadsContent, type OpenThreadsContent } from '@/content/content';
 
-export function OpenThreadsSection() {
+type OpenThreadsSectionProps = { data?: OpenThreadsContent };
+
+export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSectionProps) {
   return (
     <section id="open-threads" className="py-24 sm:py-32">
       <Container>
@@ -17,7 +19,7 @@ export function OpenThreadsSection() {
             transition={{ duration: 0.4 }}
             className="mb-6 text-xs font-medium tracking-widest text-foreground/35 uppercase"
           >
-            {openThreadsContent.label}
+            {data.label}
           </motion.p>
 
           <motion.p
@@ -27,7 +29,7 @@ export function OpenThreadsSection() {
             transition={{ duration: 0.45, delay: 0.06 }}
             className="text-base leading-relaxed text-foreground/60"
           >
-            {openThreadsContent.body}
+            {data.body}
           </motion.p>
 
           <motion.p
@@ -37,7 +39,7 @@ export function OpenThreadsSection() {
             transition={{ duration: 0.4, delay: 0.14 }}
             className="mt-5 text-sm text-foreground/40"
           >
-            {openThreadsContent.areas.join(' · ')}
+            {data.areas.join(' · ')}
           </motion.p>
 
           <motion.div
@@ -48,10 +50,10 @@ export function OpenThreadsSection() {
             className="mt-10"
           >
             <Link
-              href={openThreadsContent.cta.href}
+              href={data.cta.href}
               className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
             >
-              {openThreadsContent.cta.label} →
+              {data.cta.label} →
             </Link>
           </motion.div>
         </div>

@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/Container';
-import { mentalModels } from '@/content/content';
+import { mentalModels, type MentalModel } from '@/content/content';
 
-export function MentalModelsSection() {
+type MentalModelsSectionProps = { data?: MentalModel[] };
+
+export function MentalModelsSection({ data = mentalModels }: MentalModelsSectionProps) {
   return (
     <section id="mental-models" className="border-b border-border/30 py-24 sm:py-32">
       <Container>
@@ -19,7 +21,7 @@ export function MentalModelsSection() {
         </motion.p>
 
         <div className="grid gap-px sm:grid-cols-2">
-          {mentalModels.map((model, i) => (
+          {data.map((model, i) => (
             <motion.div
               key={model.title}
               initial={{ opacity: 0, y: 10 }}

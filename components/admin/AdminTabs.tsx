@@ -7,10 +7,12 @@ import { ContentTab } from './ContentTab';
 import { IdeasTab } from './IdeasTab';
 import { DomainsTab } from './DomainsTab';
 import { RegtechTab } from './RegtechTab';
+import { ZonesTab } from './ZonesTab';
 
-type Tab = 'ideas' | 'content' | 'features' | 'domains' | 'regtech';
+type Tab = 'zones' | 'ideas' | 'content' | 'features' | 'domains' | 'regtech';
 
 const TAB_LABELS: Record<Tab, string> = {
+  zones: '🗂 Zones',
   ideas: '💡 Ideas',
   content: 'Articles',
   features: 'Features',
@@ -19,12 +21,12 @@ const TAB_LABELS: Record<Tab, string> = {
 };
 
 export function AdminTabs() {
-  const [activeTab, setActiveTab] = useState<Tab>('ideas');
+  const [activeTab, setActiveTab] = useState<Tab>('zones');
 
   return (
     <div className="space-y-6">
       <div className="flex gap-1 rounded-xl border border-border bg-muted p-1 flex-wrap">
-        {(['ideas', 'content', 'features', 'domains', 'regtech'] as Tab[]).map((tab) => (
+        {(['zones', 'ideas', 'content', 'features', 'domains', 'regtech'] as Tab[]).map((tab) => (
           <button
             key={tab}
             type="button"
@@ -41,6 +43,7 @@ export function AdminTabs() {
         ))}
       </div>
 
+      {activeTab === 'zones' && <ZonesTab />}
       {activeTab === 'ideas' && <IdeasTab onSwitchToArticles={() => setActiveTab('content')} />}
       {activeTab === 'content' && <ContentTab />}
       {activeTab === 'features' && <FeaturesTab />}

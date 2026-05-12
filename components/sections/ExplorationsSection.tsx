@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
-import { explorations } from '@/content/content';
+import { explorations, type Exploration } from '@/content/content';
 
-export function ExplorationsSection() {
+type ExplorationsSectionProps = { data?: Exploration[] };
+
+export function ExplorationsSection({ data = explorations }: ExplorationsSectionProps) {
   return (
     <section id="explorations" className="border-b border-border/30 py-24 sm:py-32">
       <Container>
@@ -26,18 +28,18 @@ export function ExplorationsSection() {
           transition={{ duration: 0.45, delay: 0.06 }}
           className="mb-12 max-w-xl text-sm leading-relaxed text-foreground/50"
         >
-          A collection of ongoing explorations around operational intelligence, AI-native systems, workflow orchestration, and trust infrastructure.
+          Ongoing explorations around operational intelligence, AI-native systems, workflow orchestration, and trust infrastructure.
         </motion.p>
 
         <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
-          {explorations.map((exploration, i) => (
+          {data.map((exploration, i) => (
             <motion.div
               key={exploration.title}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="flex flex-col gap-4 rounded-sm border border-border/40 bg-card/50 p-6"
+              className="flex flex-col gap-4 border border-border/40 bg-card/50 p-6"
             >
               <div className="flex items-start justify-between gap-2">
                 <h3 className="text-base font-medium text-foreground">{exploration.title}</h3>

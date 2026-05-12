@@ -5,6 +5,7 @@ export type FeatureFlagKey =
   | 'enableShapedSystems'
   | 'enableExplorations'
   | 'enableMentalModels'
+  | 'enableSignalsEngine'
   | 'enableNotesFromSystem'
   | 'enableOpenThreads'
   // Legacy (kept for backward compat — all disabled)
@@ -31,6 +32,7 @@ export const defaultFeatureFlags: FeatureFlags = {
   enableShapedSystems: true,
   enableExplorations: true,
   enableMentalModels: true,
+  enableSignalsEngine: true,
   enableNotesFromSystem: true,
   enableOpenThreads: true,
   // Legacy — disabled
@@ -56,6 +58,7 @@ export const featureFlagLabels: Record<FeatureFlagKey, string> = {
   enableShapedSystems: 'Show "Systems I\'ve Helped Shape" zone',
   enableExplorations: 'Show "Active Explorations" zone',
   enableMentalModels: 'Show "Mental Models" zone',
+  enableSignalsEngine: 'Show "Signals Engine" live zone',
   enableNotesFromSystem: 'Show "Notes From The System" zone',
   enableOpenThreads: 'Show "Open Threads" zone',
   // Legacy

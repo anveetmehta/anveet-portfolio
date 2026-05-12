@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/Container';
-import { systemsLayerContent } from '@/content/content';
+import { systemsLayerContent, type SystemsLayerContent } from '@/content/content';
 
-export function SystemsLayerSection() {
+type SystemsLayerSectionProps = { data?: SystemsLayerContent };
+
+export function SystemsLayerSection({ data = systemsLayerContent }: SystemsLayerSectionProps) {
   return (
     <section id="systems-layer" className="border-b border-border/30 py-24 sm:py-32">
       <Container>
@@ -16,7 +18,7 @@ export function SystemsLayerSection() {
             transition={{ duration: 0.4 }}
             className="mb-6 text-xs font-medium tracking-widest text-foreground/35 uppercase"
           >
-            {systemsLayerContent.label}
+            {data.label}
           </motion.p>
 
           <motion.h2
@@ -26,11 +28,11 @@ export function SystemsLayerSection() {
             transition={{ duration: 0.5, delay: 0.06 }}
             className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
           >
-            {systemsLayerContent.headline}
+            {data.headline}
           </motion.h2>
 
           <div className="mt-8 space-y-5">
-            {systemsLayerContent.body.map((para, i) => (
+            {data.body.map((para, i) => (
               <motion.p
                 key={i}
                 initial={{ opacity: 0, y: 8 }}
@@ -51,7 +53,7 @@ export function SystemsLayerSection() {
             transition={{ duration: 0.4, delay: 0.35 }}
             className="mt-8 space-y-2"
           >
-            {systemsLayerContent.systemTypes.map((item) => (
+            {data.systemTypes.map((item) => (
               <li key={item} className="flex items-center gap-3 text-sm text-foreground/45">
                 <span className="h-px w-4 shrink-0 bg-foreground/20" />
                 {item}
@@ -66,7 +68,7 @@ export function SystemsLayerSection() {
             transition={{ duration: 0.4, delay: 0.45 }}
             className="mt-10 text-base font-medium text-foreground/70"
           >
-            {systemsLayerContent.closing}
+            {data.closing}
           </motion.p>
         </div>
       </Container>
