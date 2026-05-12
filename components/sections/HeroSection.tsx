@@ -11,9 +11,9 @@ const AMBIENT_THOUGHTS = [
   'Operational systems quietly shape trust.',
   'Complexity compounds before failure becomes visible.',
   'AI is flattening operational cognition.',
-  'Most workflows are waiting to become adaptive systems.',
+  'Workflow rigidity becomes visible only under scale pressure.',
+  'Human review systems are becoming AI-assisted interpretation layers.',
   'Operational intelligence is becoming the next interface.',
-  'The invisible layer is where competitive advantage actually lives.',
 ];
 
 const NODES = [

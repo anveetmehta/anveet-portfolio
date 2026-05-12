@@ -21,14 +21,14 @@ const PILLAR_COLORS: Record<string, string> = {
 };
 
 const EMERGING_THEMES = [
-  'AI agents in operational workflows',
-  'Human-AI review systems',
-  'Trust infrastructure evolution',
-  'Compliance intelligence systems',
+  'AI review systems',
+  'Workflow cognition',
+  'Trust infrastructure',
+  'Compliance intelligence',
   'Adaptive operational design',
-  'Onboarding system architecture',
-  'Machine-assisted decisions',
-  'Workflow orchestration',
+  'Onboarding architecture',
+  'Machine-assisted judgment',
+  'Operational orchestration',
 ];
 
 export function SignalsEngineSection() {
@@ -65,7 +65,7 @@ export function SignalsEngineSection() {
             transition={{ duration: 0.4 }}
             className="mb-12 text-xs font-medium tracking-widest text-foreground/35 uppercase"
           >
-            Signals Engine
+            Signals
           </motion.p>
 
           {/* Live indicator */}
@@ -178,7 +178,7 @@ export function SignalsEngineSection() {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="mt-8 text-xs text-foreground/25"
         >
-          Emerging themes · operational intelligence · continuously updating
+          Emerging operational patterns · continuously updating
         </motion.p>
       </Container>
     </section>

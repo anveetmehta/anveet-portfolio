@@ -2,17 +2,17 @@
 
 const THINKING_ITEMS = [
   'Adaptive operational systems',
-  'Human-AI orchestration',
   'Workflow cognition',
-  'Trust infrastructure evolution',
+  'Human-AI orchestration',
+  'Operational entropy',
   'Machine-assisted judgment',
-  'Operational intelligence as interface',
-  'Regulated system design',
-  'AI-native compliance workflows',
-  'Latent system knowledge',
-  'Invisible competitive infrastructure',
-  'Context-aware automation',
-  'Founder-operator mental models',
+  'Trust infrastructure',
+  'AI-native workflows',
+  'Real-time compliance cognition',
+  'Operational decision architecture',
+  'Onboarding system design',
+  'Risk interpretation layers',
+  'Workflow intelligence',
 ];
 
 const SEPARATOR = '·';

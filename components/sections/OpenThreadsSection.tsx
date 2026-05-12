@@ -29,12 +29,24 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
             {data.label}
           </motion.p>
 
+          {data.heading && (
+            <motion.h2
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.07 }}
+              className="mb-5 text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+            >
+              {data.heading}
+            </motion.h2>
+          )}
+
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.07 }}
-            className="text-xl leading-relaxed text-foreground/60 sm:text-2xl"
+            transition={{ duration: 0.5, delay: data.heading ? 0.14 : 0.07 }}
+            className="text-base leading-relaxed text-foreground/55 sm:text-lg"
           >
             {data.body}
           </motion.p>

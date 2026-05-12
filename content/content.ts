@@ -22,6 +22,7 @@ export interface HeroContent {
 export interface Signal {
   value: string;
   label: string;
+  description?: string;
 }
 
 export interface SystemsLayerContent {
@@ -63,6 +64,7 @@ export interface NoteEntry {
 
 export interface OpenThreadsContent {
   label: string;
+  heading?: string;
   body: string;
   areas: string[];
   cta: { label: string; href: string };
@@ -124,47 +126,66 @@ export const siteMeta: SiteMeta = {
 // ── Hero (Entry Point) ─────────────────────────────────────────────────────
 
 export const heroContent: HeroContent = {
-  eyebrow: 'AI • Systems • Trust Infrastructure',
-  h1: 'Designing systems for how modern digital trust operates.',
+  eyebrow: 'Operational Intelligence • AI Systems • Trust Infrastructure',
+  h1: 'Modern digital trust runs on invisible systems.',
   supporting: [
-    'Most products focus on interfaces. I\'m more interested in the systems underneath — the operational layers where trust, decisions, workflows, and scale actually emerge.',
-    'Previously built across banking, fintech, and regulated ecosystems powering millions of onboarding and risk workflows.'
+    'Most digital systems quietly depend on operational layers few teams fully understand: trust orchestration, workflow cognition, risk infrastructure, machine-assisted decisions, and adaptive operational intelligence.',
+    'That\'s the layer I\'m most interested in.',
   ],
   ctas: [
     { label: 'Enter the System', variant: 'primary', href: '#systems' },
     { label: 'Read the Notes', variant: 'ghost', href: '#notes' },
-    { label: 'See What I\'m Building', variant: 'link', href: '#explorations' },
   ]
 };
 
 // ── Signals ────────────────────────────────────────────────────────────────
 
 export const signals: Signal[] = [
-  { value: '5M+', label: 'onboarding workflows' },
-  { value: '20+', label: 'regulated institutions' },
-  { value: '80%', label: 'reduction in turnaround' },
-  { value: 'AI-assisted', label: 'operational systems' },
-  { value: 'Human-AI', label: 'workflows' },
+  {
+    value: '5M+',
+    label: 'onboarding workflows',
+    description: 'Operational systems built across regulated digital ecosystems.',
+  },
+  {
+    value: 'Human-AI',
+    label: 'review architectures',
+    description: 'Designing operational layers where machine suggestion and human judgment coexist without increasing cognitive overhead.',
+  },
+  {
+    value: 'Adaptive',
+    label: 'operational systems',
+    description: 'Workflow infrastructures designed to evolve under operational pressure and scale.',
+  },
+  {
+    value: 'Trust',
+    label: 'orchestration systems',
+    description: 'Building operational layers underneath onboarding, compliance, and financial workflows.',
+  },
+  {
+    value: 'Workflow',
+    label: 'cognition systems',
+    description: 'Exploring how workflows evolve from static process chains into adaptive operational systems.',
+  },
 ];
 
 // ── The Systems Layer ──────────────────────────────────────────────────────
 
 export const systemsLayerContent: SystemsLayerContent = {
-  label: 'The Systems Layer',
-  headline: 'Operational intelligence is the next interface.',
+  label: 'The System',
+  headline: 'The systems underneath modern products.',
   body: [
-    'Digital systems increasingly depend on invisible operational layers. The code that runs a product is only a fraction of what makes it work.',
-    'The real complexity lives in the decisions, workflows, risk models, and trust mechanisms underneath — the operational infrastructure most teams never fully design.',
-    'Modern organizations are realizing that their competitive advantage isn\'t the interface. It\'s the operational intelligence powering it.',
-    'The next generation of software will not merely optimize interfaces. It will redesign operational intelligence itself.',
+    'Operational complexity rarely arrives dramatically. It accumulates slowly — through edge cases, manual reviews, exceptions, handoffs, risk escalations, decision fatigue, and fragmented workflows.',
+    'Most organizations experience operational failure long before they understand operational architecture.',
+    'Digital systems increasingly depend on invisible operational layers: workflows, trust systems, onboarding infrastructure, machine-assisted decisions, operational orchestration, adaptive intelligence.',
+    'The next generation of software will not merely optimize interfaces. It will redesign operational systems themselves.',
   ],
   systemTypes: [
-    'onboarding workflows',
-    'risk systems',
-    'trust infrastructure',
-    'operational orchestration',
+    'workflows',
+    'trust systems',
+    'onboarding infrastructure',
     'machine-assisted decisions',
-    'adaptive operational cognition',
+    'operational orchestration',
+    'adaptive intelligence',
   ],
   closing: 'This is the layer I\'m most interested in.',
 };
@@ -175,41 +196,41 @@ export const shapedSystems: ShapedSystem[] = [
   {
     title: 'Omnichannel Onboarding Infrastructure',
     description:
-      'A multi-channel onboarding ecosystem spanning RM-assisted workflows, DIY onboarding, API-led onboarding, and partner-driven operational systems — built for regulated financial ecosystems at scale.',
-    operationalFragment: 'The moment a workflow handles its millionth edge case without a manual override is when you know the system has truly internalized the domain.',
+      'A multi-channel onboarding ecosystem spanning RM-assisted workflows, DIY onboarding, API-led onboarding, and partner-driven operational systems — built for regulated financial ecosystems at scale. Focused on trust orchestration, workflow simplification, operational scale, and compliance alignment.',
+    operationalFragment: 'Most onboarding friction doesn\'t come from forms. It comes from ambiguity between systems — the gap where one workflow ends and another begins without clear operational ownership.',
     focusAreas: [
-      'Millions of onboarding workflows processed monthly',
-      'Reduced onboarding turnaround time by 80%',
-      'Supported complex constitution handling and compliance flows',
-      'Enabled operational scale across banking and fintech ecosystems',
+      'trust orchestration across onboarding channels',
+      'workflow simplification under compliance constraints',
+      'operational scale across regulated ecosystems',
+      'edge case handling without manual override escalation',
     ],
-    tags: ['Onboarding', 'Fintech Infrastructure', 'Workflow Systems', 'Compliance'],
+    tags: ['Onboarding', 'Trust Infrastructure', 'Workflow Systems', 'Compliance'],
   },
   {
     title: 'AI-Assisted Risk Operations',
     description:
-      'Operational intelligence systems designed around AML screening, onboarding risk, transaction monitoring, and continuous due diligence — with a focus on explainability and analyst efficiency.',
-    operationalFragment: 'False positives aren\'t a model problem. They\'re a workflow problem. The right threshold means nothing if analysts can\'t act on alerts with confidence.',
+      'Operational intelligence systems designed around AML workflows, onboarding risk systems, false-positive reduction, and human-AI review architectures — with a focus on explainable operational reasoning and cognitive load reduction.',
+    operationalFragment: 'False positives become organizational bottlenecks before they become model problems. Human review systems quietly become cognitive load systems under scale.',
     focusAreas: [
-      'Reduced false positive rates through intelligent signal weighting',
-      'Improved analyst efficiency via explainable operational reasoning',
-      'Human-AI collaboration layers for complex risk decisions',
-      'Continuous due diligence without operational overhead',
+      'false-positive reduction through operational signal weighting',
+      'human-AI review architectures for complex risk decisions',
+      'explainable operational reasoning for analyst workflows',
+      'continuous due diligence without operational overhead',
     ],
-    tags: ['AI Systems', 'AML', 'Risk', 'Compliance'],
+    tags: ['AI Systems', 'AML', 'Risk Operations', 'Compliance Intelligence'],
   },
   {
     title: 'Intelligent Workflow Systems',
     description:
-      'Explorations around AI-native operational workflows that augment decision-making across onboarding, compliance, and operational intelligence — combining real-time context with adaptive logic.',
-    operationalFragment: 'The hardest design problem isn\'t building the copilot. It\'s calibrating exactly how much certainty to give it — enough to be useful, not enough to be trusted blindly.',
+      'Exploring how workflows evolve from rigid process chains into adaptive operational systems — combining workflow cognition, operational orchestration, AI-native workflows, and machine-assisted judgment.',
+    operationalFragment: 'Workflow rigidity becomes visible only under operational pressure. Most scaling problems are workflow design problems first.',
     focusAreas: [
-      'AI copilots embedded into operational decision flows',
-      'Real-time operational context for analyst workflows',
-      'Adaptive decision systems that evolve with the business',
-      'Workflow intelligence that reduces cognitive load',
+      'workflow cognition and adaptive operational logic',
+      'AI copilots embedded into decision flows',
+      'machine-assisted judgment with human override integrity',
+      'operational orchestration across dynamic workflow environments',
     ],
-    tags: ['AI', 'Operational Intelligence', 'Workflow Design'],
+    tags: ['AI', 'Workflow Cognition', 'Operational Intelligence', 'Adaptive Systems'],
   },
 ];
 
@@ -219,40 +240,40 @@ export const explorations: Exploration[] = [
   {
     title: 'RegRadar',
     description:
-      'Real-time regulatory intelligence designed for operational teams navigating evolving compliance ecosystems. Transforms regulatory circulars and updates into actionable operational insight.',
+      'Real-time regulatory intelligence for operational teams navigating evolving compliance ecosystems. Transforms regulatory updates, circulars, and operational shifts into actionable operational insight.',
     transforms: [
-      'Regulatory circulars → operational impact assessments',
-      'Policy updates → implementation checklists',
-      'Compliance changes → workflow triggers',
+      'Regulatory updates → operational impact assessments',
+      'Compliance shifts → workflow triggers',
+      'Policy changes → implementation intelligence',
     ],
     cta: { label: 'Join Early Access', href: 'mailto:anveet.07@gmail.com?subject=RegRadar Early Access' },
-    status: 'Early stage',
-    currentQuestions: [
-      'How do you make regulatory language operationally actionable without losing precision?',
-      'What\'s the right interface between a compliance officer\'s judgment and automated regulatory parsing?',
-      'Can impact assessment be standardized across jurisdictions?',
-    ],
-  },
-  {
-    title: 'Council of Elites',
-    description:
-      'A multi-agent reasoning environment exploring strategic cognition, simulated perspectives, and AI-assisted thought exploration — where different AI personas debate, challenge, and refine ideas.',
     status: 'Exploring',
     currentQuestions: [
-      'What does productive disagreement look like between AI agents with distinct epistemic styles?',
-      'How do you surface minority viewpoints without amplifying noise?',
-      'Is there a useful middle ground between debate and synthesis?',
+      'Can operational intelligence become real-time?',
+      'What happens when compliance evolves into adaptive systems?',
+      'How should machine-assisted interpretation work in regulated environments?',
     ],
   },
   {
     title: 'Workflow Intelligence Systems',
     description:
-      'Experiments around operational copilots, AI-assisted workflows, onboarding intelligence, and adaptive operational systems — building toward AI that augments human operational judgment.',
-    status: 'Exploring',
+      'Exploring adaptive workflows and operational cognition systems — building toward AI that augments human operational judgment without increasing cognitive overhead.',
+    status: 'Building',
     currentQuestions: [
-      'Where exactly does AI assistance tip from helpful to responsibility-diffusing?',
-      'What does adaptive workflow logic look like when the business rules themselves are still evolving?',
-      'How do you design for human override without making it the default?',
+      'What happens when workflows become context-aware?',
+      'Can operational cognition become infrastructure?',
+      'How should AI expose uncertainty inside operational systems?',
+    ],
+  },
+  {
+    title: 'Council of Elites',
+    description:
+      'Multi-agent reasoning environments exploring strategic cognition and machine-assisted thought systems — where distinct AI perspectives surface, debate, and refine operational reasoning.',
+    status: 'Experimenting',
+    currentQuestions: [
+      'Can systems think collaboratively without converging prematurely?',
+      'How should conflicting operational reasoning surface without amplifying noise?',
+      'What does machine-assisted strategic exploration actually look like?',
     ],
   },
 ];
@@ -261,24 +282,24 @@ export const explorations: Exploration[] = [
 
 export const mentalModels: MentalModel[] = [
   {
-    title: 'Simplicity scales.',
+    title: 'Complexity compounds quietly.',
     description:
-      'Operational complexity compounds silently before systems begin to fail. The best operational designs eliminate unnecessary decisions, not just unnecessary features.',
+      'Organizations often mistake operational exhaustion for growth long before systems visibly fail. The accumulation is invisible until it isn\'t.',
   },
   {
     title: 'Trust is infrastructure.',
     description:
-      'Payments, onboarding, and compliance are fundamentally systems of coordinated trust. Design them like infrastructure — because that\'s what they are.',
+      'Payments, onboarding, compliance, and workflows are fundamentally systems of coordinated trust. They should be designed accordingly.',
   },
   {
-    title: 'AI should reduce cognitive burden.',
+    title: 'AI should reduce ambiguity.',
     description:
-      'Good operational AI reduces ambiguity rather than creating more dashboards. If the AI output requires the same cognitive effort to interpret, it hasn\'t helped.',
+      'Operational AI should reduce cognitive burden rather than increase dashboards and workflow complexity. If interpretation requires the same effort, the system hasn\'t helped.',
   },
   {
-    title: 'Systems shape behavior.',
+    title: 'Systems shape decisions.',
     description:
-      'Operational design influences organizational outcomes more than surface interfaces. The system you build determines the decisions people make inside it.',
+      'Operational systems silently determine which decisions organizations are capable of making. The system you build determines the choices available inside it.',
   },
 ];
 
@@ -286,33 +307,33 @@ export const mentalModels: MentalModel[] = [
 
 export const notesFromSystem: NoteEntry[] = [
   {
-    title: 'Why operational complexity compounds invisibly',
-    teaser: 'The failure mode no one designs for — until it\'s too late.',
+    title: 'Scale reveals the operational architecture you ignored',
+    teaser: 'The systems that hold at 10K users quietly collapse at 1M.',
     status: 'planned',
   },
   {
-    title: 'False positives are an operational design problem',
-    teaser: 'AML teams don\'t have a model problem. They have a workflow problem.',
-    status: 'planned',
-  },
-  {
-    title: 'AI copilots for operational systems',
+    title: 'Operational copilots and the future of machine-assisted judgment',
     teaser: 'What it actually means to augment a compliance analyst with AI.',
     status: 'planned',
   },
   {
-    title: 'The future of trust infrastructure',
-    teaser: 'Why onboarding, payments, and risk are converging into a single layer.',
+    title: 'Trust infrastructure is becoming software',
+    teaser: 'Why onboarding, payments, and risk are converging into a single operational layer.',
     status: 'planned',
   },
   {
-    title: 'Why onboarding systems fail under scale',
-    teaser: 'The architectural decisions that look fine at 10K users and collapse at 1M.',
+    title: 'Workflow rigidity is becoming a competitive disadvantage',
+    teaser: 'Static process chains cannot absorb the operational pressure modern systems produce.',
     status: 'planned',
   },
   {
-    title: 'Machine-assisted operations and human cognition',
-    teaser: 'The interface between human judgment and machine suggestion is the hardest design problem.',
+    title: 'Compliance is evolving into operational intelligence',
+    teaser: 'Documentation-based compliance is giving way to machine-assisted interpretation systems.',
+    status: 'planned',
+  },
+  {
+    title: 'Operational systems fail long before organizations notice',
+    teaser: 'Systems rarely fail dramatically. They fail through accumulated exceptions.',
     status: 'planned',
   },
 ];
@@ -321,15 +342,17 @@ export const notesFromSystem: NoteEntry[] = [
 
 export const openThreadsContent: OpenThreadsContent = {
   label: 'Open Threads',
-  body: 'I occasionally engage with founders, operators, and teams thinking deeply about the operational layers of their business.',
+  heading: 'Exploring intelligent operational systems.',
+  body: 'I occasionally engage with founders, operators, and builders exploring the operational layers of their systems — whether that\'s onboarding infrastructure, AI-native workflows, trust systems, or machine-assisted operational design.',
   areas: [
     'operational intelligence',
     'onboarding systems',
     'AI-native workflows',
     'trust infrastructure',
-    'adaptive operational design',
+    'adaptive operational systems',
+    'machine-assisted operations',
   ],
-  cta: { label: 'Start a conversation', href: 'mailto:anveet.07@gmail.com' },
+  cta: { label: 'Start a Conversation', href: 'mailto:anveet.07@gmail.com' },
 };
 
 // ── Legacy Data (kept for backward compat — old section components still import these) ──

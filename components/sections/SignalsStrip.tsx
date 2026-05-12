@@ -33,6 +33,46 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 type SignalsStripProps = { data?: Signal[] };
 
 export function SignalsStrip({ data = signals }: SignalsStripProps) {
+  const hasDescriptions = data.some((s) => s.description);
+
+  if (hasDescriptions) {
+    return (
+      <div className="border-b border-t border-border/30 bg-card/20 py-14">
+        <Container>
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {data.map((signal, i) => {
+              const parsed = parseNumeric(signal.value);
+              return (
+                <motion.div
+                  key={signal.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className="flex flex-col gap-2"
+                >
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                      {parsed ? (
+                        <AnimatedCounter value={parsed.num} suffix={parsed.suffix} />
+                      ) : (
+                        signal.value
+                      )}
+                    </span>
+                    <span className="text-sm font-medium text-foreground/50">{signal.label}</span>
+                  </div>
+                  {signal.description && (
+                    <p className="text-xs leading-relaxed text-foreground/35">{signal.description}</p>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </Container>
+      </div>
+    );
+  }
+
   return (
     <div className="border-b border-t border-border/30 bg-card/20 py-12">
       <Container>
