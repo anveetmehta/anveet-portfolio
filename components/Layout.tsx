@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Container } from '@/components/Container';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ScrollProgress } from '@/components/ScrollProgress';
+import { Logo } from '@/components/Logo';
 import { siteMeta } from '@/content/content';
 
 type NavPreview = {
@@ -65,11 +66,8 @@ export function Layout({ children }: LayoutProps) {
 
       <header className="sticky top-0 z-20 border-b border-border/40 bg-background/90 backdrop-blur-md">
         <Container className="flex h-14 items-center justify-between">
-          <Link
-            href="/"
-            className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-          >
-            {siteMeta.name}
+          <Link href="/" className="transition-opacity hover:opacity-80">
+            <Logo size={22} withWordmark />
           </Link>
 
           <div className="flex items-center gap-4">
@@ -133,7 +131,9 @@ export function Layout({ children }: LayoutProps) {
       <footer className="border-t border-border/30 py-10">
         <Container>
           <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
-            <span className="text-foreground/35">{siteMeta.name}</span>
+            <span className="text-foreground/35">
+              <Logo size={16} withWordmark />
+            </span>
 
             <div className="flex items-center gap-5 text-foreground/40">
               {siteMeta.socialLinks.map((link) => (
