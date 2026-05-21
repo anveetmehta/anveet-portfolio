@@ -34,7 +34,7 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
             transition={{ duration: 0.45, delay: 0.07 }}
             className="max-w-lg text-base leading-relaxed text-foreground/50"
           >
-            Ongoing work at the intersection of operational intelligence, AI-native systems, and trust infrastructure.
+            Ongoing explorations around operational intelligence, workflow systems, trust infrastructure, machine-assisted operations, and AI-native workflows.
           </motion.p>
         </div>
 
@@ -61,7 +61,7 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
               </div>
 
               <h3 className="text-base font-semibold text-foreground">{exploration.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/55">{exploration.description}</p>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/65">{exploration.description}</p>
 
               {exploration.transforms && (
                 <ul className="mt-6 space-y-2">

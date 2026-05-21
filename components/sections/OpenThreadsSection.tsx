@@ -46,7 +46,7 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: data.heading ? 0.14 : 0.07 }}
-            className="text-base leading-relaxed text-foreground/55 sm:text-lg"
+            className="text-base leading-relaxed text-foreground/65 sm:text-lg"
           >
             {data.body}
           </motion.p>

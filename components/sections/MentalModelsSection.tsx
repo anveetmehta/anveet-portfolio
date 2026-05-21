@@ -37,7 +37,7 @@ export function MentalModelsSection({ data = mentalModels }: MentalModelsSection
                 {String(i + 1).padStart(2, '0')}
               </span>
               <h3 className="text-lg font-semibold text-foreground">{model.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/50">{model.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/60">{model.description}</p>
             </motion.div>
           ))}
         </div>

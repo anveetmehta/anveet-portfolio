@@ -49,7 +49,7 @@ export function SystemsLayerSection({ data = systemsLayerContent }: SystemsLayer
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: 0.14 + i * 0.06 }}
-                  className="text-base leading-relaxed text-foreground/55"
+                  className="text-base leading-relaxed text-foreground/65"
                 >
                   {para}
                 </motion.p>

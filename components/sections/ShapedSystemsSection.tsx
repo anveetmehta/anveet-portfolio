@@ -42,7 +42,7 @@ export function ShapedSystemsSection({ data = shapedSystems }: ShapedSystemsSect
               <div className="relative grid gap-8 lg:grid-cols-[2fr_1fr] lg:gap-16">
                 <div>
                   <h3 className="text-xl font-semibold text-foreground lg:text-2xl">{system.title}</h3>
-                  <p className="mt-4 text-base leading-relaxed text-foreground/55">{system.description}</p>
+                  <p className="mt-4 text-base leading-relaxed text-foreground/65">{system.description}</p>
                   {system.operationalFragment && (
                     <blockquote className="mt-6 border-l border-accent/30 pl-4 text-sm italic leading-relaxed text-foreground/35">
                       {system.operationalFragment}

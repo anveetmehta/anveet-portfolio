@@ -16,59 +16,33 @@ const AMBIENT_THOUGHTS = [
   'Operational intelligence is becoming the next interface.',
 ];
 
-const NODES = [
-  { cx: 80,  cy: 80  },
-  { cx: 230, cy: 45  },
-  { cx: 375, cy: 100 },
-  { cx: 435, cy: 230 },
-  { cx: 350, cy: 345 },
-  { cx: 185, cy: 375 },
-  { cx: 50,  cy: 270 },
-  { cx: 215, cy: 200 },
+const CONCEPT_LAYERS = [
+  { text: 'trust orchestration', delay: 0.7 },
+  { text: 'workflow cognition', delay: 0.85 },
+  { text: 'onboarding infrastructure', delay: 1.0 },
+  { text: 'machine-assisted judgment', delay: 1.15 },
+  { text: 'operational entropy', delay: 1.3 },
+  { text: 'adaptive systems', delay: 1.45 },
+  { text: 'compliance intelligence', delay: 1.6 },
+  { text: 'risk interpretation layers', delay: 1.75 },
 ];
 
-const EDGES: [number, number][] = [
-  [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6],
-  [0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [6, 0],
-];
-
-function SystemGraph() {
+function ConceptColumn() {
   return (
-    <svg viewBox="0 0 490 425" className="h-full w-full" fill="none" aria-hidden>
-      {EDGES.map(([a, b], i) => (
-        <motion.path
-          key={`e${i}`}
-          d={`M ${NODES[a].cx} ${NODES[a].cy} L ${NODES[b].cx} ${NODES[b].cy}`}
-          stroke="hsl(var(--foreground) / 0.09)"
-          strokeWidth="1"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 2, delay: 0.8 + i * 0.08, ease: 'easeOut' }}
-        />
+    <div className="flex flex-col items-end gap-4" aria-hidden>
+      {CONCEPT_LAYERS.map((c, i) => (
+        <motion.span
+          key={c.text}
+          initial={{ opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: c.delay, ease: 'easeOut' }}
+          className="font-mono text-xs tracking-wide"
+          style={{ color: `hsl(var(--foreground) / ${0.06 + i * 0.025})` }}
+        >
+          {c.text}
+        </motion.span>
       ))}
-      {NODES.map((n, i) => (
-        <g key={`n${i}`}>
-          <motion.circle
-            cx={n.cx} cy={n.cy}
-            r={i === 7 ? 5 : 2.5}
-            fill={i === 7 ? 'hsl(var(--accent) / 0.6)' : 'hsl(var(--foreground) / 0.18)'}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 + i * 0.07, type: 'spring', stiffness: 160 }}
-          />
-          {i === 7 && (
-            <motion.circle
-              cx={n.cx} cy={n.cy} r={5}
-              fill="none"
-              stroke="hsl(var(--accent) / 0.3)"
-              strokeWidth="1"
-              animate={{ r: [5, 24, 5], opacity: [0.5, 0, 0.5] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeOut' }}
-            />
-          )}
-        </g>
-      ))}
-    </svg>
+    </div>
   );
 }
 
@@ -115,14 +89,12 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
         aria-hidden
       />
 
-      {/* System graph — desktop only */}
+      {/* Concept column — desktop only */}
       <div
-        className="pointer-events-none absolute right-0 top-0 hidden h-full w-[46%] items-center justify-center lg:flex"
+        className="pointer-events-none absolute right-16 top-0 hidden h-full w-[280px] flex-col items-end justify-center lg:flex"
         aria-hidden
       >
-        <div className="h-[380px] w-[460px] opacity-70">
-          <SystemGraph />
-        </div>
+        <ConceptColumn />
       </div>
 
       <Container className="relative z-10 py-28">
@@ -158,7 +130,7 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.22 + i * 0.08 }}
-                className="text-lg leading-relaxed text-foreground/50"
+                className="text-lg leading-relaxed text-foreground/65"
               >
                 {para}
               </motion.p>
