@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
+import { SerifAccent } from '@/components/SerifHeading';
 import { heroContent, type HeroContent } from '@/content/content';
 import { cn } from '@/lib/cn';
 
@@ -71,20 +72,20 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
       <div
         className="absolute inset-0 opacity-[0.35]"
         style={{
-          backgroundImage: 'radial-gradient(circle, hsl(var(--foreground) / 0.07) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, hsl(var(--foreground) / 0.10) 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }}
         aria-hidden
       />
 
-      {/* Drifting gradient orbs */}
+      {/* Drifting gradient orbs — warm/cool complement in light, subtle in dark */}
       <div
-        className="pointer-events-none absolute -left-32 top-1/3 h-[520px] w-[520px] rounded-full bg-blue-600/10 blur-[130px]"
+        className="pointer-events-none absolute -left-32 top-1/3 h-[520px] w-[520px] rounded-full bg-blue-500/25 dark:bg-blue-600/10 blur-[130px]"
         style={{ animation: 'orb-drift-1 22s ease-in-out infinite' }}
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-16 bottom-1/4 h-[380px] w-[380px] rounded-full bg-violet-700/8 blur-[110px]"
+        className="pointer-events-none absolute -right-16 bottom-1/4 h-[380px] w-[380px] rounded-full bg-orange-400/30 dark:bg-violet-700/[0.08] blur-[110px]"
         style={{ animation: 'orb-drift-2 28s ease-in-out infinite' }}
         aria-hidden
       />
@@ -117,9 +118,7 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
           >
             {before}
             {accentPart && (
-              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-                {accentPart}
-              </span>
+              <SerifAccent>{accentPart}</SerifAccent>
             )}
           </motion.h1>
 

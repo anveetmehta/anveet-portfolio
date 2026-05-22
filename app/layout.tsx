@@ -1,12 +1,22 @@
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { Instrument_Serif } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { Layout } from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { GrainOverlay } from '@/components/GrainOverlay';
+import { CursorHalo } from '@/components/CursorHalo';
 import { siteMeta } from '@/content/content';
 import '@/styles/globals.css';
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -51,9 +61,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}>
+        <style>{`:root { --font-display: var(--font-instrument-serif); }`}</style>
         <ThemeProvider>
           <GrainOverlay />
+          <CursorHalo />
           <Layout>{children}</Layout>
         </ThemeProvider>
         <Analytics />

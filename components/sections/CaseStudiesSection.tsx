@@ -17,7 +17,7 @@ export function CaseStudiesSection() {
     >
       <Grid>
         {caseStudies.slice(0, 2).map((caseStudy) => (
-          <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} />
+          <CaseStudyCard key={caseStudy.slug} study={caseStudy} index={caseStudies.indexOf(caseStudy)} />
         ))}
       </Grid>
       <div className="mt-8">

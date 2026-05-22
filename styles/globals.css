@@ -3,23 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 99%;
-  --foreground: 220 15% 10%;
-  --muted: 220 12% 96%;
-  --border: 220 12% 90%;
-  --card: 0 0% 100%;
-  --accent: 221 83% 53%;
-  --accent-warm: 36 95% 50%;
+  /* Light — warm paper */
+  --background:  38 28% 96%;
+  --foreground: 220 22% 10%;
+  --muted:       38 22% 93%;
+  --border:     220 14% 86%;
+  --card:        38 30% 98%;
+  --accent:     221 83% 48%;
+  --accent-warm: 28 88% 50%;
+
+  /* Display fonts — overridden by next/font but here as a fallback. */
+  --font-display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
 }
 
 .dark {
   --background: 220 13% 5%;
   --foreground: 215 20% 88%;
-  --muted: 220 9% 12%;
-  --border: 220 9% 17%;
-  --card: 220 11% 8%;
-  --accent: 221 83% 61%;
-  --accent-warm: 38 92% 55%;
+  --muted:      220  9% 12%;
+  --border:     220  9% 17%;
+  --card:       220 11% 8%;
+  --accent:     221 83% 61%;
+  --accent-warm: 28 88% 60%;
 }
 
 html {
@@ -32,31 +36,48 @@ body {
   font-family: var(--font-geist-sans), sans-serif;
 }
 
-a {
-  @apply transition-colors hover:text-accent;
-}
+a { @apply transition-colors hover:text-accent; }
 
-::selection {
-  @apply bg-accent/20;
-  color-scheme: light;
-}
+::selection { @apply bg-accent/20; }
 
-/* ── Ambient motion keyframes ──────────────────────────────────────────── */
+/* ── Atmospheric page-edge vignette (light mode only) ───────────────────── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at 50% 30%, transparent 35%, hsl(35 30% 86% / 0.45) 100%);
+}
+.dark body::after { display: none; }
+
+/* ── Paper shadow on canonical cards ─────────────────────────────────────── */
+.paper-card {
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.04),
+    0 8px 24px -16px rgba(0,0,0,0.08);
+}
+.dark .paper-card { box-shadow: none; }
+
+/* ── Ambient motion keyframes ────────────────────────────────────────────── */
 
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
 @keyframes orb-drift-1 {
-  0%, 100% { transform: translate(0,    0)    scale(1);    }
-  30%       { transform: translate(28px, -18px) scale(1.06); }
-  65%       { transform: translate(-18px, 24px) scale(0.94); }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30%      { transform: translate(28px, -18px) scale(1.06); }
+  65%      { transform: translate(-18px, 24px) scale(0.94); }
 }
-
 @keyframes orb-drift-2 {
-  0%, 100% { transform: translate(0,     0)    scale(1);    }
-  35%       { transform: translate(-22px, 16px) scale(1.04); }
-  70%       { transform: translate(18px, -22px) scale(0.96); }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  35%      { transform: translate(-22px, 16px) scale(1.04); }
+  70%      { transform: translate(18px, -22px) scale(0.96); }
 }
+@keyframes scrollcue { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
+/* Cursor halo follower */
+@keyframes halo-pulse {
+  0%, 100% { opacity: 0.18; }
+  50%      { opacity: 0.28; }
+}

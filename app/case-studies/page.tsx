@@ -22,7 +22,7 @@ export default function CaseStudiesIndexPage() {
         <div className="mt-10">
           <Grid>
             {caseStudies.map((caseStudy) => (
-              <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} />
+              <CaseStudyCard key={caseStudy.slug} study={caseStudy} index={caseStudies.indexOf(caseStudy)} />
             ))}
           </Grid>
         </div>

@@ -1,65 +1,109 @@
+// components/CaseStudyCard.tsx — Tier 2, upgrade 04
+// Replaces the existing CaseStudyCard. Adds a hero thumb + two big serif
+// impact numerals.
+//
+// content/content.ts addition: add `impacts?: { value: string; label: string }[]`
+// to the CaseStudy interface and populate from existing `impact[]` strings.
+
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Card } from '@/components/Card';
+import { motion } from 'framer-motion';
 import { type CaseStudy } from '@/content/content';
 import { cn } from '@/lib/cn';
 
-type CaseStudyCardProps = {
-  caseStudy: CaseStudy;
-};
+type Props = { study: CaseStudy & { impacts?: { value: string; label: string }[] }; index?: number };
 
-const tagColors = [
-  'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-  'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-  'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-  'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
-];
+export function CaseStudyCard({ study, index = 0 }: Props) {
+  // Derive two impact pairs from impacts[] OR fall back to first two impact strings split on the first %
+  const impacts = study.impacts ?? deriveImpacts(study.impact);
 
-export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
+    <motion.article
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.35 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, delay: index * 0.06 }}
+      className="paper-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 transition-all duration-300 hover:border-border/80"
     >
-      <Card className="group h-full border-t-4 border-t-accent hover:-translate-y-1 hover:shadow-glow">
-        <p className="text-xs uppercase tracking-wide text-foreground/55">Case Study</p>
-        <h3 className="mt-2 text-xl font-semibold text-foreground">{caseStudy.title}</h3>
-        <p className="mt-3 text-foreground/80">{caseStudy.excerpt}</p>
-        {/* Microcopy: What I did + Outcome */}
-        <div className="mt-4 space-y-1.5 rounded-lg bg-muted/50 p-3 text-sm">
-          <p className="text-foreground/70">
-            <span className="font-medium text-foreground/85">What I did:</span>{' '}
-            {caseStudy.contribution}
+      {/* shimmer on hover */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      <div className="grid gap-0 sm:grid-cols-[1.05fr_1fr]">
+        <Thumb tags={study.tags} slug={study.slug} />
+
+        <div className="flex flex-col p-6 sm:p-8">
+          <p className="font-mono text-[10px] tracking-widest uppercase text-foreground/45">
+            Case Study &middot; {study.tags[0] ?? '—'}
           </p>
-          <p className="text-foreground/70">
-            <span className="font-medium text-foreground/85">Outcome:</span>{' '}
-            {caseStudy.outcome}
-          </p>
+          <h3 className="mt-2 text-xl font-semibold leading-tight tracking-tight">{study.title}</h3>
+          <p className="mt-3 text-sm leading-relaxed text-foreground/65 line-clamp-3">{study.excerpt}</p>
+
+          {impacts.length > 0 && (
+            <div className="mt-5 grid grid-cols-2 gap-5">
+              {impacts.slice(0, 2).map((im) => (
+                <div key={im.label}>
+                  <div
+                    className="text-3xl leading-none tracking-tight text-foreground"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {im.value}
+                  </div>
+                  <div className="mt-1.5 text-[10px] leading-tight text-foreground/55">{im.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <Link
+            href={`/case-studies/${study.slug}`}
+            className="mt-auto pt-6 text-xs font-medium text-foreground/55 transition-colors hover:text-foreground/90"
+          >
+            Read the case study →
+          </Link>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {caseStudy.tags.map((tag, idx) => (
-            <span
-              key={tag}
-              className={cn(
-                'rounded-full border px-3 py-1 text-xs font-medium',
-                tagColors[idx % tagColors.length]
-              )}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <Link
-          href={`/case-studies/${caseStudy.slug}`}
-          className="mt-6 inline-flex text-sm font-medium text-accent group-hover:translate-x-1 transition-transform"
-        >
-          View case study →
-        </Link>
-      </Card>
-    </motion.div>
+      </div>
+    </motion.article>
   );
+}
+
+function Thumb({ tags, slug }: { tags: string[]; slug: string }) {
+  // Stable color from slug
+  const palette = [
+    ['from-blue-400/30',   'to-card/30'],
+    ['from-violet-400/25', 'to-card/30'],
+    ['from-emerald-400/25','to-card/30'],
+    ['from-amber-400/25',  'to-card/30'],
+  ];
+  const idx = slug.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % palette.length;
+  const [from, to] = palette[idx];
+
+  return (
+    <div className={cn('relative min-h-[180px] overflow-hidden bg-gradient-to-br', from, to)}>
+      {/* dot grid */}
+      <div
+        className="absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: 'radial-gradient(circle, hsl(var(--foreground) / 0.10) 1px, transparent 1px)',
+          backgroundSize: '14px 14px',
+        }}
+      />
+      {/* lower-left tag */}
+      <p className="absolute bottom-3 left-4 font-mono text-[9px] tracking-widest uppercase text-foreground/55">
+        {tags[0]}
+      </p>
+    </div>
+  );
+}
+
+function deriveImpacts(lines: string[]): { value: string; label: string }[] {
+  return lines
+    .map((s) => {
+      const m = s.match(/(\d+(?:\.\d+)?%|\d+(?:\.\d+)?[a-zA-Z]+|\$?\d+(?:\.\d+)?[KkMm]?\+?)/);
+      if (!m) return null;
+      const value = m[0];
+      const label = s.replace(m[0], '').replace(/^[.\s]+|[.\s]+$/g, '').trim();
+      return { value, label: label.length > 60 ? label.slice(0, 56) + '…' : label };
+    })
+    .filter(Boolean) as { value: string; label: string }[];
 }

@@ -1,7 +1,7 @@
 export function GrainOverlay() {
   return (
     <svg
-      className="pointer-events-none fixed inset-0 z-[9998] h-full w-full opacity-[0.032] dark:opacity-[0.045]"
+      className="pointer-events-none fixed inset-0 z-[9998] h-full w-full opacity-[0.065] mix-blend-multiply dark:opacity-[0.045] dark:mix-blend-normal"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >

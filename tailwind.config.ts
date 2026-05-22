@@ -12,8 +12,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)', ...defaultTheme.fontFamily.sans],
-        mono: ['var(--font-geist-mono)', ...defaultTheme.fontFamily.mono],
+        sans:  ['var(--font-geist-sans)', ...defaultTheme.fontFamily.sans],
+        mono:  ['var(--font-geist-mono)', ...defaultTheme.fontFamily.mono],
+        serif: ['var(--font-instrument-serif)', 'Iowan Old Style', 'Georgia', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background) / <alpha-value>)',
