@@ -415,6 +415,13 @@ export const projects: Project[] = [
     tags: ['Business', 'Operations'],
     status: 'live',
   },
+  {
+    title: 'jobradar',
+    description: 'A local, privacy-first AI job matcher — scores real postings against your actual profile, tailors a one-page resume and cover letter, and never auto-applies.',
+    tags: ['AI', 'Open Source', 'Job Search'],
+    status: 'live',
+    link: 'https://github.com/anveetmehta/jobradar',
+  },
 ];
 
 export const expertiseAreas: ExpertiseArea[] = [
