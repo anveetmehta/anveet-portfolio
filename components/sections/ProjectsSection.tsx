@@ -66,7 +66,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <h3 className="text-lg font-semibold">{project.title}</h3>
           <StatusBadge status={project.status} />
         </div>
-        <p className="mt-3 flex-1 text-sm text-foreground/75">{project.description}</p>
+        <p className="mt-3 flex-1 text-sm text-ink">{project.description}</p>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag, tagIdx) => (
             <span
@@ -109,7 +109,7 @@ export function ProjectsSection() {
     >
       {/* Experiments lane */}
       <div>
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground/50">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ink-2">
           Experiments (building)
         </h3>
         <Grid columns={2}>
@@ -121,7 +121,7 @@ export function ProjectsSection() {
 
       {/* Real-world lab lane */}
       <div className="mt-10">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground/50">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ink-2">
           Real-world Lab (live)
         </h3>
         <Grid columns={2}>

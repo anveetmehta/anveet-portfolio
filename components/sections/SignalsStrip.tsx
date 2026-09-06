@@ -36,7 +36,7 @@ export function SignalsStrip({ data = signals }: SignalsStripProps) {
   const hasDescriptions = data.some((s) => s.description);
 
   return (
-    <div className="border-b border-t border-border/30 bg-card/20 py-12">
+    <div className="border-b border-t border-border bg-card/20 py-12">
       <Container>
         <div className={
           hasDescriptions
@@ -71,13 +71,13 @@ export function SignalsStrip({ data = signals }: SignalsStripProps) {
                 </span>
 
                 {/* Label */}
-                <span className={hasDescriptions ? 'text-xs font-medium text-foreground/50' : 'text-xs text-foreground/40'}>
+                <span className={hasDescriptions ? 'text-xs font-medium text-ink-2' : 'text-xs text-ink-2'}>
                   {signal.label}
                 </span>
 
                 {/* Description */}
                 {signal.description && (
-                  <p className="mt-1 text-xs leading-relaxed text-foreground/35">
+                  <p className="mt-1 text-xs leading-relaxed text-ink-3">
                     {signal.description}
                   </p>
                 )}

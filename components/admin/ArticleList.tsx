@@ -57,7 +57,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold">Articles</h2>
-          <p className="mt-0.5 text-sm text-foreground/50">
+          <p className="mt-0.5 text-sm text-ink-2">
             {articles.filter(a => a.status === 'published').length} published · {articles.length} total
           </p>
         </div>
@@ -75,7 +75,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
             onClick={() => setActiveFilter(tab)}
             className={cn(
               'flex-1 rounded-lg px-3 py-1.5 font-medium transition-colors capitalize',
-              activeFilter === tab ? 'bg-card text-foreground shadow-sm' : 'text-foreground/50 hover:text-foreground'
+              activeFilter === tab ? 'bg-card text-foreground shadow-sm' : 'text-ink-2 hover:text-foreground'
             )}
           >
             {tab}{counts[tab] > 0 ? ` (${counts[tab]})` : ''}
@@ -86,7 +86,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
       {/* Articles */}
       <div className="space-y-3">
         {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-foreground/40">
+          <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-ink-2">
             {activeFilter === 'all' ? 'No articles yet. Create your first one.' : `No ${activeFilter} articles.`}
           </div>
         ) : (
@@ -110,12 +110,12 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                       )}
                     </div>
                     {article.summary && (
-                      <p className="mt-1 text-sm text-foreground/60 line-clamp-2">{article.summary}</p>
+                      <p className="mt-1 text-sm text-ink-2 line-clamp-2">{article.summary}</p>
                     )}
                     {(article.tags as string[]).length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-1">
                         {(article.tags as string[]).map(tag => (
-                          <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-xs text-foreground/50">{tag}</span>
+                          <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-xs text-ink-2">{tag}</span>
                         ))}
                       </div>
                     )}
@@ -123,18 +123,18 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                       <StatusBadge status={status} />
                       <PlatformBadge platform={(article.platform ?? 'blog') as 'linkedin' | 'medium' | 'blog' | 'all'} />
                       {article.contentPillar && (
-                        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-foreground/50">
+                        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-ink-2">
                           {PILLAR_LABELS[article.contentPillar] ?? article.contentPillar}
                         </span>
                       )}
                       {article.readingTimeMinutes && (
-                        <span className="text-xs text-foreground/40">{article.readingTimeMinutes} min read</span>
+                        <span className="text-xs text-ink-2">{article.readingTimeMinutes} min read</span>
                       )}
                       {article.sourceIdeaId && (
                         <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs text-accent">AI generated</span>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-foreground/40">
+                    <p className="mt-1 text-xs text-ink-2">
                       {new Date(article.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                     <button type="button" onClick={() => onStatusChange(article.publicId, 'review')} className={btnClass}>Review</button>
                   )}
                   {status !== 'archived' && (
-                    <button type="button" onClick={() => onStatusChange(article.publicId, 'archived')} className={cn(btnClass, 'text-foreground/40')}>Archive</button>
+                    <button type="button" onClick={() => onStatusChange(article.publicId, 'archived')} className={cn(btnClass, 'text-ink-2')}>Archive</button>
                   )}
                   {status === 'archived' && (
                     <button type="button" onClick={() => onStatusChange(article.publicId, 'draft')} className={btnClass}>Restore</button>
@@ -161,7 +161,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                   <div className="ml-auto">
                     {confirmDeleteId === article.publicId ? (
                       <div className="flex gap-2">
-                        <button type="button" onClick={() => setConfirmDeleteId(null)} className="text-xs text-foreground/40 hover:text-foreground">Cancel</button>
+                        <button type="button" onClick={() => setConfirmDeleteId(null)} className="text-xs text-ink-2 hover:text-foreground">Cancel</button>
                         <button
                           type="button"
                           onClick={() => { setConfirmDeleteId(null); onDelete(article.publicId); }}
@@ -171,7 +171,7 @@ export function ArticleList({ articles, onNew, onEdit, onDelete, onStatusChange 
                         </button>
                       </div>
                     ) : (
-                      <button type="button" onClick={() => setConfirmDeleteId(article.publicId)} className="text-xs text-foreground/30 hover:text-red-400">Delete</button>
+                      <button type="button" onClick={() => setConfirmDeleteId(article.publicId)} className="text-xs text-ink-3 hover:text-red-400">Delete</button>
                     )}
                   </div>
                 </div>

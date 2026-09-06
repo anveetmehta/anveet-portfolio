@@ -29,7 +29,7 @@ export function FeaturesTab() {
   return (
     <section className="rounded-2xl border border-border bg-card p-6">
       <h2 className="text-xl font-semibold">Feature Toggles</h2>
-      <p className="mt-1 text-sm text-foreground/70">
+      <p className="mt-1 text-sm text-ink">
         Turn features on or off instantly.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">

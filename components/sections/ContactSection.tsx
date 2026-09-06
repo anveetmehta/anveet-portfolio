@@ -38,7 +38,7 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
-              className="rounded-full border border-border/70 bg-card/80 px-4 py-1.5 text-sm font-medium text-foreground/75 transition-colors hover:border-accent/40 hover:text-accent"
+              className="rounded-full border border-foreground/25 bg-card/80 px-4 py-1.5 text-sm font-medium text-ink transition-colors hover:border-accent/40 hover:text-accent"
             >
               {link.label}
             </motion.a>

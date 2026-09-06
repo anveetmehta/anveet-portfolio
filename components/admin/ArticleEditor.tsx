@@ -145,7 +145,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
   const passing = qualityChecks.filter(c => c.passed);
 
   const inputClass = 'w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent';
-  const labelClass = 'mb-1 block text-xs font-medium text-foreground/60';
+  const labelClass = 'mb-1 block text-xs font-medium text-ink-2';
   const btnBase = 'rounded-lg px-4 py-2 text-sm font-medium transition-colors';
 
   return (
@@ -155,7 +155,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
         <div>
           <h2 className="text-xl font-semibold">{article ? 'Edit Article' : 'New Article'}</h2>
           {article?.sourceIdeaId && (
-            <p className="mt-0.5 text-xs text-foreground/40">Generated from idea</p>
+            <p className="mt-0.5 text-xs text-ink-2">Generated from idea</p>
           )}
         </div>
         <div className="flex items-center gap-2">
@@ -184,7 +184,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
           {tags.length > 0 && (
             <div className="mt-2 flex flex-wrap gap-1.5">
               {tags.map(tag => (
-                <span key={tag} className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-foreground/60">{tag}</span>
+                <span key={tag} className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-ink-2">{tag}</span>
               ))}
             </div>
           )}
@@ -193,7 +193,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
 
       {/* Platform + Pillar */}
       <section className="rounded-2xl border border-border bg-card p-6">
-        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wide text-foreground/40">Platform & Categorisation</h3>
+        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wide text-ink-2">Platform & Categorisation</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Platform</label>
@@ -212,11 +212,11 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
 
       {/* SEO */}
       <section className="rounded-2xl border border-border bg-card p-6 space-y-4">
-        <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/40">SEO</h3>
+        <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-2">SEO</h3>
         <div>
           <div className="flex items-center justify-between mb-1">
             <label className={labelClass.replace('mb-1 ', '')}>Meta Description</label>
-            <span className={cn('text-xs', metaDescription.length > 160 ? 'text-red-500' : 'text-foreground/40')}>
+            <span className={cn('text-xs', metaDescription.length > 160 ? 'text-red-500' : 'text-ink-2')}>
               {metaDescription.length}/160
             </span>
           </div>
@@ -237,8 +237,8 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
       {/* Content */}
       <section className="rounded-2xl border border-border bg-card p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/40">Content (Markdown)</h3>
-          <span className="text-xs text-foreground/40">{words} words · {readingTime} min read</span>
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-2">Content (Markdown)</h3>
+          <span className="text-xs text-ink-2">{words} words · {readingTime} min read</span>
         </div>
         <textarea
           value={content}
@@ -251,7 +251,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
       {/* LinkedIn version */}
       <section className="rounded-2xl border border-border bg-card p-6 space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/40">LinkedIn Version</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-2">LinkedIn Version</h3>
           {linkedinVersion && (
             <button
               type="button"
@@ -270,7 +270,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
             </button>
           )}
         </div>
-        <p className="text-xs text-foreground/50">Short-form version for cross-posting. Plain text, no markdown. 300-600 words.</p>
+        <p className="text-xs text-ink-2">Short-form version for cross-posting. Plain text, no markdown. 300-600 words.</p>
         <textarea
           value={linkedinVersion}
           onChange={e => setLinkedinVersion(e.target.value)}
@@ -278,7 +278,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
           placeholder="LinkedIn post — hook line, insight bullets using →, closing question..."
         />
         {linkedinVersion && (
-          <p className="text-xs text-foreground/40">{wordCount(linkedinVersion)} words</p>
+          <p className="text-xs text-ink-2">{wordCount(linkedinVersion)} words</p>
         )}
       </section>
 
@@ -291,7 +291,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
             className="flex w-full items-center justify-between text-sm font-medium"
           >
             <span>✨ Refine with AI</span>
-            <span className="text-foreground/40">{refineOpen ? '▲' : '▼'}</span>
+            <span className="text-ink-2">{refineOpen ? '▲' : '▼'}</span>
           </button>
           {refineOpen && (
             <div className="mt-4 space-y-3">
@@ -321,7 +321,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
       {/* Quality Gate */}
       {qualityChecks.length > 0 && (
         <section className="rounded-2xl border border-border bg-card p-6 space-y-3">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/40">Quality Gate</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-2">Quality Gate</h3>
           {errors.length > 0 && (
             <div className="space-y-1">
               {errors.map(c => (
@@ -372,7 +372,7 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
         >
           Publish
         </button>
-        <button type="button" onClick={() => onSave(buildSaveData('archived'))} className={`${btnBase} border border-border text-foreground/40 hover:text-foreground`}>
+        <button type="button" onClick={() => onSave(buildSaveData('archived'))} className={`${btnBase} border border-border text-ink-2 hover:text-foreground`}>
           Archive
         </button>
 
@@ -387,14 +387,14 @@ export function ArticleEditor({ article, onSave, onCancel, onDelete }: ArticleEd
               `${btnBase} ml-auto`,
               confirmDelete
                 ? 'border border-red-500 text-red-500 hover:bg-red-500/10'
-                : 'text-foreground/30 hover:text-red-400'
+                : 'text-ink-3 hover:text-red-400'
             )}
           >
             {confirmDelete ? 'Confirm delete' : 'Delete'}
           </button>
         )}
 
-        <button type="button" onClick={onCancel} className={`${btnBase} text-foreground/50 hover:text-foreground`}>
+        <button type="button" onClick={onCancel} className={`${btnBase} text-ink-2 hover:text-foreground`}>
           Cancel
         </button>
       </div>

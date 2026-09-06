@@ -80,14 +80,14 @@ export default async function WritingArticlePage({ params }: Props) {
               {pillarLabel ?? 'Insight'}
             </p>
             {post.readingTimeMinutes && (
-              <span className="text-xs text-foreground/40">{post.readingTimeMinutes} min read</span>
+              <span className="text-xs text-ink-2">{post.readingTimeMinutes} min read</span>
             )}
           </div>
 
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             {post.title}
           </h1>
-          <p className="mt-5 text-lg text-foreground/75">{post.summary}</p>
+          <p className="mt-5 text-lg text-ink">{post.summary}</p>
 
           {/* Tags */}
           {tags.length > 0 && (
@@ -120,7 +120,7 @@ export default async function WritingArticlePage({ params }: Props) {
 
         {/* Copyright footer */}
         <div className="mt-8 max-w-3xl">
-          <p className="text-xs text-foreground/40">
+          <p className="text-xs text-ink-2">
             © Anveet Mehta. All rights reserved. Originally published at{' '}
             <a href="https://anveetmehta.com" className="underline underline-offset-2">
               anveetmehta.com
@@ -136,7 +136,7 @@ export default async function WritingArticlePage({ params }: Props) {
             href="https://www.linkedin.com/in/anveetmehta"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors"
+            className="text-sm text-ink-2 hover:text-ink transition-colors"
           >
             Follow on LinkedIn →
           </a>

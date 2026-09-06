@@ -3,11 +3,11 @@ import { cn } from '@/lib/cn';
 type IdeaStatus = 'captured' | 'prioritized' | 'generating' | 'generated' | 'archived';
 
 const statusStyles: Record<IdeaStatus, string> = {
-  captured: 'bg-muted text-foreground/60',
+  captured: 'bg-muted text-ink-2',
   prioritized: 'bg-accent/10 text-accent',
   generating: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 animate-pulse',
   generated: 'bg-green-500/15 text-green-700 dark:text-green-300',
-  archived: 'bg-muted text-foreground/30',
+  archived: 'bg-muted text-ink-3',
 };
 
 const statusLabels: Record<IdeaStatus, string> = {

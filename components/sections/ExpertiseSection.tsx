@@ -35,11 +35,11 @@ export function ExpertiseSection() {
                 {String(index + 1).padStart(2, '0')}
               </span>
               <h3 className="-mt-4 text-lg font-semibold">{area.title}</h3>
-              <p className="mt-2 text-foreground/75">{area.summary}</p>
-              <p className="mt-3 text-sm italic text-foreground/55">
+              <p className="mt-2 text-ink">{area.summary}</p>
+              <p className="mt-3 text-sm italic text-ink-2">
                 {area.example}
               </p>
-              <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-foreground/65">
+              <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-ink">
                 {area.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
                 ))}

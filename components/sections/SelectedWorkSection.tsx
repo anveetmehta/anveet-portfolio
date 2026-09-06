@@ -26,17 +26,17 @@ const MOMENTS: Moment[] = [
 
 export function SelectedWorkSection() {
   return (
-    <section id="selected-work" className="border-b border-border/30 py-24 sm:py-32">
+    <section id="selected-work" className="border-b border-border py-24 sm:py-32">
       <Container>
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
-            <p className="text-xs font-medium tracking-widest uppercase text-foreground/35">Selected Work</p>
+            <p className="text-xs font-medium tracking-widest uppercase text-ink-3">Selected Work</p>
             <h2 className="mt-3 max-w-md text-2xl font-semibold leading-tight tracking-tight sm:text-3xl"
                 style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}>
               Operational systems, made <em>tangible.</em>
             </h2>
           </div>
-          <Link href="/case-studies" className="hidden text-xs text-foreground/40 hover:text-foreground/70 sm:inline">All work →</Link>
+          <Link href="/case-studies" className="hidden text-xs text-ink-2 hover:text-ink sm:inline">All work →</Link>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -47,17 +47,17 @@ export function SelectedWorkSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="paper-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card/60"
+              className="paper-card group relative overflow-hidden rounded-2xl border border-border bg-card/60"
             >
               <Link href={m.href} className="block">
                 <div className="aspect-[4/3] relative">
                   <Motif tone={m.tone} motif={m.motif} />
                 </div>
                 <div className="p-5">
-                  <p className="font-mono text-[10px] tracking-widest uppercase text-foreground/45">
+                  <p className="font-mono text-[10px] tracking-widest uppercase text-ink-2">
                     {m.motif}
                   </p>
-                  <h3 className="mt-1.5 text-sm font-medium text-foreground/85 transition-colors group-hover:text-foreground">
+                  <h3 className="mt-1.5 text-sm font-medium text-ink transition-colors group-hover:text-foreground">
                     {m.title}
                   </h3>
                 </div>

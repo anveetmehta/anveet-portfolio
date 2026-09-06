@@ -65,7 +65,7 @@ export function AdminAuth({ children }: AdminAuthProps) {
           <button
             type="button"
             onClick={handleSignOut}
-            className="rounded-lg border border-border px-3 py-1.5 text-xs text-foreground/50 transition-colors hover:border-red-400/50 hover:text-red-400"
+            className="rounded-lg border border-border px-3 py-1.5 text-xs text-ink-2 transition-colors hover:border-red-400/50 hover:text-red-400"
           >
             Sign out
           </button>
@@ -79,7 +79,7 @@ export function AdminAuth({ children }: AdminAuthProps) {
     <form onSubmit={handleSubmit} className="mx-auto max-w-sm space-y-4">
       <div className="rounded-2xl border border-border bg-card p-6 text-center">
         <h2 className="text-lg font-semibold">Authentication Required</h2>
-        <p className="mt-2 text-sm text-foreground/70">
+        <p className="mt-2 text-sm text-ink">
           Enter the admin password to continue.
         </p>
         <input

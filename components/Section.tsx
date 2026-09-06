@@ -28,7 +28,7 @@ export function Section({ id, title, description, variant = 'default', icon, chi
             {icon ? <span className="flex-shrink-0 text-accent/60">{icon}</span> : null}
             {title}
           </h2>
-          {description ? <p className="mt-3 text-foreground/70">{description}</p> : null}
+          {description ? <p className="mt-3 text-ink">{description}</p> : null}
         </header>
         {children}
       </Container>

@@ -58,14 +58,14 @@ export function AiPersonaChat() {
   return (
     <section className="rounded-2xl border border-border bg-card p-5">
       <h2 className="text-lg font-semibold">AI Anveet</h2>
-      <p className="mt-1 text-sm text-foreground/70">
+      <p className="mt-1 text-sm text-ink">
         Ask me about my work, case studies, or how I think about building products.
       </p>
-      <div className="mt-4 space-y-3 rounded-xl border border-border/70 bg-background/70 p-4">
+      <div className="mt-4 space-y-3 rounded-xl border border-foreground/25 bg-background/70 p-4">
         {conversation.map((message, index) => (
           <div key={`${message.role}-${index}`}>
-            <p className="text-xs uppercase text-foreground/50">{message.role}</p>
-            <p className="text-sm text-foreground/90">{message.text}</p>
+            <p className="text-xs uppercase text-ink-2">{message.role}</p>
+            <p className="text-sm text-ink">{message.text}</p>
           </div>
         ))}
       </div>

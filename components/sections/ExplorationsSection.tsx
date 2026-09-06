@@ -15,7 +15,7 @@ type ExplorationsSectionProps = { data?: Exploration[] };
 
 export function ExplorationsSection({ data = explorations }: ExplorationsSectionProps) {
   return (
-    <section id="explorations" className="border-b border-border/30 py-24 sm:py-32">
+    <section id="explorations" className="border-b border-border py-24 sm:py-32">
       <Container>
         <div className="mb-14">
           <motion.p
@@ -23,7 +23,7 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-3 text-xs font-medium tracking-widest text-foreground/35 uppercase"
+            className="mb-3 text-xs font-medium tracking-widest text-ink-3 uppercase"
           >
             Active Explorations
           </motion.p>
@@ -32,7 +32,7 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.07 }}
-            className="max-w-lg text-base leading-relaxed text-foreground/50"
+            className="max-w-lg text-base leading-relaxed text-ink-2"
           >
             Ongoing explorations around operational intelligence, workflow systems, trust infrastructure, machine-assisted operations, and AI-native workflows.
           </motion.p>
@@ -46,7 +46,7 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br ${CARD_TINTS[i % CARD_TINTS.length]} p-7 transition-all duration-300 hover:border-border/70`}
+              className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-gradient-to-br ${CARD_TINTS[i % CARD_TINTS.length]} p-7 transition-all duration-300 hover:border-foreground/25`}
             >
               {/* Gradient shimmer on hover */}
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -57,16 +57,16 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/50" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400/80" />
                 </span>
-                <span className="text-xs text-foreground/40">{exploration.status}</span>
+                <span className="text-xs text-ink-2">{exploration.status}</span>
               </div>
 
               <h3 className="text-base font-semibold text-foreground">{exploration.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/65">{exploration.description}</p>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-ink">{exploration.description}</p>
 
               {exploration.transforms && (
                 <ul className="mt-6 space-y-2">
                   {exploration.transforms.map((t) => (
-                    <li key={t} className="flex items-start gap-2.5 text-xs text-foreground/40">
+                    <li key={t} className="flex items-start gap-2.5 text-xs text-ink-2">
                       <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent/45" />
                       {t}
                     </li>
@@ -76,12 +76,12 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
 
               {exploration.currentQuestions && (
                 <div className="mt-6">
-                  <p className="mb-2.5 text-[10px] font-medium tracking-widest text-foreground/25 uppercase">
+                  <p className="mb-2.5 text-[10px] font-medium tracking-widest text-ink-3 uppercase">
                     Current questions
                   </p>
                   <ul className="space-y-2.5">
                     {exploration.currentQuestions.map((q) => (
-                      <li key={q} className="text-xs italic leading-relaxed text-foreground/35">
+                      <li key={q} className="text-xs italic leading-relaxed text-ink-3">
                         — {q}
                       </li>
                     ))}
@@ -92,7 +92,7 @@ export function ExplorationsSection({ data = explorations }: ExplorationsSection
               {exploration.cta && (
                 <Link
                   href={exploration.cta.href}
-                  className="mt-7 text-xs font-medium text-foreground/45 transition-colors hover:text-foreground/80"
+                  className="mt-7 text-xs font-medium text-ink-2 transition-colors hover:text-ink"
                 >
                   {exploration.cta.label} →
                 </Link>

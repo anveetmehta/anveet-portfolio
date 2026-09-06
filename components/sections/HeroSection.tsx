@@ -66,7 +66,7 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
   const accentPart = data.h1.includes(ACCENT_PHRASE) ? ACCENT_PHRASE : '';
 
   return (
-    <section className="relative flex min-h-[90vh] flex-col justify-center overflow-hidden border-b border-border/40">
+    <section className="relative flex min-h-[90vh] flex-col justify-center overflow-hidden border-b border-border">
 
       {/* Dot grid */}
       <div
@@ -105,7 +105,7 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 text-xs font-medium tracking-widest text-foreground/35 uppercase"
+            className="mb-8 text-xs font-medium tracking-widest text-ink-3 uppercase"
           >
             {data.eyebrow}
           </motion.p>
@@ -129,7 +129,7 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.22 + i * 0.08 }}
-                className="text-lg leading-relaxed text-foreground/65"
+                className="text-lg leading-relaxed text-ink"
               >
                 {para}
               </motion.p>
@@ -150,7 +150,7 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.6 }}
-                className="text-xs italic text-foreground/25"
+                className="text-xs italic text-ink-3"
               >
                 — {AMBIENT_THOUGHTS[thoughtIdx]}
               </motion.p>
@@ -170,11 +170,11 @@ export function HeroSection({ data = heroContent }: HeroSectionProps) {
                 className={cn(
                   'text-sm font-medium transition-all duration-200',
                   cta.variant === 'primary' &&
-                    'rounded-lg border border-accent/35 bg-accent/10 px-6 py-3 text-foreground/90 hover:border-accent/60 hover:bg-accent/15',
+                    'rounded-lg border border-accent/35 bg-accent/10 px-6 py-3 text-ink hover:border-accent/60 hover:bg-accent/15',
                   cta.variant === 'ghost' &&
-                    'rounded-lg border border-border/60 px-6 py-3 text-foreground/55 hover:border-foreground/30 hover:text-foreground/90',
+                    'rounded-lg border border-foreground/25 px-6 py-3 text-ink-2 hover:border-foreground/30 hover:text-ink',
                   cta.variant === 'link' &&
-                    'text-foreground/35 transition-colors hover:text-foreground/65'
+                    'text-ink-3 transition-colors hover:text-ink'
                 )}
               >
                 {cta.label}

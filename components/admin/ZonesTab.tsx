@@ -71,8 +71,8 @@ export function ZonesTab() {
   return (
     <div className="space-y-4">
       <div>
-        <p className="text-sm font-medium text-foreground/80">Homepage Content Zones</p>
-        <p className="mt-1 text-xs text-foreground/40">
+        <p className="text-sm font-medium text-ink">Homepage Content Zones</p>
+        <p className="mt-1 text-xs text-ink-2">
           Edit any zone and save — the homepage updates within 60 seconds without a deploy.
         </p>
       </div>
@@ -88,7 +88,7 @@ export function ZonesTab() {
               'rounded-md border px-3 py-1.5 text-xs font-medium transition-colors',
               activeKey === z.key
                 ? 'border-foreground/30 bg-foreground/8 text-foreground'
-                : 'border-border/50 text-foreground/50 hover:text-foreground/80'
+                : 'border-border text-ink-2 hover:text-ink'
             )}
           >
             {z.label}
@@ -97,11 +97,11 @@ export function ZonesTab() {
       </div>
 
       {loading ? (
-        <div className="h-64 animate-pulse rounded border border-border/40 bg-muted/40" />
+        <div className="h-64 animate-pulse rounded border border-border bg-muted/40" />
       ) : (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-medium text-foreground/50">{currentZone?.label}</p>
+            <p className="text-xs font-medium text-ink-2">{currentZone?.label}</p>
             <div className="flex items-center gap-2">
               {error && <p className="text-xs text-red-400">{error}</p>}
               {saved && <p className="text-xs text-emerald-400">Saved ✓</p>}
@@ -124,10 +124,10 @@ export function ZonesTab() {
             }}
             rows={24}
             spellCheck={false}
-            className="w-full rounded-md border border-border/50 bg-muted/30 p-4 font-mono text-xs text-foreground/80 focus:border-foreground/30 focus:outline-none"
+            className="w-full rounded-md border border-border bg-muted/30 p-4 font-mono text-xs text-ink focus:border-foreground/30 focus:outline-none"
           />
 
-          <p className="text-xs text-foreground/25">
+          <p className="text-xs text-ink-3">
             Edit JSON directly. Structure must match the zone&apos;s TypeScript type. Reload the homepage after saving to see changes.
           </p>
         </div>

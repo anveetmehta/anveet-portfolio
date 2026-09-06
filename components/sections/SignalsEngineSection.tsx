@@ -30,7 +30,7 @@ export function SignalsEngineSection() {
   const [activeTheme, setActiveTheme] = useState<string | null>(null);
 
   return (
-    <section id="signals-engine" className="border-b border-border/30 py-24 sm:py-32">
+    <section id="signals-engine" className="border-b border-border py-24 sm:py-32">
       <Container>
         <div className="flex items-start justify-between gap-4">
           <motion.p
@@ -38,7 +38,7 @@ export function SignalsEngineSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-12 text-xs font-medium tracking-widest text-foreground/35 uppercase"
+            className="mb-12 text-xs font-medium tracking-widest text-ink-3 uppercase"
           >
             Signals
           </motion.p>
@@ -49,7 +49,7 @@ export function SignalsEngineSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="flex items-center gap-2 text-xs text-foreground/30"
+            className="flex items-center gap-2 text-xs text-ink-3"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/40" />
@@ -77,8 +77,8 @@ export function SignalsEngineSection() {
               onClick={() => setActiveTheme(activeTheme === theme ? null : theme)}
               className={`rounded-full border px-3.5 py-1.5 text-xs transition-colors ${
                 activeTheme === theme
-                  ? 'border-foreground/30 text-foreground/70'
-                  : 'border-border/30 text-foreground/40 hover:border-border/50 hover:text-foreground/60'
+                  ? 'border-foreground/30 text-ink'
+                  : 'border-border text-ink-2 hover:border-border hover:text-ink-2'
               }`}
             >
               {theme}
@@ -97,7 +97,7 @@ export function SignalsEngineSection() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="py-5"
             >
-              <p className="text-sm leading-relaxed text-foreground/65">{statement}</p>
+              <p className="text-sm leading-relaxed text-ink">{statement}</p>
             </motion.div>
           ))}
         </div>
@@ -107,7 +107,7 @@ export function SignalsEngineSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.3 }}
-          className="mt-8 text-xs text-foreground/25"
+          className="mt-8 text-xs text-ink-3"
         >
           Emerging operational patterns · continuously updating
         </motion.p>

@@ -74,7 +74,7 @@ export function RegtechTab({ onSwitchToArticles }: RegtechTabProps) {
                   'rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
                   region === r
                     ? 'bg-accent text-white'
-                    : 'text-foreground/60 hover:text-foreground'
+                    : 'text-ink-2 hover:text-foreground'
                 )}
               >
                 {r === 'india' ? 'India' : 'Global'}
@@ -97,13 +97,13 @@ export function RegtechTab({ onSwitchToArticles }: RegtechTabProps) {
         {loading && (
           <div className="py-12 text-center">
             <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-border border-t-accent" />
-            <p className="mt-3 text-sm text-foreground/50">Fetching {region} RegTech news…</p>
+            <p className="mt-3 text-sm text-ink-2">Fetching {region} RegTech news…</p>
           </div>
         )}
 
         {/* Empty state */}
         {!loading && newsItems.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-border p-12 text-center text-foreground/40">
+          <div className="rounded-2xl border border-dashed border-border p-12 text-center text-ink-2">
             Fetch the latest {region} RegTech news to get started.
           </div>
         )}
@@ -129,7 +129,7 @@ export function RegtechTab({ onSwitchToArticles }: RegtechTabProps) {
                             href={item.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-0.5 shrink-0 text-foreground/30 hover:text-foreground/60"
+                            className="mt-0.5 shrink-0 text-ink-3 hover:text-ink-2"
                             aria-label="Open source"
                           >
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -140,7 +140,7 @@ export function RegtechTab({ onSwitchToArticles }: RegtechTabProps) {
                           </a>
                         )}
                       </div>
-                      <p className="mt-1 text-xs text-foreground/50">
+                      <p className="mt-1 text-xs text-ink-2">
                         {item.source}
                         {item.pubDate && <span> · {formatDate(item.pubDate)}</span>}
                       </p>

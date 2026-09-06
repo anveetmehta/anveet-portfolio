@@ -58,7 +58,7 @@ export function Logo({ size = 28, withWordmark = false, animated = false, classN
       </span>
 
       {withWordmark && (
-        <span className="text-sm font-medium text-foreground/85">Anveet Mehta</span>
+        <span className="text-sm font-medium text-ink">Anveet Mehta</span>
       )}
     </span>
   );

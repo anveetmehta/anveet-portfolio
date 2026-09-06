@@ -35,7 +35,7 @@ export function AdminTabs() {
               'flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors min-w-[80px]',
               activeTab === tab
                 ? 'bg-card text-foreground shadow-sm'
-                : 'text-foreground/60 hover:text-foreground'
+                : 'text-ink-2 hover:text-foreground'
             )}
           >
             {TAB_LABELS[tab]}

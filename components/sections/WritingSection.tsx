@@ -59,11 +59,11 @@ export function WritingSection() {
       <div className="space-y-4">
         {allPublished.map((entry) => (
           <Card key={`${entry.title}-published`} accentColor="blue">
-            <p className="text-xs uppercase tracking-wide text-foreground/50">
+            <p className="text-xs uppercase tracking-wide text-ink-2">
               {formatStatus(entry.status)}
             </p>
             <h3 className="mt-2 text-lg font-semibold">{entry.title}</h3>
-            <p className="mt-2 text-foreground/75">{entry.summary}</p>
+            <p className="mt-2 text-ink">{entry.summary}</p>
             {entry.href ? (
               <Link
                 href={entry.href}
@@ -82,10 +82,10 @@ export function WritingSection() {
           {drafts.map((entry) => (
             <div
               key={entry.title}
-              className="flex items-center justify-between rounded-lg border border-dashed border-border/70 px-4 py-3 opacity-70"
+              className="flex items-center justify-between rounded-lg border border-dashed border-foreground/25 px-4 py-3 opacity-70"
             >
-              <span className="text-sm font-medium text-foreground/80">{entry.title}</span>
-              <span className="text-xs uppercase tracking-wide text-foreground/40">
+              <span className="text-sm font-medium text-ink">{entry.title}</span>
+              <span className="text-xs uppercase tracking-wide text-ink-2">
                 {formatStatus(entry.status)}
               </span>
             </div>

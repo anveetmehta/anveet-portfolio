@@ -107,13 +107,13 @@ export function DomainExpertiseSection() {
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="font-semibold">{domain.title}</h3>
                       {domain.chapters.length > 0 && (
-                        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-foreground/50">
+                        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-ink-2">
                           {domain.chapters.length} topic{domain.chapters.length !== 1 ? 's' : ''}
                         </span>
                       )}
                     </div>
                     {domain.summary && (
-                      <p className="mt-1 text-sm text-foreground/65">{domain.summary}</p>
+                      <p className="mt-1 text-sm text-ink">{domain.summary}</p>
                     )}
                   </div>
                   <ChevronIcon open={isOpen} />
@@ -129,12 +129,12 @@ export function DomainExpertiseSection() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <div className="mt-4 space-y-3 border-t border-border/50 pt-4">
+                      <div className="mt-4 space-y-3 border-t border-border pt-4">
                         {domain.chapters.map(chapter => (
                           <div key={chapter.publicId} className="rounded-xl bg-muted/40 p-4">
                             <p className="font-medium text-sm">{chapter.title}</p>
                             {chapter.summary && (
-                              <p className="mt-1 text-xs text-foreground/55">{chapter.summary}</p>
+                              <p className="mt-1 text-xs text-ink-2">{chapter.summary}</p>
                             )}
                             {chapter.linkedSlugs && chapter.linkedSlugs.length > 0 && (
                               <div className="mt-2 flex flex-wrap gap-2">
@@ -145,14 +145,14 @@ export function DomainExpertiseSection() {
                                     <a
                                       key={slug}
                                       href={href}
-                                      className="rounded-md border border-border/60 px-2 py-0.5 text-xs text-foreground/60 hover:text-accent hover:border-accent/40 transition-colors"
+                                      className="rounded-md border border-foreground/25 px-2 py-0.5 text-xs text-ink-2 hover:text-accent hover:border-accent/40 transition-colors"
                                     >
                                       {slug}
                                     </a>
                                   ) : (
                                     <span
                                       key={slug}
-                                      className="rounded-md border border-border/40 px-2 py-0.5 text-xs text-foreground/40"
+                                      className="rounded-md border border-border px-2 py-0.5 text-xs text-ink-2"
                                     >
                                       {slug}
                                     </span>

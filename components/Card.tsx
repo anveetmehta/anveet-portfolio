@@ -21,7 +21,7 @@ export function Card({ children, className, accentColor = 'none', dashed = false
   return (
     <article
       className={cn(
-        'rounded-2xl border border-border/80 bg-card/90 p-6 shadow-sm backdrop-blur-sm transition-all duration-300',
+        'rounded-2xl border border-foreground/25 bg-card/90 p-6 shadow-sm backdrop-blur-sm transition-all duration-300',
         accentStyles[accentColor],
         dashed && 'border-dashed opacity-75',
         className

@@ -10,7 +10,7 @@ export function NowSection() {
     >
       <ul className="max-w-3xl space-y-3">
         {nowItems.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-foreground/75">
+          <li key={item} className="flex items-start gap-3 text-ink">
             <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
             <span>{item}</span>
           </li>

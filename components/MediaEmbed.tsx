@@ -35,7 +35,7 @@ export function MediaEmbed({ src, alt, caption, type, className }: MediaEmbedPro
     if (!videoId) return null;
     return (
       <figure className={cn('my-6', className)}>
-        <div className="relative overflow-hidden rounded-xl border border-border/50" style={{ paddingBottom: '56.25%' }}>
+        <div className="relative overflow-hidden rounded-xl border border-border" style={{ paddingBottom: '56.25%' }}>
           <iframe
             src={`https://www.youtube.com/embed/${videoId}`}
             title={alt ?? 'YouTube video'}
@@ -44,7 +44,7 @@ export function MediaEmbed({ src, alt, caption, type, className }: MediaEmbedPro
             className="absolute inset-0 h-full w-full"
           />
         </div>
-        {caption && <figcaption className="mt-2 text-center text-sm text-foreground/50">{caption}</figcaption>}
+        {caption && <figcaption className="mt-2 text-center text-sm text-ink-2">{caption}</figcaption>}
       </figure>
     );
   }
@@ -54,7 +54,7 @@ export function MediaEmbed({ src, alt, caption, type, className }: MediaEmbedPro
     if (!videoId) return null;
     return (
       <figure className={cn('my-6', className)}>
-        <div className="relative overflow-hidden rounded-xl border border-border/50" style={{ paddingBottom: '56.25%' }}>
+        <div className="relative overflow-hidden rounded-xl border border-border" style={{ paddingBottom: '56.25%' }}>
           <iframe
             src={`https://player.vimeo.com/video/${videoId}`}
             title={alt ?? 'Vimeo video'}
@@ -63,7 +63,7 @@ export function MediaEmbed({ src, alt, caption, type, className }: MediaEmbedPro
             className="absolute inset-0 h-full w-full"
           />
         </div>
-        {caption && <figcaption className="mt-2 text-center text-sm text-foreground/50">{caption}</figcaption>}
+        {caption && <figcaption className="mt-2 text-center text-sm text-ink-2">{caption}</figcaption>}
       </figure>
     );
   }
@@ -75,9 +75,9 @@ export function MediaEmbed({ src, alt, caption, type, className }: MediaEmbedPro
         src={src}
         alt={alt ?? ''}
         loading="lazy"
-        className="w-full rounded-xl border border-border/50 shadow-sm"
+        className="w-full rounded-xl border border-border shadow-sm"
       />
-      {caption && <figcaption className="mt-2 text-center text-sm text-foreground/50">{caption}</figcaption>}
+      {caption && <figcaption className="mt-2 text-center text-sm text-ink-2">{caption}</figcaption>}
     </figure>
   );
 }

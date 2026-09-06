@@ -16,7 +16,7 @@ export default function CaseStudiesIndexPage() {
     <section className="py-16 sm:py-20">
       <Container>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Case Studies</h1>
-        <p className="mt-4 max-w-2xl text-foreground/75">
+        <p className="mt-4 max-w-2xl text-ink">
           Deep dives into complex problems I&apos;ve worked on.
         </p>
         <div className="mt-10">

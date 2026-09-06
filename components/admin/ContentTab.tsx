@@ -89,7 +89,7 @@ export function ContentTab() {
     }
   }
 
-  if (loading) return <div className="py-12 text-center text-foreground/50">Loading articles…</div>;
+  if (loading) return <div className="py-12 text-center text-ink-2">Loading articles…</div>;
 
   if (error) {
     return (

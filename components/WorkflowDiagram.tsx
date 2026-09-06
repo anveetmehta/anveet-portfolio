@@ -25,7 +25,7 @@ export function WorkflowDiagram({ steps }: WorkflowDiagramProps) {
           </span>
           <div className="rounded-xl border border-border bg-muted/40 p-5">
             <h3 className="text-lg font-semibold">{step.title}</h3>
-            <p className="mt-2 text-foreground/75">{step.details}</p>
+            <p className="mt-2 text-ink">{step.details}</p>
           </div>
         </motion.li>
       ))}

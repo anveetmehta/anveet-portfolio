@@ -64,7 +64,7 @@ export function Layout({ children }: LayoutProps) {
     <div className="min-h-screen">
       <ScrollProgress />
 
-      <header className="sticky top-0 z-20 border-b border-border/40 bg-background/90 backdrop-blur-md">
+      <header className="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-md">
         <Container className="flex h-14 items-center justify-between">
           <Link href="/" className="transition-opacity hover:opacity-80">
             <Logo size={22} withWordmark />
@@ -81,7 +81,7 @@ export function Layout({ children }: LayoutProps) {
                 >
                   <Link
                     href={item.href}
-                    className="text-foreground/45 transition-colors hover:text-foreground/80"
+                    className="text-ink-2 transition-colors hover:text-ink"
                   >
                     {item.label}
                   </Link>
@@ -98,16 +98,16 @@ export function Layout({ children }: LayoutProps) {
                         className="absolute left-1/2 top-[calc(100%+10px)] z-50 -translate-x-1/2 w-56"
                       >
                         {/* Arrow */}
-                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 h-3 w-3 rotate-45 border-l border-t border-border/40 bg-card" />
-                        <div className="relative overflow-hidden rounded-xl border border-border/40 bg-card/95 py-3 shadow-xl shadow-black/20 backdrop-blur-md">
-                          <p className="px-4 pb-2 text-[10px] font-medium tracking-widest text-foreground/30 uppercase">
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 h-3 w-3 rotate-45 border-l border-t border-border bg-card" />
+                        <div className="relative overflow-hidden rounded-xl border border-border bg-card/95 py-3 shadow-xl shadow-black/20 backdrop-blur-md">
+                          <p className="px-4 pb-2 text-[10px] font-medium tracking-widest text-ink-3 uppercase">
                             {item.preview.label}
                           </p>
                           {item.preview.items.map((sub) => (
                             <Link
                               key={sub}
                               href={item.href}
-                              className="block px-4 py-1.5 text-xs text-foreground/55 transition-colors hover:bg-muted/50 hover:text-foreground/90"
+                              className="block px-4 py-1.5 text-xs text-ink-2 transition-colors hover:bg-muted/50 hover:text-ink"
                             >
                               {sub}
                             </Link>
@@ -119,7 +119,7 @@ export function Layout({ children }: LayoutProps) {
                 </div>
               ))}
             </nav>
-            <div className="border-l border-border/40 pl-4">
+            <div className="border-l border-border pl-4">
               <ThemeToggle />
             </div>
           </div>
@@ -128,34 +128,34 @@ export function Layout({ children }: LayoutProps) {
 
       <main>{children}</main>
 
-      <footer className="border-t border-border/30 py-10">
+      <footer className="border-t border-border py-10">
         <Container>
           <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
-            <span className="text-foreground/35">
+            <span className="text-ink-3">
               <Logo size={16} withWordmark />
             </span>
 
-            <div className="flex items-center gap-5 text-foreground/40">
+            <div className="flex items-center gap-5 text-ink-2">
               {siteMeta.socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-foreground/70"
+                  className="transition-colors hover:text-ink"
                 >
                   {link.label}
                 </a>
               ))}
               <a
                 href={`mailto:${siteMeta.email}`}
-                className="transition-colors hover:text-foreground/70"
+                className="transition-colors hover:text-ink"
               >
                 Email
               </a>
               <a
                 href="/rss.xml"
-                className="transition-colors hover:text-foreground/70"
+                className="transition-colors hover:text-ink"
               >
                 RSS
               </a>
