@@ -24,6 +24,10 @@ const config: Config = {
         card: 'hsl(var(--card) / <alpha-value>)',
         accent: 'hsl(var(--accent) / <alpha-value>)',
         'accent-warm': 'hsl(var(--accent-warm) / <alpha-value>)',
+        ink: 'hsl(var(--foreground))',
+        'ink-2': 'hsl(var(--foreground) / var(--ink-a2))',
+        'ink-3': 'hsl(var(--foreground) / var(--ink-a3))',
+        'ink-4': 'hsl(var(--foreground) / var(--ink-a4))',
       },
       boxShadow: {
         glow: '0 10px 35px -15px rgba(59, 130, 246, 0.35)'

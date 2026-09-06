@@ -17,7 +17,7 @@ const RIGHT_NOW: Entry[] = [
 
 export function RightNowSection() {
   return (
-    <section id="now" className="border-b border-border/30 py-20">
+    <section id="now" className="border-b border-border py-20">
       <Container>
         <div className="max-w-2xl">
           <div className="flex items-center gap-2.5 text-[10px] font-medium tracking-widest uppercase text-emerald-700 dark:text-emerald-300/85">
@@ -36,9 +36,9 @@ export function RightNowSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="grid grid-cols-[64px_1fr] gap-4 py-3.5 text-sm leading-relaxed text-foreground/78"
+                className="grid grid-cols-[64px_1fr] gap-4 py-3.5 text-sm leading-relaxed text-ink"
               >
-                <span className="font-mono text-[10px] tracking-widest text-foreground/40 uppercase mt-0.5">
+                <span className="font-mono text-[10px] tracking-widest text-ink-2 uppercase mt-0.5">
                   {e.when}
                 </span>
                 <span>{e.text}</span>

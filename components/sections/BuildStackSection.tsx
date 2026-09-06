@@ -47,7 +47,7 @@ export function BuildStackSection() {
                 </span>
                 <div className="min-w-0">
                   <p className="font-semibold text-sm leading-snug">{item.name}</p>
-                  <p className="mt-1.5 text-sm text-foreground/60 leading-relaxed">
+                  <p className="mt-1.5 text-sm text-ink-2 leading-relaxed">
                     {item.proofLine}
                   </p>
                   {item.link && (

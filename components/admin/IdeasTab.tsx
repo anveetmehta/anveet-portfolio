@@ -172,7 +172,7 @@ export function IdeasTab({ onSwitchToArticles }: { onSwitchToArticles: () => voi
   }
 
   if (loading) {
-    return <div className="py-12 text-center text-foreground/50">Loading ideas…</div>;
+    return <div className="py-12 text-center text-ink-2">Loading ideas…</div>;
   }
 
   if (error) {
@@ -208,7 +208,7 @@ export function IdeasTab({ onSwitchToArticles }: { onSwitchToArticles: () => voi
         onSubmit={handleQuickCapture}
         className="rounded-2xl border border-border bg-card p-4"
       >
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-foreground/40">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-2">
           Quick Capture
         </p>
         <div className="flex flex-wrap gap-2">

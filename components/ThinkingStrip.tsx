@@ -21,7 +21,7 @@ export function ThinkingStrip() {
   const items = [...THINKING_ITEMS, ...THINKING_ITEMS];
 
   return (
-    <div className="relative overflow-hidden border-t border-b border-border/20 py-3">
+    <div className="relative overflow-hidden border-t border-b border-border py-3">
       <p className="sr-only">Currently thinking about: {THINKING_ITEMS.join(', ')}</p>
 
       {/* Left fade */}
@@ -35,9 +35,9 @@ export function ThinkingStrip() {
         aria-hidden
       >
         {items.map((item, i) => (
-          <span key={i} className="inline-flex items-center gap-4 px-4 text-[11px] font-medium tracking-widest text-foreground/25 uppercase">
+          <span key={i} className="inline-flex items-center gap-4 px-4 text-[11px] font-medium tracking-widest text-ink-3 uppercase">
             {item}
-            <span className="text-foreground/12 text-[8px]">{SEPARATOR}</span>
+            <span className="text-ink-4 text-[8px]">{SEPARATOR}</span>
           </span>
         ))}
       </div>

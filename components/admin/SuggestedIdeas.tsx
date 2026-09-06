@@ -89,7 +89,7 @@ export function SuggestedIdeas({ onCapture, existingTitles }: SuggestedIdeasProp
         <div>
           <h3 className="text-sm font-semibold">Trending Ideas</h3>
           {lastRefreshed && (
-            <p className="mt-0.5 text-xs text-foreground/40">
+            <p className="mt-0.5 text-xs text-ink-2">
               Last refreshed: {getRefreshedLabel()}
             </p>
           )}
@@ -114,7 +114,7 @@ export function SuggestedIdeas({ onCapture, existingTitles }: SuggestedIdeasProp
       )}
 
       {loading && (
-        <p className="mt-4 text-center text-xs text-foreground/40 animate-pulse">
+        <p className="mt-4 text-center text-xs text-ink-2 animate-pulse">
           Scanning news & generating ideas…
         </p>
       )}
@@ -126,7 +126,7 @@ export function SuggestedIdeas({ onCapture, existingTitles }: SuggestedIdeasProp
             return (
               <div
                 key={originalIndex}
-                className="rounded-xl border border-border/60 bg-background p-3"
+                className="rounded-xl border border-foreground/25 bg-background p-3"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0 flex-1">
@@ -134,26 +134,26 @@ export function SuggestedIdeas({ onCapture, existingTitles }: SuggestedIdeasProp
                       <span className="text-yellow-500 text-xs">⚡</span>
                       <span className="text-sm font-medium">{suggestion.title}</span>
                     </div>
-                    <p className="mt-1 text-xs text-foreground/50 line-clamp-2">
+                    <p className="mt-1 text-xs text-ink-2 line-clamp-2">
                       {suggestion.description}
                     </p>
                     {suggestion.angle && (
                       <p className="mt-1 text-xs text-accent/70 italic">↳ {suggestion.angle}</p>
                     )}
                     {suggestion.sourceInspiration && (
-                      <p className="mt-1 text-xs text-foreground/30 italic">
+                      <p className="mt-1 text-xs text-ink-3 italic">
                         Source: {suggestion.sourceInspiration}
                       </p>
                     )}
                     <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                      <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-foreground/50">
+                      <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-ink-2">
                         {PILLAR_LABELS[suggestion.contentPillar] ?? suggestion.contentPillar}
                       </span>
                       <PlatformBadge platform="all" />
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 flex items-center gap-3 border-t border-border/50 pt-2">
+                <div className="mt-3 flex items-center gap-3 border-t border-border pt-2">
                   <button
                     type="button"
                     disabled={capturing === originalIndex}
@@ -165,7 +165,7 @@ export function SuggestedIdeas({ onCapture, existingTitles }: SuggestedIdeasProp
                   <button
                     type="button"
                     onClick={() => setDismissed(prev => new Set([...prev, originalIndex]))}
-                    className="text-xs text-foreground/30 hover:text-foreground/60"
+                    className="text-xs text-ink-3 hover:text-ink-2"
                   >
                     ✕ Dismiss
                   </button>
@@ -177,13 +177,13 @@ export function SuggestedIdeas({ onCapture, existingTitles }: SuggestedIdeasProp
       )}
 
       {!loading && suggestions.length > 0 && visibleSuggestions.length === 0 && (
-        <p className="mt-4 text-center text-xs text-foreground/40">
+        <p className="mt-4 text-center text-xs text-ink-2">
           All suggestions captured or dismissed. Click &quot;Find Trending Ideas&quot; to refresh.
         </p>
       )}
 
       {!loading && suggestions.length === 0 && !error && (
-        <p className="mt-4 text-center text-xs text-foreground/40">
+        <p className="mt-4 text-center text-xs text-ink-2">
           Click &apos;Find Trending Ideas&apos; to discover content opportunities based on trending news.
         </p>
       )}

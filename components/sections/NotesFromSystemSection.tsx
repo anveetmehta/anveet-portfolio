@@ -5,11 +5,13 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
 import { notesFromSystem } from '@/content/content';
+import { NoteMaturityBadge, type NoteMaturity } from '@/components/NoteMaturityBadge';
 
 type DisplayNote = {
   title: string;
   teaser?: string;
   href?: string;
+  maturity?: NoteMaturity;
 };
 
 export function NotesFromSystemSection() {
@@ -35,10 +37,10 @@ export function NotesFromSystemSection() {
   // DB articles if available, otherwise static fallbacks — never both
   const notes: DisplayNote[] = loaded && dbNotes.length > 0
     ? dbNotes
-    : notesFromSystem.map((n) => ({ title: n.title, teaser: n.teaser }));
+    : notesFromSystem.map((n) => ({ title: n.title, teaser: n.teaser, maturity: n.maturity }));
 
   return (
-    <section id="notes" className="border-b border-border/30 py-24 sm:py-32">
+    <section id="notes" className="border-b border-border py-24 sm:py-32">
       <Container>
         <div className="mb-12 flex items-center justify-between gap-6">
           <motion.p
@@ -46,7 +48,7 @@ export function NotesFromSystemSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="text-xs font-medium tracking-widest text-foreground/35 uppercase"
+            className="text-xs font-medium tracking-widest text-ink-3 uppercase"
           >
             Notes From The System
           </motion.p>
@@ -59,7 +61,7 @@ export function NotesFromSystemSection() {
           >
             <Link
               href="/writing"
-              className="text-xs text-foreground/35 transition-colors hover:text-foreground/65"
+              className="text-xs text-ink-3 transition-colors hover:text-ink"
             >
               All notes →
             </Link>
@@ -78,26 +80,27 @@ export function NotesFromSystemSection() {
               {note.href ? (
                 <Link href={note.href} className="group flex items-start justify-between gap-6 py-5">
                   <div className="flex flex-col gap-1.5">
-                    <span className="text-sm font-medium text-foreground/75 transition-colors group-hover:text-foreground">
+                    <span className="flex items-center gap-2 text-sm font-medium text-ink transition-colors group-hover:text-foreground">
                       {note.title}
+                      {note.maturity && <NoteMaturityBadge maturity={note.maturity} />}
                     </span>
                     {note.teaser && (
-                      <span className="line-clamp-1 text-xs leading-relaxed text-foreground/35">
+                      <span className="line-clamp-1 text-xs leading-relaxed text-ink-3">
                         {note.teaser}
                       </span>
                     )}
                   </div>
-                  <span className="mt-0.5 shrink-0 text-xs text-foreground/20 transition-colors group-hover:text-foreground/50">
+                  <span className="mt-0.5 shrink-0 text-xs text-ink-4 transition-colors group-hover:text-ink-2">
                     →
                   </span>
                 </Link>
               ) : (
                 <div className="flex flex-col gap-1.5 py-5">
-                  <span className="text-sm font-medium text-foreground/35">{note.title}</span>
+                  <span className="text-sm font-medium text-ink-3">{note.title}</span>
                   {note.teaser && (
-                    <span className="text-xs text-foreground/25">{note.teaser}</span>
+                    <span className="text-xs text-ink-3">{note.teaser}</span>
                   )}
-                  <span className="text-xs text-foreground/20">Coming soon</span>
+                  <span className="text-xs text-ink-4">Coming soon</span>
                 </div>
               )}
             </motion.li>

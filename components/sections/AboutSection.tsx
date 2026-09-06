@@ -16,8 +16,8 @@ export function AboutSection() {
         transition={{ duration: 0.4 }}
       >
         <Card accentColor="blue" className="max-w-4xl space-y-4">
-          <p className="leading-relaxed text-foreground/80">{aboutContent.intro}</p>
-          <p className="leading-relaxed text-foreground/80">{aboutContent.body}</p>
+          <p className="leading-relaxed text-ink">{aboutContent.intro}</p>
+          <p className="leading-relaxed text-ink">{aboutContent.body}</p>
         </Card>
       </motion.div>
       <motion.div
@@ -28,7 +28,7 @@ export function AboutSection() {
         className="mt-8 max-w-4xl"
       >
         <h3 className="text-lg font-semibold">What I&apos;m known for</h3>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/75">
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-ink">
           {aboutContent.knownFor.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -44,7 +44,7 @@ export function AboutSection() {
         <h3 className="text-lg font-semibold">Currently</h3>
         <ul className="mt-3 space-y-2">
           {nowItems.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-foreground/75">
+            <li key={item} className="flex items-start gap-3 text-ink">
               <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
               <span>{item}</span>
             </li>

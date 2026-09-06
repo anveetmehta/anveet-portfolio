@@ -24,7 +24,7 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-6 text-xs font-medium tracking-widest text-foreground/35 uppercase"
+            className="mb-6 text-xs font-medium tracking-widest text-ink-3 uppercase"
           >
             {data.label}
           </motion.p>
@@ -46,7 +46,7 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: data.heading ? 0.14 : 0.07 }}
-            className="text-base leading-relaxed text-foreground/65 sm:text-lg"
+            className="text-base leading-relaxed text-ink sm:text-lg"
           >
             {data.body}
           </motion.p>
@@ -61,7 +61,7 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
             {data.areas.map((area) => (
               <span
                 key={area}
-                className="rounded-full border border-border/40 px-3 py-1 text-xs text-foreground/40"
+                className="rounded-full border border-border px-3 py-1 text-xs text-ink-2"
               >
                 {area}
               </span>
@@ -77,10 +77,10 @@ export function OpenThreadsSection({ data = openThreadsContent }: OpenThreadsSec
           >
             <Link
               href={data.cta.href}
-              className="inline-flex items-center gap-2 rounded-lg border border-border/50 px-6 py-3 text-sm font-medium text-foreground/60 transition-all duration-200 hover:border-foreground/30 hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-ink-2 transition-all duration-200 hover:border-foreground/30 hover:text-foreground"
             >
               {data.cta.label}
-              <span className="text-foreground/30">→</span>
+              <span className="text-ink-3">→</span>
             </Link>
           </motion.div>
         </div>

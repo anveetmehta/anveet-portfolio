@@ -3,14 +3,20 @@
 @tailwind utilities;
 
 :root {
-  /* Light — warm paper */
-  --background:  38 28% 96%;
-  --foreground: 220 22% 10%;
-  --muted:       38 22% 93%;
-  --border:     220 14% 86%;
-  --card:        38 30% 98%;
-  --accent:     221 83% 48%;
-  --accent-warm: 28 88% 50%;
+  /* Light — warm paper (readability pass: deeper ink, visible hairline border) */
+  --background:  38 24% 97%;
+  --foreground: 220 24%  8%;
+  --muted:       38 20% 94%;
+  --border:     220 14% 80%;
+  --card:         0  0% 100%;
+  --accent:     221 83% 44%;
+  --accent-warm: 28 88% 44%;
+
+  /* Ink scale — the only legal text colours. Four role-named rungs instead
+     of the old 14-rung opacity ramp; see tailwind.config.ts ink-2/3/4. */
+  --ink-a2: 0.80;
+  --ink-a3: 0.62;
+  --ink-a4: 0.46;
 
   /* Display fonts — overridden by next/font but here as a fallback. */
   --font-display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
@@ -18,12 +24,22 @@
 
 .dark {
   --background: 220 13% 5%;
-  --foreground: 215 20% 88%;
+  --foreground: 215 22% 90%;
   --muted:      220  9% 12%;
-  --border:     220  9% 17%;
+  --border:     220  9% 22%;
   --card:       220 11% 8%;
   --accent:     221 83% 61%;
-  --accent-warm: 28 88% 60%;
+  --accent-warm: 38 92% 55%;
+
+  --ink-a2: 0.82;
+  --ink-a3: 0.66;
+  --ink-a4: 0.50;
+}
+
+@media (prefers-contrast: more) {
+  :root { --ink-a2: 0.92; --ink-a3: 0.78; --ink-a4: 0.62; --border: 220 14% 66%; }
+  .dark { --ink-a2: 0.94; --ink-a3: 0.82; --ink-a4: 0.66; --border: 220  9% 34%; }
+  body::after { display: none; }
 }
 
 html {
@@ -40,23 +56,65 @@ a { @apply transition-colors hover:text-accent; }
 
 ::selection { @apply bg-accent/20; }
 
-/* ── Atmospheric page-edge vignette (light mode only) ───────────────────── */
+/* ── Links carry the accent, not a faint ink rung ────────────────────────── */
+.link-accent,
+.prose a,
+a[href^="mailto:"],
+a[href^="http"] {
+  color: hsl(var(--accent));
+  text-decoration: none;
+  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link-accent:hover,
+.prose a:hover,
+a[href^="mailto:"]:hover,
+a[href^="http"]:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Atmospheric page-edge vignette (light mode only, halved tax) ────────── */
 body::after {
   content: '';
   position: fixed; inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(ellipse at 50% 30%, transparent 35%, hsl(35 30% 86% / 0.45) 100%);
+  background: radial-gradient(ellipse at 50% 32%, transparent 60%, hsl(35 26% 84% / 0.18) 100%);
 }
 .dark body::after { display: none; }
 
-/* ── Paper shadow on canonical cards ─────────────────────────────────────── */
+/* ── Paper shadow + visible hairline on canonical cards ──────────────────── */
 .paper-card {
-  box-shadow:
-    0 1px 0 rgba(0,0,0,0.04),
-    0 8px 24px -16px rgba(0,0,0,0.08);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  border-radius: 1rem;
+  box-shadow: 0 1px 0 rgba(16, 20, 28, 0.03), 0 10px 28px -20px rgba(16, 20, 28, 0.10);
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms;
+}
+.paper-card:hover {
+  border-color: hsl(var(--foreground) / 0.25);
+  box-shadow: 0 1px 0 rgba(16, 20, 28, 0.04), 0 14px 32px -20px rgba(16, 20, 28, 0.14);
 }
 .dark .paper-card { box-shadow: none; }
+.dark .paper-card:hover { box-shadow: none; }
+
+/* ── Comfort: size and measure for long-form copy ─────────────────────────── */
+.prose,
+.section-copy {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 68ch;
+  color: hsl(var(--foreground) / var(--ink-a2));
+  text-wrap: pretty;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(var(--foreground) / var(--ink-a3));
+}
 
 /* ── Ambient motion keyframes ────────────────────────────────────────────── */
 

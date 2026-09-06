@@ -14,7 +14,7 @@ type IdeaEditorProps = {
 
 const inputClass =
   'w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent';
-const labelClass = 'block text-xs font-medium text-foreground/60 mb-1';
+const labelClass = 'block text-xs font-medium text-ink-2 mb-1';
 const sectionClass = 'space-y-4';
 
 const PLATFORMS = [
@@ -95,7 +95,7 @@ export function IdeaEditor({ idea, onSave, onCancel, onDelete }: IdeaEditorProps
         <h3 className="text-base font-semibold">
           {idea ? 'Edit Idea' : 'New Idea'}
         </h3>
-        <button type="button" onClick={onCancel} className="text-xs text-foreground/50 hover:text-foreground">
+        <button type="button" onClick={onCancel} className="text-xs text-ink-2 hover:text-foreground">
           ← Back
         </button>
       </div>
@@ -147,7 +147,7 @@ export function IdeaEditor({ idea, onSave, onCancel, onDelete }: IdeaEditorProps
 
         {/* Classification */}
         <div className="border-t border-border pt-4">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-foreground/40">Classification</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-2">Classification</p>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>Platform</label>
@@ -177,7 +177,7 @@ export function IdeaEditor({ idea, onSave, onCancel, onDelete }: IdeaEditorProps
                       'flex-1 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors',
                       priority === p.value
                         ? 'border-accent bg-accent/10 text-accent'
-                        : 'border-border text-foreground/50 hover:text-foreground'
+                        : 'border-border text-ink-2 hover:text-foreground'
                     )}
                   >
                     {p.label}
@@ -190,14 +190,14 @@ export function IdeaEditor({ idea, onSave, onCancel, onDelete }: IdeaEditorProps
                 checked={isTrending}
                 onChange={() => setIsTrending(prev => !prev)}
               />
-              <span className="text-sm text-foreground/70">Trending topic</span>
+              <span className="text-sm text-ink">Trending topic</span>
             </div>
           </div>
         </div>
 
         {/* Source + generation */}
         <div className="border-t border-border pt-4">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-foreground/40">Source & Generation</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-2">Source & Generation</p>
           <div className="space-y-4">
             <div>
               <label className={labelClass}>Source / Inspiration</label>
@@ -246,7 +246,7 @@ export function IdeaEditor({ idea, onSave, onCancel, onDelete }: IdeaEditorProps
               type="button"
               disabled={saving}
               onClick={e => handleSubmit(e as unknown as FormEvent, 'archived')}
-              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground/50 hover:text-foreground disabled:opacity-50"
+              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-ink-2 hover:text-foreground disabled:opacity-50"
             >
               Archive
             </button>
@@ -261,7 +261,7 @@ export function IdeaEditor({ idea, onSave, onCancel, onDelete }: IdeaEditorProps
                   'rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50',
                   confirmDelete
                     ? 'border-red-500 text-red-500 hover:bg-red-500/10'
-                    : 'border-border text-foreground/40 hover:text-red-500 hover:border-red-400'
+                    : 'border-border text-ink-2 hover:text-red-500 hover:border-red-400'
                 )}
               >
                 {deleting ? 'Deleting…' : confirmDelete ? 'Confirm delete' : 'Delete'}

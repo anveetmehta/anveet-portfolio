@@ -60,6 +60,9 @@ export interface NoteEntry {
   teaser?: string;
   href?: string;
   status: 'published' | 'draft' | 'planned';
+  slug?: string;
+  maturity?: 'seedling' | 'budding' | 'evergreen';
+  links?: string[];
 }
 
 export interface OpenThreadsContent {

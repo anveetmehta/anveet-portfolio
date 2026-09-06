@@ -33,7 +33,7 @@ export function ArticleShareButtons({ title, slug, linkedinVersion }: ArticleSha
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <span className="text-xs font-medium uppercase tracking-wide text-foreground/40 mr-1">
+      <span className="text-xs font-medium uppercase tracking-wide text-ink-2 mr-1">
         Share
       </span>
 
@@ -55,7 +55,7 @@ export function ArticleShareButtons({ title, slug, linkedinVersion }: ArticleSha
       {/* Copy link */}
       <button
         onClick={copyLink}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground/60 hover:text-foreground hover:border-foreground/30 transition-colors"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-ink-2 hover:text-foreground hover:border-foreground/30 transition-colors"
       >
         {linkCopied ? (
           <>

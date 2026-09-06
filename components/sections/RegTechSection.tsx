@@ -70,7 +70,7 @@ export function RegTechSection() {
               'rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
               activeRegion === r
                 ? 'bg-accent text-white'
-                : 'text-foreground/60 hover:text-foreground'
+                : 'text-ink-2 hover:text-foreground'
             )}
           >
             {r === 'india' ? 'India' : 'Global'}
@@ -80,7 +80,7 @@ export function RegTechSection() {
 
       {/* Empty state */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border p-10 text-center text-foreground/40">
+        <div className="rounded-2xl border border-dashed border-border p-10 text-center text-ink-2">
           No {activeRegion} RegTech commentary yet.
         </div>
       ) : (
@@ -101,19 +101,19 @@ export function RegTechSection() {
                       {article.commentaryRegion === 'india' ? 'India' : 'Global'}
                     </span>
                     {formatDate(article.createdAt) && (
-                      <span className="text-xs text-foreground/40">
+                      <span className="text-xs text-ink-2">
                         {formatDate(article.createdAt)}
                       </span>
                     )}
                   </div>
                   <h3 className="mt-1.5 font-semibold leading-snug">{article.title}</h3>
                   {article.summary && (
-                    <p className="mt-1.5 text-sm text-foreground/65">{article.summary}</p>
+                    <p className="mt-1.5 text-sm text-ink">{article.summary}</p>
                   )}
                 </div>
                 <a
                   href={`/writing/${article.slug}`}
-                  className="shrink-0 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground/70 transition-colors hover:text-foreground hover:border-foreground/40"
+                  className="shrink-0 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-ink transition-colors hover:text-foreground hover:border-foreground/40"
                 >
                   Read →
                 </a>

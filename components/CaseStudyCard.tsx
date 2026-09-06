@@ -24,7 +24,7 @@ export function CaseStudyCard({ study, index = 0 }: Props) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="paper-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 transition-all duration-300 hover:border-border/80"
+      className="paper-card group relative overflow-hidden rounded-2xl border border-border bg-card/70 transition-all duration-300 hover:border-foreground/25"
     >
       {/* shimmer on hover */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -33,11 +33,11 @@ export function CaseStudyCard({ study, index = 0 }: Props) {
         <Thumb tags={study.tags} slug={study.slug} />
 
         <div className="flex flex-col p-6 sm:p-8">
-          <p className="font-mono text-[10px] tracking-widest uppercase text-foreground/45">
+          <p className="font-mono text-[10px] tracking-widest uppercase text-ink-2">
             Case Study &middot; {study.tags[0] ?? '—'}
           </p>
           <h3 className="mt-2 text-xl font-semibold leading-tight tracking-tight">{study.title}</h3>
-          <p className="mt-3 text-sm leading-relaxed text-foreground/65 line-clamp-3">{study.excerpt}</p>
+          <p className="mt-3 text-sm leading-relaxed text-ink line-clamp-3">{study.excerpt}</p>
 
           {impacts.length > 0 && (
             <div className="mt-5 grid grid-cols-2 gap-5">
@@ -49,7 +49,7 @@ export function CaseStudyCard({ study, index = 0 }: Props) {
                   >
                     {im.value}
                   </div>
-                  <div className="mt-1.5 text-[10px] leading-tight text-foreground/55">{im.label}</div>
+                  <div className="mt-1.5 text-[10px] leading-tight text-ink-2">{im.label}</div>
                 </div>
               ))}
             </div>
@@ -57,7 +57,7 @@ export function CaseStudyCard({ study, index = 0 }: Props) {
 
           <Link
             href={`/case-studies/${study.slug}`}
-            className="mt-auto pt-6 text-xs font-medium text-foreground/55 transition-colors hover:text-foreground/90"
+            className="mt-auto pt-6 text-xs font-medium text-ink-2 transition-colors hover:text-ink"
           >
             Read the case study →
           </Link>
@@ -89,7 +89,7 @@ function Thumb({ tags, slug }: { tags: string[]; slug: string }) {
         }}
       />
       {/* lower-left tag */}
-      <p className="absolute bottom-3 left-4 font-mono text-[9px] tracking-widest uppercase text-foreground/55">
+      <p className="absolute bottom-3 left-4 font-mono text-[9px] tracking-widest uppercase text-ink-2">
         {tags[0]}
       </p>
     </div>

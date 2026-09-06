@@ -43,7 +43,7 @@ export function RomanNumeral({ n, className }: { n: number; className?: string }
   const numerals = ['', 'i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x'];
   return (
     <span
-      className={cn('font-serif italic text-foreground/40', className)}
+      className={cn('font-serif italic text-ink-2', className)}
       style={{ fontFamily: 'var(--font-display)' }}
     >
       {numerals[n] ?? n}.

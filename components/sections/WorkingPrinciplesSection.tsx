@@ -19,9 +19,9 @@ const PRINCIPLES: Principle[] = [
 
 export function WorkingPrinciplesSection() {
   return (
-    <section id="principles" className="border-b border-border/30 py-24 sm:py-32">
+    <section id="principles" className="border-b border-border py-24 sm:py-32">
       <Container>
-        <p className="mb-10 text-xs font-medium tracking-widest uppercase text-foreground/35">
+        <p className="mb-10 text-xs font-medium tracking-widest uppercase text-ink-3">
           How I work
         </p>
 
@@ -43,7 +43,7 @@ export function WorkingPrinciplesSection() {
                 >
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/65">{p.body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink">{p.body}</p>
               </div>
             </motion.li>
           ))}

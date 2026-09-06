@@ -88,7 +88,7 @@ export function IdeaList({
               'flex-1 rounded-lg px-3 py-1.5 font-medium transition-colors capitalize',
               activeFilter === tab
                 ? 'bg-card text-foreground shadow-sm'
-                : 'text-foreground/50 hover:text-foreground'
+                : 'text-ink-2 hover:text-foreground'
             )}
           >
             {tab}{counts[tab] > 0 ? ` (${counts[tab]})` : ''}
@@ -98,7 +98,7 @@ export function IdeaList({
 
       {/* Ideas list */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-foreground/40">
+        <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-ink-2">
           {activeFilter === 'all'
             ? 'No ideas yet. Click "+ New Idea" to capture your first one.'
             : `No ${activeFilter} ideas.`}
@@ -126,7 +126,7 @@ export function IdeaList({
 
                     {/* Description */}
                     {idea.description && (
-                      <p className="mt-1 text-xs text-foreground/50 line-clamp-2">{idea.description}</p>
+                      <p className="mt-1 text-xs text-ink-2 line-clamp-2">{idea.description}</p>
                     )}
 
                     {/* Angle */}
@@ -139,7 +139,7 @@ export function IdeaList({
                       <IdeaStatusBadge status={idea.status} />
                       <PlatformBadge platform={idea.platform} />
                       {idea.contentPillar && (
-                        <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-foreground/50">
+                        <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-ink-2">
                           {PILLAR_LABELS[idea.contentPillar] ?? idea.contentPillar}
                         </span>
                       )}
@@ -157,7 +157,7 @@ export function IdeaList({
                   <button
                     type="button"
                     onClick={() => onEdit(idea)}
-                    className="text-xs text-foreground/60 hover:text-foreground"
+                    className="text-xs text-ink-2 hover:text-foreground"
                   >
                     Edit
                   </button>
@@ -193,7 +193,7 @@ export function IdeaList({
                     <button
                       type="button"
                       onClick={() => onWriteManually(idea)}
-                      className="text-xs text-foreground/60 hover:text-foreground"
+                      className="text-xs text-ink-2 hover:text-foreground"
                     >
                       Write manually
                     </button>
@@ -202,7 +202,7 @@ export function IdeaList({
                     <button
                       type="button"
                       onClick={() => onArchive(idea)}
-                      className="text-xs text-foreground/40 hover:text-foreground/70"
+                      className="text-xs text-ink-2 hover:text-ink"
                     >
                       Archive
                     </button>
@@ -223,7 +223,7 @@ export function IdeaList({
                         setRegeneratingFeedbackId(idea.publicId);
                         setRegenerateFeedback('');
                       }}
-                      className="text-xs text-foreground/60 hover:text-foreground"
+                      className="text-xs text-ink-2 hover:text-foreground"
                     >
                       Regenerate
                     </button>
@@ -234,7 +234,7 @@ export function IdeaList({
                         <button
                           type="button"
                           onClick={() => setConfirmDeleteId(null)}
-                          className="text-xs text-foreground/40 hover:text-foreground"
+                          className="text-xs text-ink-2 hover:text-foreground"
                         >
                           Cancel
                         </button>
@@ -253,7 +253,7 @@ export function IdeaList({
                       <button
                         type="button"
                         onClick={() => setConfirmDeleteId(idea.publicId)}
-                        className="text-xs text-foreground/30 hover:text-red-400"
+                        className="text-xs text-ink-3 hover:text-red-400"
                       >
                         Delete
                       </button>
@@ -261,8 +261,8 @@ export function IdeaList({
                   </div>
                 </div>
                 {regeneratingFeedbackId === idea.publicId && (
-                  <div className="mt-3 space-y-2 rounded-lg border border-border/50 bg-muted/30 p-3">
-                    <p className="text-xs font-medium text-foreground/60">What should change? (optional)</p>
+                  <div className="mt-3 space-y-2 rounded-lg border border-border bg-muted/30 p-3">
+                    <p className="text-xs font-medium text-ink-2">What should change? (optional)</p>
                     <textarea
                       value={regenerateFeedback}
                       onChange={e => setRegenerateFeedback(e.target.value)}
@@ -285,7 +285,7 @@ export function IdeaList({
                       <button
                         type="button"
                         onClick={() => { setRegeneratingFeedbackId(null); setRegenerateFeedback(''); }}
-                        className="text-xs text-foreground/40 hover:text-foreground"
+                        className="text-xs text-ink-2 hover:text-foreground"
                       >
                         Cancel
                       </button>

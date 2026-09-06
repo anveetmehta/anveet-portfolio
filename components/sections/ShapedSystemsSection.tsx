@@ -8,14 +8,14 @@ type ShapedSystemsSectionProps = { data?: ShapedSystem[] };
 
 export function ShapedSystemsSection({ data = shapedSystems }: ShapedSystemsSectionProps) {
   return (
-    <section id="systems" className="border-b border-border/30 py-24 sm:py-32">
+    <section id="systems" className="border-b border-border py-24 sm:py-32">
       <Container>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="mb-12 text-xs font-medium tracking-widest text-foreground/35 uppercase"
+          className="mb-12 text-xs font-medium tracking-widest text-ink-3 uppercase"
         >
           Systems I&apos;ve Helped Shape
         </motion.p>
@@ -28,7 +28,7 @@ export function ShapedSystemsSection({ data = shapedSystems }: ShapedSystemsSect
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/40 p-8 transition-all duration-300 hover:border-border/70 hover:bg-card/70 lg:p-10"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-8 transition-all duration-300 hover:border-foreground/25 hover:bg-card/70 lg:p-10"
             >
               {/* Gradient top line — reveals on hover */}
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -42,22 +42,22 @@ export function ShapedSystemsSection({ data = shapedSystems }: ShapedSystemsSect
               <div className="relative grid gap-8 lg:grid-cols-[2fr_1fr] lg:gap-16">
                 <div>
                   <h3 className="text-xl font-semibold text-foreground lg:text-2xl">{system.title}</h3>
-                  <p className="mt-4 text-base leading-relaxed text-foreground/65">{system.description}</p>
+                  <p className="mt-4 text-base leading-relaxed text-ink">{system.description}</p>
                   {system.operationalFragment && (
-                    <blockquote className="mt-6 border-l border-accent/30 pl-4 text-sm italic leading-relaxed text-foreground/35">
+                    <blockquote className="mt-6 border-l border-accent/30 pl-4 text-sm italic leading-relaxed text-ink-3">
                       {system.operationalFragment}
                     </blockquote>
                   )}
-                  <p className="mt-6 text-xs text-foreground/30">{system.tags.join(' · ')}</p>
+                  <p className="mt-6 text-xs text-ink-3">{system.tags.join(' · ')}</p>
                 </div>
 
                 <div>
-                  <p className="mb-4 text-xs font-medium uppercase tracking-wider text-foreground/30">
+                  <p className="mb-4 text-xs font-medium uppercase tracking-wider text-ink-3">
                     Focus areas
                   </p>
                   <ul className="space-y-3">
                     {system.focusAreas.map((area) => (
-                      <li key={area} className="flex items-start gap-3 text-sm text-foreground/50">
+                      <li key={area} className="flex items-start gap-3 text-sm text-ink-2">
                         <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent/60" />
                         {area}
                       </li>
